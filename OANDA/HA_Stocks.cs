@@ -22,22 +22,22 @@ namespace OANDA
             foreach (Instrument instrument in instruments)
             {
 
-                Data.Stocks.FillCandles(instrument.Name);
-                List<Model.Candle> M15 = Data.Stocks.M15;
-                List<Model.Candle> H1 = Data.Stocks.H1;
-                List<Model.Candle> H4 = Data.Stocks.H4;
-                List<Model.Candle> D = Data.Stocks.D;
-                Model.InstrumentDayPrice instrumentDayPrice = null;
-                List<Model.Candle> HA_D = HA_D_Candles(D,out  instrumentDayPrice);
-                Model.Candle ha_H4_LastCandle= HA_H4_LastCandle(H4);
-                Model.Candle ha_H1_LastCandle = HA_H1_LastCandle(H1);
-                Model.Candle ha_M15_LastCandle = HA_M15_LastCandle(M15);
+                //        Data.Stocks.FillCandles(instrument.Name);
+                //        List<Model.Candle> M15 = Data.Stocks.M15;
+                //        List<Model.Candle> H1 = Data.Stocks.H1;
+                //        List<Model.Candle> H4 = Data.Stocks.H4;
+                //        List<Model.Candle> D = Data.Stocks.D;
+                //        Model.InstrumentDayPrice instrumentDayPrice = null;
+                //        List<Model.Candle> HA_D = HA_D_Candles(D,out  instrumentDayPrice);
+                //        Model.Candle ha_H4_LastCandle= HA_H4_LastCandle(H4);
+                //        Model.Candle ha_H1_LastCandle = HA_H1_LastCandle(H1);
+                //        Model.Candle ha_M15_LastCandle = HA_M15_LastCandle(M15);
 
 
 
-                OANDA.Results.Get(instrument, ha_M15_LastCandle.Color.ToString(), ha_H1_LastCandle.Color.ToString(), ha_H4_LastCandle.Color.ToString(), HA_D, instrumentDayPrice);
-           
-        }
+                //        OANDA.Results.Get(instrument, ha_M15_LastCandle.Color.ToString(), ha_H1_LastCandle.Color.ToString(), ha_H4_LastCandle.Color.ToString(), HA_D, instrumentDayPrice);
+
+            }
         }
 
       public   static List<Model.Candle> HA_D_Candles(List<Model.Candle> D, out InstrumentDayPrice instrumentDayPrice) 

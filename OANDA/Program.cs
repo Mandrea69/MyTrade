@@ -23,12 +23,18 @@ namespace OANDA
         static void Main(string[] args)
         {
 
-            Console.WriteLine("1 Indeces and Currency");
-            Console.WriteLine("2 Stocks");
+            Console.WriteLine("1 Indeces and Currency - Daily");
+            Console.WriteLine("2 Indeces and Currency - Weekly");
+            Console.WriteLine("3 Stocks");
             string selectedOption = Console.ReadLine();
             if (selectedOption == "1")
             {
                 HA_IndicesAndCurrency.Run();
+
+            }
+            else if(selectedOption == "2")
+            {
+                HA_IndicesAndCurrencyW.Run();
 
             }
             else
