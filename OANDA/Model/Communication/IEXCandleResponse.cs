@@ -12,12 +12,12 @@ namespace OANDA.Model.Communication
         public double close { get; set; }
         public double high { get; set; }
         public double low { get; set; }
-        public double marketOpen { get; set; }
-        public double marketClose { get; set; }
-        public double marketHigh { get; set; }
-        public double marketLow { get; set; }
-        public int numberOfTrades { get; set; }
-       public string minute { get; set; }
+
+        public double uOpen { get; set; }
+        public double uClose { get; set; }
+        public double uHigh { get; set; }
+        public double uLow { get; set; }
+
 
     }
    

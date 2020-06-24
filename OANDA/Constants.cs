@@ -24,7 +24,7 @@ namespace OANDA
             {
                 public static string DAY_Candels(string instrument)
                 {
-                    return "https://cloud.iexapis.com/stable/stock/" + instrument  + "/chart/1m?token=" + iexAccessToken;
+                    return "https://cloud.iexapis.com/stable/stock/" + instrument  + "/chart/5d?token=" + iexAccessToken + "&includeToday=true";
               
                 }
                 public static string IntraDAY_Candels(string instrument)

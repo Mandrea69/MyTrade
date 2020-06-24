@@ -11,6 +11,7 @@ using OANDA.Model;
 
 using System.Text.Json;
 using OANDA.Model.Communication;
+using OANDA.Data;
 
 namespace OANDA
 {
@@ -36,10 +37,8 @@ namespace OANDA
                 HA_Stocks.Run();
             }
 
-            //OANDA.Data.WD.Stocks.DailyCandles("GOOG");
-            //OANDA.Data.WD.Stocks.IntradayCandles("AAPL", "15min");
-            //OANDA.Data.WD.Stocks.IntradayCandles("AAPL", "1h");
+          
 
         }
-    }
+}
 }

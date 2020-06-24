@@ -56,30 +56,7 @@ namespace OANDA.Data
             return restResponse;
 
         }
-        public static string WDGet(string url)
-        {
-            string restResponse = "";
-
-            var request = WebRequest.CreateHttp(url);
-           
-
-
-            request.Method = "GET";
-            request.ContentType = "application/json";
-
-            using (var response = request.GetResponse())
-            {
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    restResponse = reader.ReadToEnd().Trim();
-
-                }
-            }
-
-
-            return restResponse;
-
-        }
+       
 
     }
 }

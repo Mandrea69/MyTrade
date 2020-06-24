@@ -22,48 +22,50 @@ namespace OANDA.Data
             D = new List<Model.Candle>();
             string responseString = Data.RestResponse.Get(Constants.url.IEX.DAY_Candels(instrument));
             var candlesResponse = JsonConvert.DeserializeObject<Model.Communication.IEXCandleResponse[]>(responseString, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-            List<Model.Candle> intradaycandles = D1;
+            //List<Model.Candle> intradaycandles = D1;
 
             foreach (var item in candlesResponse)
             {
 
                 Model.Candle _candle = new Model.Candle();
-                _candle.Open = Convert.ToDouble(item.open);
-                _candle.Close = Convert.ToDouble(item.close);
-                _candle.Hight = Convert.ToDouble(item.high);
-                _candle.Low = Convert.ToDouble(item.low);
+                _candle.Open = Convert.ToDouble(item.uOpen);
+                _candle.Close = Convert.ToDouble(item.uClose);
+                _candle.Hight = Convert.ToDouble(item.uHigh);
+                _candle.Low = Convert.ToDouble(item.uLow);
                 _candle.Complete = true;
                 _candle.Time = item.date;
                 if (_candle.Close > _candle.Open)
                 {
                     _candle.OriginalColor = Constants.CandelColour.GREEN;
+                    Console.WriteLine("GREEN" + " " + _candle.Time + " " + _candle.Open + " " + _candle.Close);
                 }
                 else if (_candle.Close < _candle.Open)
                 {
                     _candle.OriginalColor = Constants.CandelColour.RED;
+                    Console.WriteLine("RED" + " " + _candle.Time + " " + _candle.Open + " " + _candle.Close);
                 }
                 D.Add(_candle);
             }
-            foreach (var item in intradaycandles)
-            {
+            //foreach (var item in intradaycandles)
+            //{
 
-                Model.Candle _candle = new Model.Candle();
-                _candle.Open = Convert.ToDouble(item.Open);
-                _candle.Close = Convert.ToDouble(item.Close);
-                _candle.Hight = Convert.ToDouble(item.Hight);
-                _candle.Low = Convert.ToDouble(item.Low);
-                _candle.Complete = true;
-                _candle.Time = item.Time;
-                if (_candle.Close > _candle.Open)
-                {
-                    _candle.OriginalColor = Constants.CandelColour.GREEN;
-                }
-                else if (_candle.Close < _candle.Open)
-                {
-                    _candle.OriginalColor = Constants.CandelColour.RED;
-                }
-                D.Add(_candle);
-            }
+            //    Model.Candle _candle = new Model.Candle();
+            //    _candle.Open = Convert.ToDouble(item.Open);
+            //    _candle.Close = Convert.ToDouble(item.Close);
+            //    _candle.Hight = Convert.ToDouble(item.Hight);
+            //    _candle.Low = Convert.ToDouble(item.Low);
+            //    _candle.Complete = true;
+            //    _candle.Time = item.Time;
+            //    if (_candle.Close > _candle.Open)
+            //    {
+            //        _candle.OriginalColor = Constants.CandelColour.GREEN;
+            //    }
+            //    else if (_candle.Close < _candle.Open)
+            //    {
+            //        _candle.OriginalColor = Constants.CandelColour.RED;
+            //    }
+            //    D.Add(_candle);
+            //}
 
 
 
@@ -95,18 +97,18 @@ namespace OANDA.Data
                 if (i == 0)
                 {
                     _candle = new Model.Candle();
-                    _candle.Open = Convert.ToDouble(item.marketOpen);
-                    _candle.Hight = Convert.ToDouble(item.marketHigh);
-                    _candle.Low = Convert.ToDouble(item.marketLow);
-                    string[] hm = item.minute.Split(':');
-                    _candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
+                    //_candle.Open = Convert.ToDouble(item.marketOpen);
+                    //_candle.Hight = Convert.ToDouble(item.marketHigh);
+                    //_candle.Low = Convert.ToDouble(item.marketLow);
+                    //string[] hm = item.minute.Split(':');
+                    //_candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
 
                     i += 1;
                 }
                 else if (i == 14 || counter == candlesResponse.Count())
 
                 {
-                    _candle.Close = Convert.ToDouble(item.marketClose);
+                    //_candle.Close = Convert.ToDouble(item.marketClose);
                     _candle.Complete = true;
                       if (_candle.Close > _candle.Open)
                     {
@@ -122,8 +124,8 @@ namespace OANDA.Data
                 else if (i < 14)
                 {
 
-                    _candle.Hight = Math.Max(_candle.Hight, Convert.ToDouble(item.marketHigh));
-                    _candle.Low = Math.Min(_candle.Low, Convert.ToDouble(item.marketLow));
+                    //_candle.Hight = Math.Max(_candle.Hight, Convert.ToDouble(item.marketHigh));
+                    //_candle.Low = Math.Min(_candle.Low, Convert.ToDouble(item.marketLow));
                     i += 1;
 
                 }
@@ -151,12 +153,12 @@ namespace OANDA.Data
                     //    open = item.marketOpen;
                     //}
                     _candle = new Model.Candle();
-                        _candle.Open = Convert.ToDouble(item.marketOpen);
+                        //_candle.Open = Convert.ToDouble(item.marketOpen);
 
-                        _candle.Hight = Convert.ToDouble(item.marketHigh);
-                        _candle.Low = Convert.ToDouble(item.marketLow);
-                    string[] hm = item.minute.Split(':');
-                    _candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
+                    //    _candle.Hight = Convert.ToDouble(item.marketHigh);
+                    //    _candle.Low = Convert.ToDouble(item.marketLow);
+                    //string[] hm = item.minute.Split(':');
+                    //_candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
 
                     i += 1;
                     
@@ -169,7 +171,7 @@ namespace OANDA.Data
                     //    close = item.marketClose;
                     //}
 
-                    _candle.Close = Convert.ToDouble(item.marketClose);
+                    //_candle.Close = Convert.ToDouble(item.marketClose);
                     _candle.Complete = true;
                     if (_candle.Close > _candle.Open)
                     {
@@ -185,9 +187,9 @@ namespace OANDA.Data
                 else if (i < 59)
                 {
 
-                    _candle.Hight = Math.Max(_candle.Hight, Convert.ToDouble(item.marketHigh));
-                    _candle.Low = Math.Min(_candle.Low, Convert.ToDouble(item.marketLow));
-                    i += 1;
+                    //_candle.Hight = Math.Max(_candle.Hight, Convert.ToDouble(item.marketHigh));
+                    //_candle.Low = Math.Min(_candle.Low, Convert.ToDouble(item.marketLow));
+                    //i += 1;
 
                 }
 
@@ -208,17 +210,17 @@ namespace OANDA.Data
                 if (i == 0)
                 {
                     _candle = new Model.Candle();
-                    _candle.Open = Convert.ToDouble(item.marketOpen);
+                    //_candle.Open = Convert.ToDouble(item.marketOpen);
 
-                    _candle.Hight = Convert.ToDouble(item.marketHigh);
-                    _candle.Low = Convert.ToDouble(item.marketLow);
-                    string[] hm = item.minute.Split(':');
-                    _candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
+                    //_candle.Hight = Convert.ToDouble(item.marketHigh);
+                    //_candle.Low = Convert.ToDouble(item.marketLow);
+                    //string[] hm = item.minute.Split(':');
+                    //_candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
                     i += 1;
                 }
                 else if (i == 239 || counter == candlesResponse.Count())
                 {
-                    _candle.Close = Convert.ToDouble(item.marketClose);
+                    //_candle.Close = Convert.ToDouble(item.marketClose);
                     _candle.Complete = true;
 
                     if (_candle.Close > _candle.Open)
@@ -235,8 +237,8 @@ namespace OANDA.Data
                 else if (i < 239)
                 {
 
-                    _candle.Hight = Math.Max(_candle.Hight, Convert.ToDouble(item.marketHigh));
-                    _candle.Low = Math.Min(_candle.Low, Convert.ToDouble(item.marketLow));
+                    //_candle.Hight = Math.Max(_candle.Hight, Convert.ToDouble(item.marketHigh));
+                    //_candle.Low = Math.Min(_candle.Low, Convert.ToDouble(item.marketLow));
                     i += 1;
 
                 }
@@ -262,8 +264,8 @@ namespace OANDA.Data
 
                     _candle.Hight = Convert.ToDouble(item.high);
                     _candle.Low = Convert.ToDouble(item.low);
-                    string[] hm = item.minute.Split(':');
-                    _candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
+                    //string[] hm = item.minute.Split(':');
+                    //_candle.Time = new DateTime(item.date.Year, item.date.Month, item.date.Day, Convert.ToInt16(hm[0]), Convert.ToInt16(hm[1]), 0);
 
 
                 }
@@ -298,7 +300,7 @@ namespace OANDA.Data
         }
         public static void FillCandles(string instrument)
         {
-            IntraDayCandles(instrument);
+            //IntraDayCandles(instrument);
             DailyCandles(instrument);
         }
 
