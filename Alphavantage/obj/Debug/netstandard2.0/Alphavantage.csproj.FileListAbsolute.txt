@@ -1,0 +1,12 @@
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\bin\Debug\netstandard2.0\Alphavantage.deps.json
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\bin\Debug\netstandard2.0\Alphavantage.dll
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\bin\Debug\netstandard2.0\Alphavantage.pdb
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\obj\Debug\netstandard2.0\Alphavantage.csprojAssemblyReference.cache
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\obj\Debug\netstandard2.0\Alphavantage.csproj.CoreCompileInputs.cache
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\obj\Debug\netstandard2.0\Alphavantage.AssemblyInfoInputs.cache
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\obj\Debug\netstandard2.0\Alphavantage.AssemblyInfo.cs
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\obj\Debug\netstandard2.0\Alphavantage.dll
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\obj\Debug\netstandard2.0\Alphavantage.pdb
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\bin\Debug\netstandard2.0\Matrade.Core.dll
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\bin\Debug\netstandard2.0\Matrade.Core.pdb
+C:\Users\Andrea\source\repos\OANDA\Alphavantage\obj\Debug\netstandard2.0\Alphavantage.csproj.CopyComplete

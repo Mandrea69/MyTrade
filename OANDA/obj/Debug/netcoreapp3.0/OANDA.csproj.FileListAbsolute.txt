@@ -1,0 +1,12 @@
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\obj\Debug\netcoreapp3.0\OANDA.AssemblyInfoInputs.cache
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\obj\Debug\netcoreapp3.0\OANDA.AssemblyInfo.cs
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\bin\Debug\netcoreapp3.0\OANDA.exe
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\bin\Debug\netcoreapp3.0\OANDA.deps.json
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\bin\Debug\netcoreapp3.0\OANDA.runtimeconfig.json
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\bin\Debug\netcoreapp3.0\OANDA.runtimeconfig.dev.json
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\bin\Debug\netcoreapp3.0\OANDA.dll
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\bin\Debug\netcoreapp3.0\OANDA.pdb
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\obj\Debug\netcoreapp3.0\OANDA.csproj.CopyComplete
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\obj\Debug\netcoreapp3.0\OANDA.dll
+C:\Users\SPProjectFarm\Desktop\OANDA-20200624T083506Z-001\OANDA\OANDA\obj\Debug\netcoreapp3.0\OANDA.pdb

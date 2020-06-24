@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "75ivE4Xj9dxtD0Rbng8LdTyDZfOr682ecYTuQ/4mfbhjGSgANKMm1YAp4z7zZ2/GGcOOTetaNILcSYpjq04sKw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Andrea\\source\\repos\\OANDA\\OANDA\\OANDA.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Andrea\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

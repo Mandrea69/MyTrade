@@ -1,0 +1,9 @@
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\bin\Debug\netstandard2.0\Matrade.Core.deps.json
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\bin\Debug\netstandard2.0\Matrade.Core.dll
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\bin\Debug\netstandard2.0\Matrade.Core.pdb
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\obj\Debug\netstandard2.0\Matrade.Core.csprojAssemblyReference.cache
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\obj\Debug\netstandard2.0\Matrade.Core.csproj.CoreCompileInputs.cache
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\obj\Debug\netstandard2.0\Matrade.Core.AssemblyInfoInputs.cache
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\obj\Debug\netstandard2.0\Matrade.Core.AssemblyInfo.cs
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\obj\Debug\netstandard2.0\Matrade.Core.dll
+C:\Users\Andrea\source\repos\OANDA\Matrade.Core\obj\Debug\netstandard2.0\Matrade.Core.pdb

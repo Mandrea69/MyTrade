@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "C6zaZNR0QopWEKjGiQDBN/OHkwyFLS6P+k6twSeGvxgj5qb5INLbHiGoHCnEepb0BBTOmVzHrxuihYBW5CkflQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Andrea\\source\\repos\\OANDA\\Alphavantage\\Alphavantage.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Andrea\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Andrea\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

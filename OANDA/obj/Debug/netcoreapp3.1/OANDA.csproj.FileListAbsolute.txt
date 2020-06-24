@@ -1,0 +1,15 @@
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.AssemblyInfoInputs.cache
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.AssemblyInfo.cs
+C:\Users\Andrea\source\repos\OANDA\OANDA\bin\Debug\netcoreapp3.1\OANDA.exe
+C:\Users\Andrea\source\repos\OANDA\OANDA\bin\Debug\netcoreapp3.1\OANDA.deps.json
+C:\Users\Andrea\source\repos\OANDA\OANDA\bin\Debug\netcoreapp3.1\OANDA.runtimeconfig.json
+C:\Users\Andrea\source\repos\OANDA\OANDA\bin\Debug\netcoreapp3.1\OANDA.runtimeconfig.dev.json
+C:\Users\Andrea\source\repos\OANDA\OANDA\bin\Debug\netcoreapp3.1\OANDA.dll
+C:\Users\Andrea\source\repos\OANDA\OANDA\bin\Debug\netcoreapp3.1\OANDA.pdb
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.dll
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.pdb
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.genruntimeconfig.cache
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.csproj.CopyComplete
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.csproj.CoreCompileInputs.cache
+C:\Users\Andrea\source\repos\OANDA\OANDA\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Andrea\source\repos\OANDA\OANDA\obj\Debug\netcoreapp3.1\OANDA.csprojAssemblyReference.cache

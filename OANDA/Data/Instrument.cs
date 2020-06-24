@@ -1,0 +1,33 @@
+﻿using OANDA.Model;
+using OANDA.Model.Communication;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Text.Json;
+
+namespace OANDA.Data
+{
+    public class Instrument
+    {
+        public static List<Model.Instrument> All()
+        {
+            string responseString = Data.RestResponse.Get(Constants.url.INSTRUMENTS);
+            var instrumentResponse = JsonSerializer.Deserialize<InstrumentResponse>(responseString);
+            List<Model.Instrument> instruments = new List<Model.Instrument>();
+            foreach (var item in instrumentResponse.instruments)
+            {
+
+                Model.Instrument _instrument = new Model.Instrument();
+                _instrument.Name = item.name;
+                _instrument.DisplayName = item.displayName;
+                _instrument.Type = item.type;
+
+
+                instruments.Add(_instrument);
+            }
+
+            return instruments;
+
+        }
+    }
+}
