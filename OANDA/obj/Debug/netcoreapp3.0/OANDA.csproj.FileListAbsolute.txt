@@ -37,3 +37,4 @@ C:\Users\Andrea\Source\Repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.csproj.
 C:\Users\Andrea\Source\Repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.dll
 C:\Users\Andrea\Source\Repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.pdb
 C:\Users\Andrea\Source\Repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.genruntimeconfig.cache
+C:\Users\Andrea\Source\Repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.csprojAssemblyReference.cache
