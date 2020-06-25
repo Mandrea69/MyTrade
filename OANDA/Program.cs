@@ -12,6 +12,7 @@ using OANDA.Model;
 using System.Text.Json;
 using OANDA.Model.Communication;
 using OANDA.Data;
+using System.Runtime.CompilerServices;
 
 namespace OANDA
 {
@@ -23,7 +24,9 @@ namespace OANDA
         static void Main(string[] args)
         {
 
-            Console.WriteLine("1 Indeces and Currency - Daily");
+
+        
+           Console.WriteLine("1 Indeces and Currency - Daily");
             Console.WriteLine("2 Indeces and Currency - Weekly");
             Console.WriteLine("3 Calcolate Units");
             string selectedOption = Console.ReadLine();
