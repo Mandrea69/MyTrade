@@ -20,7 +20,7 @@ namespace OANDA
 
             Console.ForegroundColor = ConsoleColor.White;
 
-            instruments = Data.Instrument.All().OrderBy(x => x.Type).OrderBy(x => x.DisplayName).ToList();
+            instruments = Data.Instrument.AllFromFile().OrderBy(x => x.Type).OrderBy(x => x.DisplayName).ToList();
          
             foreach (Instrument instrument in instruments)
             {

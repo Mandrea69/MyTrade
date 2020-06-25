@@ -25,7 +25,7 @@ namespace OANDA
 
             Console.WriteLine("1 Indeces and Currency - Daily");
             Console.WriteLine("2 Indeces and Currency - Weekly");
-            Console.WriteLine("3 Stocks");
+            Console.WriteLine("3 Calcolate Units");
             string selectedOption = Console.ReadLine();
             if (selectedOption == "1")
             {
@@ -35,6 +35,11 @@ namespace OANDA
             else if(selectedOption == "2")
             {
                 HA_IndicesAndCurrencyW.Run();
+
+            }
+            else if (selectedOption == "3")
+            {
+                
 
             }
             else
