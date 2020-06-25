@@ -10,6 +10,9 @@ namespace OANDA.Model
         public DateTime time { get; set; }
         public List<bid> bids { get; set; }
         public List<ask> asks { get; set; }
+
+        public string closeoutAsk { get; set; }
+        public string closeoutBid { get; set; }
     }
 
     public class ask

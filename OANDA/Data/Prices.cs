@@ -19,6 +19,17 @@ namespace OANDA.Data
             return prices;
 
         }
+        public static double LastPrice(string institution)
+        {
+            double lastPrice = 0;
+            string responseString = Data.RestResponse.Get(Constants.url.RATES + institution);
+            var pricesResponse = JsonSerializer.Deserialize<PricesResponse>(responseString);
+            lastPrice = (Convert.ToDouble(pricesResponse.prices[0].closeoutAsk) + Convert.ToDouble(pricesResponse.prices[0].closeoutBid)) / 2;
+                    
+            return lastPrice;
+        }
+
+
         public static List<Model.Candle> GetCandles(string instrument,int numberCandels,string granularity)
         {
             List<Model.Candle> candles = new List<Model.Candle>();

@@ -39,7 +39,14 @@ namespace OANDA
             }
             else if (selectedOption == "3")
             {
-                
+                Console.WriteLine("Insert Instrument");
+                string instrument = Console.ReadLine();
+                Console.WriteLine("Insert stop loss");
+                double sl = Convert.ToDouble(Console.ReadLine());
+                double currentPrice = Data.Prices.LastPrice(instrument);
+                Utilities.Calculate.Units units = new Utilities.Calculate.Units(instrument, 100, 1, sl);
+                Console.WriteLine(units.Get());
+               
 
             }
             else

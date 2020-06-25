@@ -5,20 +5,20 @@ using System.Text;
 namespace OANDA
 {
    public  class Constants
-    { 
+    {
 
-      
+        public static string oaAccessToken = "101-004-15144635-001";
         public static string avAccessToken = "0DLPJNE8MSX5QS13";
         public static string iexAccessToken = "pk_00f25b7de71b4afcb414bf6356a8170c";
         public static string wdAccessToken = "441554a2a2e0c0536c06c2862ad46c0a";
 
         public class url
         {
-            public static string RATES = "https://api-fxpractice.oanda.com/v3/accounts/101-004-15144635-001/pricing?instruments=";
-            public static string INSTRUMENTS = "https://api-fxpractice.oanda.com/v3/accounts/101-004-15144635-001/instruments";
+            public static string RATES = "https://api-fxpractice.oanda.com/v3/accounts/" + oaAccessToken  + "/pricing?instruments=";
+            public static string INSTRUMENTS = "https://api-fxpractice.oanda.com/v3/accounts/" + oaAccessToken + "/instruments";
             public static string Candels(string instrument,int numberCandels,string granularity)
             {
-                  return  "https://api-fxpractice.oanda.com/v3/accounts/101-004-15144635-001/instruments/" + instrument + "/candles?count=" + numberCandels + "&granularity=" + granularity;
+                  return "https://api-fxpractice.oanda.com/v3/accounts/" + oaAccessToken + "/instruments/" + instrument + "/candles?count=" + numberCandels + "&granularity=" + granularity;
              }
            public class IEX
             {
