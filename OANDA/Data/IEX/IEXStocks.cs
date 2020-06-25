@@ -21,7 +21,7 @@ namespace OANDA.Data
         static void DailyCandles(string instrument)
         {
             D = new List<Model.Candle>();
-            string responseString = Data.RestResponse.Get(Constants.url.IEX.DAY_Candels(instrument));
+            string responseString = Data.OANDARestResponse.Get(Constants.url.IEX.DAY_Candels(instrument));
             var candlesResponse = JsonConvert.DeserializeObject<Model.Communication.IEXCandleResponse[]>(responseString, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             //List<Model.Candle> intradaycandles = D1;
 
@@ -74,7 +74,7 @@ namespace OANDA.Data
         static void IntraDayCandles(string instrument)
         {
             List<Model.Candle> candles = new List<Model.Candle>();
-            string responseString = Data.RestResponse.Get(Constants.url.IEX.IntraDAY_Candels(instrument));
+            string responseString = Data.IEXRestResponse.Get(Constants.url.IEX.IntraDAY_Candels(instrument));
             var candlesResponse = JsonConvert.DeserializeObject<Model.Communication.IEXCandleResponse[]>(responseString, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
             M15 = _M15(candlesResponse);

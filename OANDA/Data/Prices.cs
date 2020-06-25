@@ -11,7 +11,7 @@ namespace OANDA.Data
     {
         public static List<Price> Price(string institution)
         {
-            string responseString= Data.RestResponse.Get(Constants.url.RATES + institution);
+            string responseString= Data.OANDARestResponse.Get(Constants.url.RATES + institution);
             var pricesResponse= JsonSerializer.Deserialize<PricesResponse>(responseString);
             List<Price> prices = new List<Price>();
             prices.AddRange(pricesResponse.prices);
@@ -22,7 +22,7 @@ namespace OANDA.Data
         public static double LastPrice(string institution)
         {
             double lastPrice = 0;
-            string responseString = Data.RestResponse.Get(Constants.url.RATES + institution);
+            string responseString = Data.OANDARestResponse.Get(Constants.url.RATES + institution);
             var pricesResponse = JsonSerializer.Deserialize<PricesResponse>(responseString);
             lastPrice = (Convert.ToDouble(pricesResponse.prices[0].closeoutAsk) + Convert.ToDouble(pricesResponse.prices[0].closeoutBid)) / 2;
                     
@@ -33,7 +33,7 @@ namespace OANDA.Data
         public static List<Model.Candle> GetCandles(string instrument,int numberCandels,string granularity)
         {
             List<Model.Candle> candles = new List<Model.Candle>();
-            string responseString = Data.RestResponse.Get(Constants.url.Candels(instrument, numberCandels, granularity));
+            string responseString = Data.OANDARestResponse.Get(Constants.url.Candels(instrument, numberCandels, granularity));
             var candlesResponse = JsonSerializer.Deserialize<CandleResponse>(responseString);
             foreach (var item in candlesResponse.candles)
             {

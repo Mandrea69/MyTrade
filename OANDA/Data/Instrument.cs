@@ -11,7 +11,7 @@ namespace OANDA.Data
     {
         public static List<Model.Instrument> All()
         {
-            string responseString = Data.RestResponse.Get(Constants.url.INSTRUMENTS);
+            string responseString = Data.OANDARestResponse.Get(Constants.url.INSTRUMENTS);
             var instrumentResponse = JsonSerializer.Deserialize<InstrumentResponse>(responseString);
             List<Model.Instrument> instruments = new List<Model.Instrument>();
             foreach (var item in instrumentResponse.instruments)
