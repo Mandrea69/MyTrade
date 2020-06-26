@@ -21,6 +21,7 @@ namespace OANDA.Data
                 _instrument.Name = item.name;
                 _instrument.DisplayName = item.displayName;
                 _instrument.Type = item.type;
+                _instrument.PipLocation = Math.Abs(item.pipLocation);
 
 
                 instruments.Add(_instrument);
@@ -44,7 +45,7 @@ namespace OANDA.Data
                 _instrument.Name = item.name;
                 _instrument.DisplayName = item.displayName;
                 _instrument.Type = item.type;
-
+                _instrument.PipLocation =Math.Abs( item.pipLocation);
 
                 instruments.Add(_instrument);
             }

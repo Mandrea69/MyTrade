@@ -47,10 +47,10 @@ namespace OANDA
             {
                 Console.WriteLine("Insert Instrument");
                
-                string instrument = AutoComplete.Run();
+                Model.Instrument instrument = AutoComplete.Run();
                 Console.WriteLine("Insert stop loss");
                 double sl = Convert.ToDouble(Console.ReadLine());
-                double currentPrice = Data.Prices.LastPrice(instrument);
+                double currentPrice = Data.Prices.LastPrice(instrument.Name);
                 Utilities.Calculate.Units units = new Utilities.Calculate.Units(instrument, 100, currentPrice, sl);
                 Console.WriteLine(units.Get());
 

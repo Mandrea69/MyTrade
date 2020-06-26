@@ -9,7 +9,7 @@ namespace OANDA.Utilities
 {
     public class AutoComplete
     {
-        public static string Run()
+        public static Model.Instrument Run()
         {
 
             List<Model.Instrument> instruments = Data.Instrument.AllFromFile().OrderBy(x => x.Name).ToList();
@@ -77,7 +77,7 @@ namespace OANDA.Utilities
            
             Console.Write(input.KeyChar);
             Console.WriteLine(match.Name);
-            return match.Name;
+            return match;
         }
 
         /// <remarks>

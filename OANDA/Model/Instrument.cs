@@ -9,5 +9,6 @@ namespace OANDA.Model
         public string Name { get; set; }
         public string Type { get; set; }
         public string DisplayName { get; set; }
+       public int PipLocation { get; set; }
     }
 }

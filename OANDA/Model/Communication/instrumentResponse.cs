@@ -14,6 +14,7 @@ namespace OANDA.Model.Communication
         public string name { get; set; }
         public string type { get; set; }
         public string displayName { get; set; }
+        public int pipLocation { get; set; }
     }
 
 }
