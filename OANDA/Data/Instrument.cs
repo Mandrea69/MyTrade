@@ -11,7 +11,7 @@ namespace OANDA.Data
     {
         public static List<Model.Instrument> All()
         {
-            string responseString = Data.RestResponse.Get(Constants.url.INSTRUMENTS);
+            string responseString = Data.OANDARestResponse.Get(Constants.url.INSTRUMENTS);
             var instrumentResponse = JsonSerializer.Deserialize<InstrumentResponse>(responseString);
             List<Model.Instrument> instruments = new List<Model.Instrument>();
             foreach (var item in instrumentResponse.instruments)
@@ -32,7 +32,9 @@ namespace OANDA.Data
 
         public static List<Model.Instrument> AllFromFile()
         {
-            string responseString = System.IO.File.ReadAllText(@"C:\Users\SPProjectFarm\source\repos\MyTrade\OANDA\Data\OANDA\Instruments.json");
+            string responseString = System.IO.File.ReadAllText(Constants.AssemblyPath() + @"\Data\OANDA\Instruments.json");
+            
+            
             var instrumentResponse = JsonSerializer.Deserialize<InstrumentResponse>(responseString);
             List<Model.Instrument> instruments = new List<Model.Instrument>();
             foreach (var item in instrumentResponse.instruments)

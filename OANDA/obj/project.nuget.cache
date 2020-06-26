@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "75ivE4Xj9dxtD0Rbng8LdTyDZfOr682ecYTuQ/4mfbhjGSgANKMm1YAp4z7zZ2/GGcOOTetaNILcSYpjq04sKw==",
+  "dgSpecHash": "bs/eKhvkGQaREjZr4RTcYzui81AggX97erAj77qq2wqCBLO7sKwh+UzHWs2ZdWyiFlGji2knvWvZ83jy5SSevw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andrea\\source\\repos\\OANDA\\OANDA\\OANDA.csproj",
+  "projectFilePath": "C:\\Users\\Andrea\\Source\\Repos\\MyTrade\\OANDA\\OANDA.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Andrea\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+    "C:\\Users\\Andrea\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
   ],
   "logs": []
 }
