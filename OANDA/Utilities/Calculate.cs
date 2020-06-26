@@ -21,7 +21,7 @@ namespace OANDA.Utilities
             }
             public double Get()
             {
-                double point = 0.0001;
+                double point = 0.00001;
 
                 return risk / Math.Abs(currentPrice - stopLoss)*10*point;
             }
