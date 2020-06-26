@@ -44,7 +44,7 @@ namespace OANDA
                         }
 
                         double sl = haDaily[haDaily.Count - 2].Open;
-                        string alert = string.Format("{0,-15}{1,-10}{2,-5}{3,-10}{4,-10}{5,-10}{6,-10}{7,-10}{8,-10}{9,-10}", instrument.DisplayName, instrument.Type, (haDaily.Count - i).ToString(), originalCandleColor, dCandleColor, HA_H4_Color, HA_H1_Color, HA_M15_Color, statusPrice, sl);
+                        string alert = string.Format("{0,-15}{1,-10}{2,-5}{3,-10}{4,-10}{5,-10}{6,-10}{7,-10}{8,-10}{9,-10}", instrument.Name, instrument.Type, (haDaily.Count - i).ToString(), originalCandleColor, dCandleColor, HA_H4_Color, HA_H1_Color, HA_M15_Color, statusPrice, sl);
 
 
                         if (statusPrice == "BUY")
@@ -94,7 +94,7 @@ namespace OANDA
                         }
 
                         double sl = haDaily[haDaily.Count - 2].Open;
-                        string alert = string.Format("{0,-15}{1,-10}{2,-5}{3,-10}{4,-10}{5,-10}{6,-10}{7,-10}{8,-10}{9,-10}", instrument.DisplayName, instrument.Type, (haDaily.Count - i).ToString(), originalCandleColor, dCandleColor, HA_H4_Color, HA_H1_Color, HA_M15_Color, statusPrice, sl);
+                        string alert = string.Format("{0,-15}{1,-10}{2,-5}{3,-10}{4,-10}{5,-10}{6,-10}{7,-10}{8,-10}{9,-10}", instrument.Name, instrument.Type, (haDaily.Count - i).ToString(), originalCandleColor, dCandleColor, HA_H4_Color, HA_H1_Color, HA_M15_Color, statusPrice, sl);
 
 
 

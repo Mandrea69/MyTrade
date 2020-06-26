@@ -15,6 +15,7 @@ using OANDA.Data;
 using System.Runtime.CompilerServices;
 using System.Globalization;
 using OANDA.Utilities;
+using System.Reflection;
 
 namespace OANDA
 {
@@ -26,7 +27,7 @@ namespace OANDA
         static void Main(string[] args)
         {
 
-
+         
 
             Console.WriteLine("1 Indeces and Currency - Daily");
             Console.WriteLine("2 Indeces and Currency - Weekly");
@@ -50,7 +51,7 @@ namespace OANDA
                 Console.WriteLine("Insert stop loss");
                 double sl = Convert.ToDouble(Console.ReadLine());
                 double currentPrice = Data.Prices.LastPrice(instrument);
-                Utilities.Calculate.Units units = new Utilities.Calculate.Units(instrument, 100, 1, sl);
+                Utilities.Calculate.Units units = new Utilities.Calculate.Units(instrument, 100, currentPrice, sl);
                 Console.WriteLine(units.Get());
 
 
@@ -60,8 +61,12 @@ namespace OANDA
 
                 HA_Stocks.Run();
             }
-           
-
+            //var info = Console.ReadKey();
+            //if (info.Key == ConsoleKey.R)
+            //{
+            //    var fileName = Assembly.GetExecutingAssembly().Location;
+            //    System.Diagnostics.Process.Start(fileName);
+            //}
         }
     }
 
