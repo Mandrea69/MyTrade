@@ -76,6 +76,7 @@ namespace OANDA.Utilities
             }
            
             Console.Write(input.KeyChar);
+            
             Console.WriteLine(match.Name);
             return match;
         }
