@@ -67,8 +67,8 @@ namespace OANDA
             Model.Candle haPreviounsCandle = null;
             Model.Candle haCurrentCandle = null;
             List<Model.Candle> haCandles = new List<Candle>();
-            List<Model.Candle> candles = Data.Prices.GetCandles(instrument.Name, 10, "W");
-            EMA ema = new EMA(5);
+            List<Model.Candle> candles = Data.Prices.GetCandles(instrument.Name, 22, "W");
+            EMA ema = new EMA(22);
             
             for (int i = 0; i < candles.Count; i++)
             {
