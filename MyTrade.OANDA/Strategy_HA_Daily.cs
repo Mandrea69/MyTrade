@@ -19,21 +19,23 @@ namespace MyTrade.OANDA.Strategy
         public  void Run()
         {
             
-           Console.ForegroundColor = ConsoleColor.White;
+          
 
             instruments = Data.Instrument.AllFromFile().OrderBy(x => x.Type).OrderBy(x => x.DisplayName).ToList();
-        
+
             foreach (Instrument instrument in instruments)
             {
-                Model.InstrumentDayPrice instrumentDayPrice = null;
-                List<Model.Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDayPrice);
-                Model.Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
-                Model.Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
-                Model.Candle ha_M15_LastCandle =HA_M15_Candles(instrument); ;
-                Model.Result result=  OANDA.Results.GetResult(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_M15_LastCandle.HaColor, ha_H1_LastCandle.HaColor, instrumentDayPrice);
-                if(result!=null)
-                GetResult(result, instruments.Count());
-
+                //if (instrument.Name == "EUR_JPY")
+                //{
+                    Model.InstrumentDayPrice instrumentDayPrice = null;
+                    List<Model.Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDayPrice);
+                    Model.Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
+                    Model.Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
+                    Model.Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
+                    Model.Result result = OANDA.Results.GetResult(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDayPrice);
+                    if (result != null)
+                        GetResult(result, instruments.Count());
+                //}
             }
           
         }
@@ -78,8 +80,9 @@ namespace MyTrade.OANDA.Strategy
             Model.Candle haPreviounsCandle = null;
             Model.Candle haCurrentCandle = null;
             List<Model.Candle> haCandles = new List<Candle>();
-            List<Model.Candle> candles = Data.Prices.GetCandles(instrument.Name, 22, "D");
-            EMA ema = new EMA(22);
+           int emaPeriod = 22;
+            List<Model.Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "D");
+            EMA ema = new EMA(emaPeriod);
 
             for (int i = 0; i < candles.Count; i++)
             {
@@ -93,19 +96,19 @@ namespace MyTrade.OANDA.Strategy
                     instrumentDayPrice.Min = Math.Min(candles[i].Low, instrumentDayPrice.Min);
                     haPreviounsCandle = Data.Candle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
-                    //Console.WriteLine(haPreviounsCandle.OriginalColor);
+                    
                 }
 
                 else
                 {
 
                     haCurrentCandle = Data.Candle.Generate(haPreviounsCandle, candles[i]);
-                    //Console.WriteLine(haCurrentCandle.OriginalColor);
+                   
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }
 
-                if (i < 5)
+                if (i < (emaPeriod-1))
                 {
                     ema.AddDataPoint(candles[i].Close);
                 }
@@ -196,13 +199,13 @@ namespace MyTrade.OANDA.Strategy
                 {
                     haPreviounsCandle = Data.Candle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
-                    //Console.WriteLine(haPreviounsCandle.Color);
+                   
                 }
                 else
                 {
 
                     haCurrentCandle = Data.Candle.Generate(haPreviounsCandle, candles[i]);
-                    //Console.WriteLine(haCurrentCandle.Color);
+                  
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }

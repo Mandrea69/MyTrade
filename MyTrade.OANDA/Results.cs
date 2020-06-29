@@ -133,7 +133,7 @@ namespace MyTrade.OANDA
 
 
         }
-        public static Model.Result GetResult(Instrument instrument, List<Model.Candle> haDaily, Constants.CandleColor HA_H4_Color, Constants.CandleColor HA_M15_Color, Constants.CandleColor HA_H1_Color, Model.InstrumentDayPrice instrumentDayPrice)
+        public static Model.Result GetResult(Instrument instrument, List<Model.Candle> haDaily, Constants.CandleColor H4_HA_Color, Constants.CandleColor H1_HA_Color, Constants.CandleColor M15_HA_Color, Model.InstrumentDayPrice instrumentDayPrice)
         {
             Model.Result result = null;
 
@@ -159,20 +159,20 @@ namespace MyTrade.OANDA
                             result.NumberHaCandles = haDaily.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
-                            result.H4_HA_Color = HA_H4_Color;
-                            result.H1_HA_Color = HA_H1_Color;
-                            result.M15_HA_Color = HA_M15_Color;
+                            result.H4_HA_Color = H4_HA_Color;
+                            result.H1_HA_Color = H1_HA_Color;
+                            result.M15_HA_Color = M15_HA_Color;
 
                             if (D_RealColor == Constants.CandleColor.GREEN)
                             {
                                 if (instrumentDayPrice.Current > instrumentDayPrice.EMA)
                                 {
 
-                                    if (D_RealColor == D_HA_Color && HA_H1_Color == D_HA_Color && HA_H4_Color == D_HA_Color && HA_M15_Color == D_HA_Color)
+                                    if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
                                     {
                                         result.Action = Constants.Action.BUY;
                                     }
-                                    else if (D_RealColor == D_HA_Color && D_RealColor == HA_M15_Color)
+                                    else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
                                     {
                                         result.Action = Constants.Action.BUY;
                                     }
@@ -212,9 +212,9 @@ namespace MyTrade.OANDA
                             result.NumberHaCandles = haDaily.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
-                            result.H4_HA_Color = HA_H4_Color;
-                            result.H1_HA_Color = HA_H1_Color;
-                            result.M15_HA_Color = HA_M15_Color;
+                            result.H4_HA_Color = H4_HA_Color;
+                            result.H1_HA_Color = H1_HA_Color;
+                            result.M15_HA_Color = M15_HA_Color;
 
                            
                             if (D_RealColor == Constants.CandleColor.RED)
@@ -223,11 +223,11 @@ namespace MyTrade.OANDA
                                 if (instrumentDayPrice.Current < instrumentDayPrice.EMA)
                                 {
 
-                                    if (D_RealColor == D_HA_Color && HA_H1_Color == D_HA_Color && HA_H4_Color == D_HA_Color && HA_M15_Color == D_HA_Color)
+                                    if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
                                     {
                                         result.Action = Constants.Action.SELL;
                                     }
-                                    else if (D_RealColor == D_HA_Color && D_RealColor == HA_M15_Color)
+                                    else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
                                     {
                                         result.Action = Constants.Action.SELL;
                                     }
@@ -265,9 +265,9 @@ namespace MyTrade.OANDA
                 result.NumberHaCandles = 0;
                 result.D_HA_Color = D_HA_Color;
                 result.D_RealColor = D_RealColor;
-                result.H4_HA_Color = HA_H4_Color;
-                result.H1_HA_Color = HA_H1_Color;
-                result.M15_HA_Color = HA_M15_Color;
+                result.H4_HA_Color = H4_HA_Color;
+                result.H1_HA_Color = H1_HA_Color;
+                result.M15_HA_Color = M15_HA_Color;
                 result.Action = Constants.Action.WAIT;
             }
             //}
