@@ -24,18 +24,18 @@ namespace OANDA
             //Timer t = new Timer(TimerCallback, null, 0, 60000);
             foreach (Instrument instrument in instruments)
             {
-                //if (instrument.DisplayName == "Sugar")
-                //{
+                if (instrument.DisplayName == "France 40")
+                {
 
                     Model.InstrumentDayPrice instrumentDayPrice = null;
                     List<Model.Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDayPrice);
-                          Model.Candle ha_H4_LastCandle = HA_IndicesAndCurrency.HA_H4_Candles(instrument);
-                Model.Candle ha_H1_LastCandle = HA_IndicesAndCurrency.HA_H1_Candles(instrument);
-                Model.Candle ha_M15_LastCandle = HA_IndicesAndCurrency.HA_M15_Candles(instrument); ;
+                    Model.Candle ha_H4_LastCandle = HA_IndicesAndCurrency.HA_H4_Candles(instrument);
+                    Model.Candle ha_H1_LastCandle = HA_IndicesAndCurrency.HA_H1_Candles(instrument);
+                    Model.Candle ha_M15_LastCandle = HA_IndicesAndCurrency.HA_M15_Candles(instrument); ;
 
-                OANDA.Results.Get(instrument, ha_M15_LastCandle.Color.ToString(), ha_H1_LastCandle.Color.ToString(), ha_H4_LastCandle.Color.ToString(), ha_D_Candles, instrumentDayPrice);
-            //}
-        }
+                    OANDA.Results.Get(instrument, ha_M15_LastCandle.Color.ToString(), ha_H1_LastCandle.Color.ToString(), ha_H4_LastCandle.Color.ToString(), ha_D_Candles, instrumentDayPrice);
+                }
+            }
             Console.ForegroundColor = ConsoleColor.Green;
             foreach (string item in OANDA.Results.GreenAlerts)
             {
