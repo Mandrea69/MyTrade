@@ -24,7 +24,7 @@ namespace OANDA
             //Timer t = new Timer(TimerCallback, null, 0, 60000);
             foreach (Instrument instrument in instruments)
             {
-                if (instrument.DisplayName == "France 40")
+                if (instrument.DisplayName == "US Nas 100")
                 {
 
                     Model.InstrumentDayPrice instrumentDayPrice = null;

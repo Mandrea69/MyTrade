@@ -60,7 +60,11 @@ namespace MyTradeInterface
             }
             else
             {
-
+                List<MyTrade.OANDA.Model.Instrument> instruments = MyTrade.OANDA.Data.Instrument.AllFromFile(); ;
+                var instrumentDetails = from x in instruments
+                                        where x.Name == "NAS100_USD"
+                                        select x;
+              MessageBox.Show(  MyTrade.OANDA.Strategy.HA_Daily.HA_M15_Candles(instrumentDetails.FirstOrDefault()).HaColor.ToString());
             }
 
         }
