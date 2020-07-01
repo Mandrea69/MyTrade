@@ -1,5 +1,6 @@
 ﻿
-using MyTrade.OANDA.Formula;
+using MyTrade.OANDA.Indicators;
+using MyTrade.OANDA.Indicators;
 using MyTrade.OANDA.Model;
 using System;
 using System.Collections.Generic;
@@ -55,13 +56,12 @@ namespace MyTrade.OANDA.Strategy
                 {
                     haPreviounsCandle = Data.Candle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
-                    //Console.WriteLine(haPreviounsCandle.Color);
+                    
                 }
                 else
                 {
 
                     haCurrentCandle = Data.Candle.Generate(haPreviounsCandle, candles[i]);
-                    //Console.WriteLine(haCurrentCandle.Color);
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }
@@ -83,7 +83,9 @@ namespace MyTrade.OANDA.Strategy
            int emaPeriod = 22;
             List<Model.Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "D");
             EMA ema = new EMA(emaPeriod);
-
+            PivotPoints pps= new PivotPoints();
+            MyTrade.Model.Indicators.PivotPoint _pps= pps.Get(candles[candles.Count - 1]);
+            instrumentDayPrice.PivotPoints = _pps;
             for (int i = 0; i < candles.Count; i++)
             {
 

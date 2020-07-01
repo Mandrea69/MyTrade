@@ -159,7 +159,8 @@ namespace MyTrade.OANDA
 
                             if (D_RealColor == Constants.CandleColor.GREEN)
                             {
-                                if (instrumentDayPrice.Current > instrumentDayPrice.EMA)
+                                if (instrumentDayPrice.Current > instrumentDayPrice.EMA && instrumentDayPrice.Current> instrumentDayPrice.PivotPoints.PP && 
+                                instrumentDayPrice.Current < instrumentDayPrice.PivotPoints.R1)
                                 {
 
                                     if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
@@ -212,7 +213,7 @@ namespace MyTrade.OANDA
                             if (D_RealColor == Constants.CandleColor.RED)
                             {
 
-                                if (instrumentDayPrice.Current < instrumentDayPrice.EMA)
+                                if (instrumentDayPrice.Current < instrumentDayPrice.EMA && instrumentDayPrice.Current < instrumentDayPrice.PivotPoints.PP && instrumentDayPrice.Current > instrumentDayPrice.PivotPoints.S1)
                                 {
 
                                     if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)

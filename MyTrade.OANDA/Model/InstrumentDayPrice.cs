@@ -22,7 +22,7 @@ namespace MyTrade.OANDA.Model
         {
             get; set;
         }
-        public double PivotPoint_PP
+        public MyTrade.Model.Indicators.PivotPoint PivotPoints
         {
             get; set;
         }
