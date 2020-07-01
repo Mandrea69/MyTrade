@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace MyTrade.OANDA.Formula
+namespace MyTrade.OANDA.Indicators
 {
     public class RSI
     {

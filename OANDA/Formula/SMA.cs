@@ -9,7 +9,7 @@ namespace OANDA.Formula
         public SMA() {
             datapoints = new List<double>();
         }
-        private double average;
+        private double average=0;
         List<double> datapoints = null;
         public double Avarage
         {

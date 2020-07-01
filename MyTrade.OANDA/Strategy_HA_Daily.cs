@@ -1,5 +1,5 @@
 ﻿
-using MyTrade.OANDA.Formula;
+using MyTrade.OANDA.Indicators;
 using MyTrade.OANDA.Model;
 using System;
 using System.Collections.Generic;
@@ -53,13 +53,12 @@ namespace MyTrade.OANDA.Strategy
                 {
                     haPreviounsCandle = Data.Candle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
-                    //Console.WriteLine(haPreviounsCandle.Color);
+                    
                 }
                 else
                 {
 
                     haCurrentCandle = Data.Candle.Generate(haPreviounsCandle, candles[i]);
-                    //Console.WriteLine(haCurrentCandle.Color);
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }
@@ -80,6 +79,7 @@ namespace MyTrade.OANDA.Strategy
             List<Model.Candle> haCandles = new List<Candle>();
             List<Model.Candle> candles = Data.Prices.GetCandles(instrument.Name, 22, "D");
             EMA ema = new EMA(22);
+            PivotPoints pp = new PivotPoints();
 
             for (int i = 0; i < candles.Count; i++)
             {
@@ -93,15 +93,14 @@ namespace MyTrade.OANDA.Strategy
                     instrumentDayPrice.Min = Math.Min(candles[i].Low, instrumentDayPrice.Min);
                     haPreviounsCandle = Data.Candle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
-                    //Console.WriteLine(haPreviounsCandle.OriginalColor);
+                    
                 }
 
                 else
                 {
 
                     haCurrentCandle = Data.Candle.Generate(haPreviounsCandle, candles[i]);
-                    //Console.WriteLine(haCurrentCandle.OriginalColor);
-                    haCandles.Add(haCurrentCandle);
+                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }
 
@@ -165,13 +164,12 @@ namespace MyTrade.OANDA.Strategy
                 {
                     haPreviounsCandle = Data.Candle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
-                    //Console.WriteLine(haPreviounsCandle.Color);
+                    
                 }
                 else
                 {
 
                     haCurrentCandle = Data.Candle.Generate(haPreviounsCandle, candles[i]);
-                    //Console.WriteLine(haCurrentCandle.Color);
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }
@@ -196,13 +194,12 @@ namespace MyTrade.OANDA.Strategy
                 {
                     haPreviounsCandle = Data.Candle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
-                    //Console.WriteLine(haPreviounsCandle.Color);
+                  
                 }
                 else
                 {
 
                     haCurrentCandle = Data.Candle.Generate(haPreviounsCandle, candles[i]);
-                    //Console.WriteLine(haCurrentCandle.Color);
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }

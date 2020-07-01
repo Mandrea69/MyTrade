@@ -22,7 +22,6 @@ C:\Users\SPProjectFarm\source\repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.
 C:\Users\SPProjectFarm\source\repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.csproj.CopyComplete
 C:\Users\SPProjectFarm\source\repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.dll
 C:\Users\SPProjectFarm\source\repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.pdb
-C:\Users\SPProjectFarm\source\repos\MyTrade\OANDA\obj\Debug\netcoreapp3.0\OANDA.csprojAssemblyReference.cache
 C:\Users\Andrea\Source\Repos\MyTrade\OANDA\bin\Debug\netcoreapp3.0\OANDA.exe
 C:\Users\Andrea\Source\Repos\MyTrade\OANDA\bin\Debug\netcoreapp3.0\OANDA.deps.json
 C:\Users\Andrea\Source\Repos\MyTrade\OANDA\bin\Debug\netcoreapp3.0\OANDA.runtimeconfig.json

@@ -7,3 +7,10 @@ C:\Users\Andrea\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTra
 C:\Users\Andrea\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.AssemblyInfo.cs
 C:\Users\Andrea\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.dll
 C:\Users\Andrea\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.pdb
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTrade.Core.deps.json
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTrade.Core.dll
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTrade.Core.pdb
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.AssemblyInfoInputs.cache
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.AssemblyInfo.cs
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.dll
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.pdb

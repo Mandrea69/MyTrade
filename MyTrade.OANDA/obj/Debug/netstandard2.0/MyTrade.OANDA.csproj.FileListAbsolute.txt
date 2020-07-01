@@ -7,3 +7,10 @@ C:\Users\Andrea\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTr
 C:\Users\Andrea\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.AssemblyInfo.cs
 C:\Users\Andrea\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.dll
 C:\Users\Andrea\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.pdb
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.OANDA.deps.json
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.OANDA.dll
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.OANDA.pdb
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.AssemblyInfoInputs.cache
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.AssemblyInfo.cs
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.dll
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.pdb

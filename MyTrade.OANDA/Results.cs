@@ -10,14 +10,8 @@ namespace MyTrade.OANDA
     public class Results
     {
 
-
-        //public static List<string> GreenAlerts = new List<string>();
-        //public static List<string> YellowAlerts = new List<string>();
-        //public static List<string> BlueAlerts = new List<string>();
-
         public static void Get(Instrument instrument, string HA_M15_Color, string HA_H1_Color, string HA_H4_Color, List<Model.Candle> haDaily, Model.InstrumentDayPrice instrumentDayPrice)
         {
-
             string dCandleColor = "";
             string originalCandleColor = "";
 
@@ -176,8 +170,6 @@ namespace MyTrade.OANDA
                                     {
                                         result.Action = Constants.Action.BUY;
                                     }
-
-
                                 }
                                 else
                                 {

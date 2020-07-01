@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyTrade.OANDA.Formula
+namespace MyTrade.OANDA.Indicators
 {
     public class SMA
     {
         public SMA() {
             datapoints = new List<double>();
         }
-        private double average;
+        private double average=0;
         List<double> datapoints = null;
         public double Avarage
         {

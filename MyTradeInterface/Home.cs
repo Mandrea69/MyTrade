@@ -44,8 +44,11 @@ namespace MyTradeInterface
             if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HA_Daily)
             {
                 this.gwWait.Rows.Clear();
+                this.gwWait.Refresh();
                 this.gwSell.Rows.Clear();
+                this.gwSell.Refresh();
                 this.gwBuy.Rows.Clear();
+                this.gwBuy.Refresh();
 
 
                 MyTrade.OANDA.Strategy.HA_Daily haDailyStrategy = new MyTrade.OANDA.Strategy.HA_Daily();

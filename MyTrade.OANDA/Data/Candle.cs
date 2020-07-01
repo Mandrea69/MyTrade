@@ -1,5 +1,5 @@
 ﻿
-using MyTrade.OANDA.Formula;
+using MyTrade.OANDA.Indicators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
