@@ -1,4 +1,6 @@
-﻿using MyTradeInterface.Controls;
+﻿using MyTrade.Core.Model;
+using MyTrade.OANDA.Indicators;
+using MyTradeInterface.Controls;
 using MyTradeInterface.Properties;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,7 @@ using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MyTrade.Core.Constants;
 
 namespace MyTradeInterface
 {
@@ -41,7 +44,7 @@ namespace MyTradeInterface
           processedSellItems=0;
           processedWaitItems=0;
 
-            if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HA_Daily)
+            if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointDaily)
             {
                 this.gwWait.Rows.Clear();
                 this.gwWait.Refresh();
@@ -51,8 +54,25 @@ namespace MyTradeInterface
                 this.gwBuy.Refresh();
 
 
-                MyTrade.OANDA.Strategy.HA_Daily haDailyStrategy = new MyTrade.OANDA.Strategy.HA_Daily();
+                MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_DAily haDailyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_DAily();
                 haDailyStrategy.GetResult += HaDailyStrategy_GetResult ;
+                haDailyStrategy.Run();
+
+
+
+            }
+           else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointWeekly)
+            {
+                this.gwWait.Rows.Clear();
+                this.gwWait.Refresh();
+                this.gwSell.Rows.Clear();
+                this.gwSell.Refresh();
+                this.gwBuy.Rows.Clear();
+                this.gwBuy.Refresh();
+
+
+                MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Weekly haDailyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Weekly();
+                haDailyStrategy.GetResult += HaDailyStrategy_GetResult;
                 haDailyStrategy.Run();
 
 
@@ -60,22 +80,22 @@ namespace MyTradeInterface
             }
             else
             {
-                List<MyTrade.OANDA.Model.Instrument> instruments = MyTrade.OANDA.Data.Instrument.AllFromFile(); ;
-                var instrumentDetails = from x in instruments
-                                        where x.Name == "NAS100_USD"
-                                        select x;
-              MessageBox.Show(  MyTrade.OANDA.Strategy.HA_Daily.HA_M15_Candles(instrumentDetails.FirstOrDefault()).HaColor.ToString());
+
+            List<MyTrade.Core.Model.Candle> candles=    MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles("EUR_USD");
+                PivotPoints pps = new PivotPoints();
+                MyTrade.Model.Indicators.PivotPoint _pps = pps.Get(candles[candles.Count - 2]);
+                MessageBox.Show( _pps.PP.ToString() );
             }
 
         }
 
        
 
-        private void HaDailyStrategy_GetResult(MyTrade.OANDA.Model.Result result, int nInstruments)
+        private void HaDailyStrategy_GetResult(Result result, int nInstruments)
         {
             this.txtTotalInstruments.Text = nInstruments.ToString();
             this.txtTotalInstruments.Refresh();
-            if (result.Action == MyTrade.OANDA.Constants.Action.BUY)
+            if (result.Action == MyTrade.Core.Constants.Action.BUY)
             {
                 CreateRow(gwBuy, result);
                 processedBuyItems += 1;
@@ -84,14 +104,14 @@ namespace MyTradeInterface
 
 
             }
-            else if (result.Action == MyTrade.OANDA.Constants.Action.SELL)
+            else if (result.Action == MyTrade.Core.Constants.Action.SELL)
             {
                 CreateRow(gwSell, result);
                 processedSellItems += 1;
                 this.lblSellItems.Text = processedSellItems.ToString();
                 this.lblSellItems.Refresh();
             }
-            else if (result.Action == MyTrade.OANDA.Constants.Action.WAIT)
+            else if (result.Action == MyTrade.Core.Constants.Action.WAIT)
             {
                 CreateRow(gwWait, result);
                 processedWaitItems += 1;
@@ -110,14 +130,14 @@ namespace MyTradeInterface
 
         }
 
-        void CreateRow(DataGridView gw,MyTrade.OANDA.Model.Result result)
+        void CreateRow(DataGridView gw,Result result)
         {
             DataGridViewRow row = new DataGridViewRow();
 
             row.CreateCells(gw);
 
             row.Cells[0].Value = result.DisplayName;
-            if (result.D_RealColor == MyTrade.OANDA.Constants.CandleColor.GREEN)
+            if (result.D_RealColor == MyTrade.Core.Constants.CandleColor.GREEN)
             {
                 row.Cells[1].Value = Resources.green;
             }
@@ -125,7 +145,7 @@ namespace MyTradeInterface
             {
                 row.Cells[1].Value = Resources.red;
             }
-            if (result.D_HA_Color == MyTrade.OANDA.Constants.CandleColor.GREEN)
+            if (result.D_HA_Color == MyTrade.Core.Constants.CandleColor.GREEN)
             {
                 row.Cells[2].Value = Resources.green;
             }
@@ -133,7 +153,7 @@ namespace MyTradeInterface
             {
                 row.Cells[2].Value = Resources.red;
             }
-            if (result.H4_HA_Color == MyTrade.OANDA.Constants.CandleColor.GREEN)
+            if (result.H4_HA_Color ==CandleColor.GREEN)
             {
                 row.Cells[3].Value = Resources.green;
             }
@@ -141,7 +161,7 @@ namespace MyTradeInterface
             {
                 row.Cells[3].Value = Resources.red;
             }
-            if (result.H1_HA_Color == MyTrade.OANDA.Constants.CandleColor.GREEN)
+            if (result.H1_HA_Color ==CandleColor.GREEN)
             {
                 row.Cells[4].Value = Resources.green;
             }
@@ -149,7 +169,7 @@ namespace MyTradeInterface
             {
                 row.Cells[4].Value = Resources.red;
             }
-            if (result.M15_HA_Color == MyTrade.OANDA.Constants.CandleColor.GREEN)
+            if (result.M15_HA_Color == CandleColor.GREEN)
             {
                 row.Cells[5].Value = Resources.green;
             }
@@ -166,6 +186,12 @@ namespace MyTradeInterface
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void refreshDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshData rd = new RefreshData();
+            rd.ShowDialog(this);
         }
     }
 }

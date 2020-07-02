@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTrade.Core.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,10 +8,10 @@ namespace MyTrade.OANDA.Indicators
 {
     public class PivotPoints
     {
-        public MyTrade.Model.Indicators.PivotPoint Get(Model.Candle candleDayBefore)
+        public MyTrade.Model.Indicators.PivotPoint Get(Candle candleDayBefore)
         {
             MyTrade.Model.Indicators.PivotPoint pps = new MyTrade.Model.Indicators.PivotPoint();
-            double h = candleDayBefore.Hight;
+            double h = candleDayBefore.High;
             double l = candleDayBefore.Low;
             double c = candleDayBefore.Close;
 

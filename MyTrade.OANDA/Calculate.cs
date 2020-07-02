@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTrade.Core.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,11 +9,11 @@ namespace MyTrade.OANDA
     {
         public class Units
         {
-            Model.Instrument instrument =null;
+            Instrument instrument =null;
             double risk = 0;
             double stopLoss = 0;
             double currentPrice = 0;
-            public Units(Model.Instrument _instrument,double _risk,double _currentPrice, double _stopLoss)
+            public Units(Instrument _instrument,double _risk,double _currentPrice, double _stopLoss)
             {
                instrument = _instrument;
                risk = _risk;

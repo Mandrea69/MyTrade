@@ -65,18 +65,23 @@
             this.lblwait = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlCalculator = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gwBuy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gwSell)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gwWait)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbStrategy
             // 
             this.cbStrategy.FormattingEnabled = true;
             this.cbStrategy.Items.AddRange(new object[] {
-            "HA Daily",
+            "Heiken Hashi Daily - Pivot Point Daily",
+            "Heiken Hashi Daily - Pivot Point Weekly",
             "HA Weekly"});
-            this.cbStrategy.Location = new System.Drawing.Point(12, 12);
+            this.cbStrategy.Location = new System.Drawing.Point(12, 56);
             this.cbStrategy.Name = "cbStrategy";
             this.cbStrategy.Size = new System.Drawing.Size(257, 21);
             this.cbStrategy.TabIndex = 0;
@@ -96,7 +101,7 @@
             this.HA_H1_Candle,
             this.HA_M15_Candle,
             this.N_Candles});
-            this.gwBuy.Location = new System.Drawing.Point(15, 51);
+            this.gwBuy.Location = new System.Drawing.Point(15, 95);
             this.gwBuy.Name = "gwBuy";
             this.gwBuy.RowTemplate.Height = 32;
             this.gwBuy.Size = new System.Drawing.Size(464, 217);
@@ -154,7 +159,7 @@
             // 
             // btnExecute
             // 
-            this.btnExecute.Location = new System.Drawing.Point(275, 12);
+            this.btnExecute.Location = new System.Drawing.Point(275, 56);
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(97, 23);
             this.btnExecute.TabIndex = 2;
@@ -166,7 +171,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 36);
+            this.label1.Location = new System.Drawing.Point(12, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 16);
             this.label1.TabIndex = 4;
@@ -176,7 +181,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(496, 34);
+            this.label2.Location = new System.Drawing.Point(496, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 16);
             this.label2.TabIndex = 5;
@@ -184,7 +189,7 @@
             // 
             // txtProcessedItems
             // 
-            this.txtProcessedItems.Location = new System.Drawing.Point(831, 12);
+            this.txtProcessedItems.Location = new System.Drawing.Point(831, 56);
             this.txtProcessedItems.Name = "txtProcessedItems";
             this.txtProcessedItems.Size = new System.Drawing.Size(62, 20);
             this.txtProcessedItems.TabIndex = 7;
@@ -192,7 +197,7 @@
             // lblBuyItems
             // 
             this.lblBuyItems.AutoSize = true;
-            this.lblBuyItems.Location = new System.Drawing.Point(128, 37);
+            this.lblBuyItems.Location = new System.Drawing.Point(128, 81);
             this.lblBuyItems.Name = "lblBuyItems";
             this.lblBuyItems.Size = new System.Drawing.Size(13, 13);
             this.lblBuyItems.TabIndex = 8;
@@ -201,7 +206,7 @@
             // lblSellItems
             // 
             this.lblSellItems.AutoSize = true;
-            this.lblSellItems.Location = new System.Drawing.Point(611, 37);
+            this.lblSellItems.Location = new System.Drawing.Point(611, 81);
             this.lblSellItems.Name = "lblSellItems";
             this.lblSellItems.Size = new System.Drawing.Size(13, 13);
             this.lblSellItems.TabIndex = 9;
@@ -221,7 +226,7 @@
             this.dataGridViewImageColumn5,
             this.dataGridViewImageColumn6,
             this.dataGridViewTextBoxColumn2});
-            this.gwSell.Location = new System.Drawing.Point(499, 53);
+            this.gwSell.Location = new System.Drawing.Point(499, 97);
             this.gwSell.Name = "gwSell";
             this.gwSell.RowTemplate.Height = 32;
             this.gwSell.Size = new System.Drawing.Size(464, 217);
@@ -279,7 +284,7 @@
             // 
             // txtTotalInstruments
             // 
-            this.txtTotalInstruments.Location = new System.Drawing.Point(899, 12);
+            this.txtTotalInstruments.Location = new System.Drawing.Point(899, 56);
             this.txtTotalInstruments.Name = "txtTotalInstruments";
             this.txtTotalInstruments.Size = new System.Drawing.Size(62, 20);
             this.txtTotalInstruments.TabIndex = 11;
@@ -298,7 +303,7 @@
             this.dataGridViewImageColumn10,
             this.dataGridViewImageColumn11,
             this.dataGridViewTextBoxColumn4});
-            this.gwWait.Location = new System.Drawing.Point(15, 287);
+            this.gwWait.Location = new System.Drawing.Point(15, 331);
             this.gwWait.Name = "gwWait";
             this.gwWait.RowTemplate.Height = 32;
             this.gwWait.Size = new System.Drawing.Size(464, 210);
@@ -359,7 +364,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 268);
+            this.label3.Location = new System.Drawing.Point(12, 312);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 16);
             this.label3.TabIndex = 13;
@@ -368,7 +373,7 @@
             // lblwait
             // 
             this.lblwait.AutoSize = true;
-            this.lblwait.Location = new System.Drawing.Point(129, 271);
+            this.lblwait.Location = new System.Drawing.Point(129, 315);
             this.lblwait.Name = "lblwait";
             this.lblwait.Size = new System.Drawing.Size(13, 13);
             this.lblwait.TabIndex = 14;
@@ -383,16 +388,41 @@
             // 
             // pnlCalculator
             // 
-            this.pnlCalculator.Location = new System.Drawing.Point(499, 287);
+            this.pnlCalculator.Location = new System.Drawing.Point(499, 331);
             this.pnlCalculator.Name = "pnlCalculator";
             this.pnlCalculator.Size = new System.Drawing.Size(462, 207);
             this.pnlCalculator.TabIndex = 15;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(973, 24);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshDataToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // refreshDataToolStripMenuItem
+            // 
+            this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
+            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.refreshDataToolStripMenuItem.Text = "Refresh Data";
+            this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.refreshDataToolStripMenuItem_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 506);
+            this.ClientSize = new System.Drawing.Size(973, 559);
             this.Controls.Add(this.pnlCalculator);
             this.Controls.Add(this.lblwait);
             this.Controls.Add(this.label3);
@@ -407,12 +437,17 @@
             this.Controls.Add(this.btnExecute);
             this.Controls.Add(this.gwBuy);
             this.Controls.Add(this.cbStrategy);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My Trade";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gwBuy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gwSell)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gwWait)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,6 +491,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblwait;
         private System.Windows.Forms.Panel pnlCalculator;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshDataToolStripMenuItem;
     }
 }
 

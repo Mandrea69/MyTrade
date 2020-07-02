@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Model\Candle.cs" />
+    <Compile Remove="Model\Instrument.cs" />
+    <Compile Remove="Model\Result.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyTrade.Core\MyTrade.Core.csproj" />
   </ItemGroup>
 
 </Project>

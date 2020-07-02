@@ -1,4 +1,5 @@
-﻿using MyTrade.OANDA;
+﻿using MyTrade.Core.Model;
+using MyTrade.OANDA;
 using MyTrade.OANDA.Model;
 using MyTrade.OANDA.Model.Communication;
 using Newtonsoft.Json;
@@ -6,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static MyTrade.Core.Constants;
 
 namespace MyTrade.OANDA.Data
 {
@@ -30,31 +32,30 @@ namespace MyTrade.OANDA.Data
                     
             return lastPrice;
         }
-
-
-        public static List<MyTrade.OANDA.Model.Candle> GetCandles(string instrument,int numberCandels,string granularity)
+        public static List<Candle> GetCandles(string instrument,int numberCandels,string granularity)
         {
-            List<MyTrade.OANDA.Model.Candle> candles = new List<MyTrade.OANDA.Model.Candle>();
+            List<Candle> candles = new List<Candle>();
             string responseString = Data.OANDARestResponse.Get(Constants.url.Candels(instrument, numberCandels, granularity));
             var candlesResponse = JsonConvert.DeserializeObject<CandleResponse>(responseString);
             foreach (var item in candlesResponse.candles)
             {
 
-                MyTrade.OANDA.Model.Candle _candle = new MyTrade.OANDA.Model.Candle();
+                Candle _candle = new Candle();
+                _candle.Instrument = instrument;
                 _candle.Open = Convert.ToDouble(item.mid.o);
                 _candle.Close = Convert.ToDouble(item.mid.c);
-                _candle.Hight = Convert.ToDouble(item.mid.h);
+                _candle.High = Convert.ToDouble(item.mid.h);
                 _candle.Low = Convert.ToDouble(item.mid.l);
                 _candle.Complete = item.complete;
                 _candle.Time = item.time.AddDays(1);
 
                 if(_candle.Close>_candle.Open)
                 {
-                    _candle.OriginalColor = Constants.CandleColor.GREEN;
+                    _candle.OriginalColor = CandleColor.GREEN;
                         }
                 else if (_candle.Close < _candle.Open)
                 {
-                    _candle.OriginalColor = Constants.CandleColor.RED;
+                    _candle.OriginalColor = CandleColor.RED;
                 }
 
                 candles.Add(_candle);

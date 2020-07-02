@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MyTrade.OANDA;
+using MyTrade.Core.Model;
 
 namespace MyTradeInterface.Controls
 {
@@ -15,14 +16,14 @@ namespace MyTradeInterface.Controls
     {
 
         TextBox txtInstrument;
-        List<MyTrade.OANDA.Model.Instrument> instruments = null;
+        List<Instrument> instruments = null;
         public Calculator()
         {
             InitializeComponent();
-         instruments=   MyTrade.OANDA.Data.Instrument.AllFromFile();
+         instruments=   MyTrade.OANDA.Data.Instrument.AllFromDB();
             var source = new AutoCompleteStringCollection();
 
-            foreach (MyTrade.OANDA.Model.Instrument item in instruments)
+            foreach (Instrument item in instruments)
             {
                 source.Add(item.DisplayName);
             }

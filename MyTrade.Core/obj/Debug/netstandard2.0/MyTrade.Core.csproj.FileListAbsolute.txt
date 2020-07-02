@@ -14,3 +14,5 @@ C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.AssemblyInfo.cs
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.dll
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.pdb
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.csprojAssemblyReference.cache
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTradeDB.db

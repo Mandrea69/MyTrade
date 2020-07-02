@@ -8,6 +8,7 @@ namespace MyTrade.OANDA.Model
 {
     public class Candle
     {
+        public string Instrument { get; set; }
         public DateTime Time { get; set; }
         public double Open {
             get;set;
@@ -15,7 +16,7 @@ namespace MyTrade.OANDA.Model
         public double Close {
             get; set;
         }
-        public double Hight {
+        public double High {
             get; set;
         }
         public double Low {

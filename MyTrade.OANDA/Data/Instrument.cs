@@ -10,15 +10,15 @@ namespace MyTrade.OANDA.Data
 {
     public class Instrument
     {
-        public static List<MyTrade.OANDA.Model.Instrument> All()
+        public static List<MyTrade.Core.Model.Instrument> All()
         {
             string responseString = Data.OANDARestResponse.Get(Constants.url.INSTRUMENTS);
             var instrumentResponse = JsonConvert.DeserializeObject<InstrumentResponse>(responseString);
-            List<MyTrade.OANDA.Model.Instrument> instruments = new List<MyTrade.OANDA.Model.Instrument> ();
+            List<MyTrade.Core.Model.Instrument> instruments = new List<MyTrade.Core.Model.Instrument> ();
             foreach (var item in instrumentResponse.instruments)
             {
 
-                MyTrade.OANDA.Model.Instrument _instrument = new MyTrade.OANDA.Model.Instrument();
+                MyTrade.Core.Model.Instrument _instrument = new MyTrade.Core.Model.Instrument();
                 _instrument.Name = item.name;
                 _instrument.DisplayName = item.displayName;
                 _instrument.Type = item.type;
@@ -31,29 +31,13 @@ namespace MyTrade.OANDA.Data
             return instruments;
 
         }
-
-        public static List<MyTrade.OANDA.Model.Instrument> AllFromFile()
+     
+        public static List<MyTrade.Core.Model.Instrument> AllFromDB()
         {
-            string responseString = System.IO.File.ReadAllText(Constants.AssemblyPath() + @"\MyTrade.OANDA\Data\OANDA\Instruments.json");
-            
-            
-            var instrumentResponse = JsonConvert.DeserializeObject<InstrumentResponse>(responseString);
-            List<MyTrade.OANDA.Model.Instrument> instruments = new List<MyTrade.OANDA.Model.Instrument>();
-            foreach (var item in instrumentResponse.instruments)
-            {
-
-                MyTrade.OANDA.Model.Instrument _instrument = new MyTrade.OANDA.Model.Instrument();
-                _instrument.Name = item.name;
-                _instrument.DisplayName = item.displayName;
-                _instrument.Type = item.type;
-                _instrument.PipLocation =Math.Abs( item.pipLocation);
-
-                instruments.Add(_instrument);
-            }
-
-            return instruments;
-
-
+          return MyTrade.Core.SqliteDataAccess.Instruments.LoadInstruments(); ;
         }
+
+       
+
     }
 }

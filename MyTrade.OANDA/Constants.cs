@@ -21,24 +21,6 @@ namespace MyTrade.OANDA
             }
       
         }
-
-        public enum CandleColor
-        {
-            GREEN, RED
-        }
-
-        public enum Action
-        {
-            WAIT, BUY     , SELL
-        }
-
-
-        public static string AssemblyPath()
-        {
-            string fullPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string theDirectory = Path.GetDirectoryName(fullPath);
-            string path = theDirectory.Replace(@"MyTradeInterface\bin\Debug", "");
-            return path;
-        }
+      
     }
 }

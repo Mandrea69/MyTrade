@@ -5,53 +5,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyTrade.Core.Model;
+using MyTrade.Core;
+using static MyTrade.Core.Constants;
 
 namespace MyTrade.OANDA.Data
 {
-    public class Candle
+    public class HACandle
     {
-        public static Model.Candle Generate(Model.Candle HApreviousCandel, Model.Candle currentCandel)
+        public static Candle Generate(Candle HApreviousCandel, Candle currentCandel)
         {
 
 
-            Model.Candle HAcandel = new Model.Candle();
+            Candle HAcandel = new Candle();
             HAcandel.Time = currentCandel.Time;
             HAcandel.Open = HeikinAshi.OpenValue(HApreviousCandel.Open, HApreviousCandel.Close);
-            HAcandel.Close = HeikinAshi.CloseValue(currentCandel.Open, currentCandel.Close, currentCandel.Hight, currentCandel.Low);
+            HAcandel.Close = HeikinAshi.CloseValue(currentCandel.Open, currentCandel.Close, currentCandel.High, currentCandel.Low);
             double low = HeikinAshi.MinValue(currentCandel.Low, HAcandel.Open, HAcandel.Close);
-            double high = HeikinAshi.MaxValue(currentCandel.Hight, HAcandel.Open, HAcandel.Close);
+            double high = HeikinAshi.MaxValue(currentCandel.High, HAcandel.Open, HAcandel.Close);
             HAcandel.OriginalColor = currentCandel.OriginalColor;
             if (HAcandel.Open < HAcandel.Close)
             {
                 HAcandel.Low = low;
-                HAcandel.Hight = high;
-                HAcandel.HaColor = Constants.CandleColor.GREEN;
+                HAcandel.High = high;
+                HAcandel.HaColor = CandleColor.GREEN;
             }
             else
             {
                 HAcandel.Low = high;
-                HAcandel.Hight = low;
-                HAcandel.HaColor = Constants.CandleColor.RED;
+                HAcandel.High = low;
+                HAcandel.HaColor = CandleColor.RED;
             }
             return HAcandel;
 
         }
-        public static Model.Candle GeneratePrevious(Model.Candle currentCandel)
+        public static Candle GeneratePrevious(Candle currentCandel)
         {
-            Model.Candle HAcandel = new Model.Candle();
+            Candle HAcandel = new Candle();
             if (currentCandel.Open < currentCandel.Close)
             {
                 HAcandel.Low = currentCandel.Low;
-                HAcandel.Hight = currentCandel.Hight;
-                HAcandel.HaColor = Constants.CandleColor.GREEN;
+                HAcandel.High = currentCandel.High;
+                HAcandel.HaColor = CandleColor.GREEN;
 
             }
             else
             {
-                HAcandel.Low = currentCandel.Hight;
-                HAcandel.Hight = currentCandel.Low;
+                HAcandel.Low = currentCandel.High;
+                HAcandel.High = currentCandel.Low;
 
-                HAcandel.HaColor = Constants.CandleColor.RED;
+                HAcandel.HaColor = CandleColor.RED;
             }
             HAcandel.OriginalColor = currentCandel.OriginalColor;
             HAcandel.Open = currentCandel.Open;

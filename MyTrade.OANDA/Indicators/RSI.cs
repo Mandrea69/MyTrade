@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using MyTrade.Core.Model;
 
 namespace MyTrade.OANDA.Indicators
 {
     public class RSI
     {
-        public static double Get(List<Model.Candle> candles)
+        public static double Get(List<Candle> candles)
         {
            
             var candlesCompleted = from x in candles
@@ -24,7 +25,7 @@ namespace MyTrade.OANDA.Indicators
                 if (i > 0 )
                   {
                    
-                    double difference =candlesCompleted.ToList<Model.Candle>()[i].Close- candlesCompleted.ToList<Model.Candle>()[i-1].Close;
+                    double difference =candlesCompleted.ToList<Candle>()[i].Close- candlesCompleted.ToList<Candle>()[i-1].Close;
                    if (difference > 0)
                     {
                         mup += Math.Abs(difference);
