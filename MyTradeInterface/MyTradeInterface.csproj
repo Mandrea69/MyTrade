@@ -158,7 +158,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\down.png" />
     <Content Include="Resources\green.png" />
+    <None Include="Resources\up.png" />
     <None Include="Resources\red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

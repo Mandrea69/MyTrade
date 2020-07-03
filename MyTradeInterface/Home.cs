@@ -24,7 +24,7 @@ namespace MyTradeInterface
         HA_GridView uc_gwBuy = new HA_GridView();
         HA_GridView uc_gwSell = new HA_GridView();
         HA_GridView uc_gwOther = new HA_GridView();
-
+        List<Result> results = new List<Result>();
         public Home()
         {
             InitializeComponent();
@@ -144,6 +144,10 @@ namespace MyTradeInterface
             this.txtProcessedItems.Text = processedItems.ToString();
             this.txtProcessedItems.Refresh();
 
+            results.Add(result);
+            this.uc_gwBuy.Results = results;
+            this.uc_gwSell.Results = results;
+            this.uc_gwOther.Results = results;
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -154,7 +158,7 @@ namespace MyTradeInterface
         void CreateRow(HA_GridView uc_gw, Result result)
         {
             DataGridViewRow row = new DataGridViewRow();
-            uc_gw.Result = result;
+         
 
             row.CreateCells(uc_gw.Gw);
            

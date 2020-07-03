@@ -20,12 +20,24 @@ namespace MyTrade.Core.Indicators
             pps.R1 = (2 * pps.PP) - l;
             pps.S1 = (2 * pps.PP) - h;
 
-            pps.R2 = pps.PP + (h+l);
-            pps.S2 = pps.PP - (h + l);
+            pps.R2 = pps.PP + h-l;
+            pps.S2 = pps.PP - h + l;
 
             pps.R3 =h + 2*(pps.PP - l);
             pps.S3 = l - 2 * (h- pps.PP );
             return pps;
+
+            //Pivot(P) = (H + L + C) / 3
+            //Resistance(R1) = (2 x P) -L
+            //R2 = P + H - L
+            //R3 = H + 2 x(P - L)
+            //Support(S1) = (2 x P) -H
+            //S2 = P - H + L
+            //S3 = L - 2 x(H - P)
+
+
+
+
 
         }
 

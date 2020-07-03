@@ -16,12 +16,12 @@ namespace MyTradeInterface.Controls
         {
             InitializeComponent();
         }
-        MyTrade.Core.Model.Result result;
-        public MyTrade.Core.Model.Result Result
+        List<MyTrade.Core.Model.Result> results;
+        public List<MyTrade.Core.Model.Result> Results
         {
             set
             {
-                result = value;
+                results=value;
             }
         }
         public DataGridView Gw
@@ -35,10 +35,18 @@ namespace MyTradeInterface.Controls
         private void gw_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-          
-            Dialog.InstrumentDetails iDetails = new Dialog.InstrumentDetails();
-            iDetails.Result = this.result;
-            iDetails.Show();
+           string instrumentDisplayName = this.gw.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            var _result = from x in this.results
+                          where x.DisplayName == instrumentDisplayName
+                          select x;
+
+            if (_result.FirstOrDefault().Action != MyTrade.Core.Constants.Action.WAIT)
+            {
+                Dialog.InstrumentDetails iDetails = new Dialog.InstrumentDetails();
+                iDetails.Result = _result.FirstOrDefault();
+                iDetails.Show();
+            }
             
           
         }
