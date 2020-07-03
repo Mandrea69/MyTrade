@@ -48,3 +48,5 @@ C:\Users\SPProjectFarm\source\repos\MyTrade\MyTradeInterface\bin\Debug\System.Co
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTradeInterface\bin\Debug\System.Security.AccessControl.xml
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTradeInterface\bin\Debug\System.Security.Permissions.xml
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTradeInterface\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTradeInterface\obj\Debug\MyTradeInterface.Controls.HA_GridView.resources
+C:\Users\SPProjectFarm\source\repos\MyTrade\MyTradeInterface\obj\Debug\MyTradeInterface.Dialog.InstrumentDetails.resources

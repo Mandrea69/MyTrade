@@ -5,8 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Model\Indicators\**" />
+    <EmbeddedResource Remove="Model\Indicators\**" />
+    <None Remove="Model\Indicators\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Indicators\PivotPoints.cs" />
     <Compile Remove="Model\Candle.cs" />
     <Compile Remove="Model\Instrument.cs" />
+    <Compile Remove="Model\InstrumentDayPrice.cs" />
     <Compile Remove="Model\Result.cs" />
   </ItemGroup>
 

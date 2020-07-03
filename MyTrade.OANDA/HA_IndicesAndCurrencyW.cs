@@ -25,8 +25,8 @@ namespace MyTrade.OANDA.Strategy
          
             foreach (MyTrade.Core.Model.Instrument instrument in instruments)
             {
-              
-                    Model.InstrumentDayPrice instrumentWeeklyPrice = null;
+
+                InstrumentDetails instrumentWeeklyPrice = null;
                     List<Candle> ha_W_Candles = HA_W_Candles(instrument, out instrumentWeeklyPrice);
                 Candle ha_D_LastCandle = HA_IndicesAndCurrencyW.HA_D_Candles(instrument);
                 Candle ha_H4_LastCandle = HA_IndicesAndCurrencyW.HA_H4_Candles(instrument);
@@ -61,10 +61,10 @@ namespace MyTrade.OANDA.Strategy
        
     
 
-     public   static List<Candle> HA_W_Candles(Instrument instrument,out InstrumentDayPrice instrumentWeeklyPrice)
+     public   static List<Candle> HA_W_Candles(Instrument instrument,out InstrumentDetails instrumentWeeklyPrice)
         {
 
-            instrumentWeeklyPrice = new InstrumentDayPrice();
+            instrumentWeeklyPrice = new InstrumentDetails();
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();

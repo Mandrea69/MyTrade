@@ -82,6 +82,18 @@
     <Compile Include="Controls\Calculator.Designer.cs">
       <DependentUpon>Calculator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\HA_GridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HA_GridView.Designer.cs">
+      <DependentUpon>HA_GridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\InstrumentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\InstrumentDetails.Designer.cs">
+      <DependentUpon>InstrumentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +110,12 @@
     </Compile>
     <EmbeddedResource Include="Controls\Calculator.resx">
       <DependentUpon>Calculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HA_GridView.resx">
+      <DependentUpon>HA_GridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\InstrumentDetails.resx">
+      <DependentUpon>InstrumentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

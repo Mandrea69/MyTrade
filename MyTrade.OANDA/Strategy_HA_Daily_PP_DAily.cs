@@ -1,4 +1,5 @@
 ﻿
+using MyTrade.Core.Indicators;
 using MyTrade.Core.Model;
 using MyTrade.OANDA.Indicators;
 using MyTrade.OANDA.Model;
@@ -28,12 +29,12 @@ namespace MyTrade.OANDA.Strategy
             {
                 //if (instrument.Name == "EUR_JPY")
                 //{
-                    Model.InstrumentDayPrice instrumentDayPrice = null;
-                    List<Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDayPrice);
+                    InstrumentDetails instrumentDetails = null;
+                    List<Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDetails);
                     Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
                     Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
                     Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
-                    Result result = OANDA.Results.GetResult(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDayPrice);
+                    Result result = OANDA.Results.GetResult(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
                     if (result != null)
                         GetResult(result, instruments.Count());
                 //}
@@ -73,29 +74,29 @@ namespace MyTrade.OANDA.Strategy
 
 
         }
-        public static List<Candle> HA_D_Candles(Instrument instrument, out InstrumentDayPrice instrumentDayPrice)
+        public static List<Candle> HA_D_Candles(Instrument instrument, out InstrumentDetails instrumentDetails)
         {
 
-            instrumentDayPrice = new InstrumentDayPrice();
+            instrumentDetails = new InstrumentDetails();
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
-           int emaPeriod = 22;
+           int emaPeriod = 21;
             List<Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "D");
             EMA ema = new EMA(emaPeriod);
             PivotPoints pps= new PivotPoints();
-            MyTrade.Model.Indicators.PivotPoint _pps= pps.Get(candles[candles.Count - 1]);
-            instrumentDayPrice.PivotPoints = _pps;
+            MyTrade.Core.Model.Indicators.PivotPoint _pps= pps.Get(candles[candles.Count - 2]);
+            instrumentDetails.PivotPoints = _pps;
             for (int i = 0; i < candles.Count; i++)
             {
 
 
-                instrumentDayPrice.Max = Math.Max(instrumentDayPrice.Max, candles[i].High);
-                instrumentDayPrice.Current = candles.LastOrDefault().Close;
+                instrumentDetails.Max = Math.Max(instrumentDetails.Max, candles[i].High);
+                instrumentDetails.Current = candles.LastOrDefault().Close;
                 if (i == 0)
                 {
-                    instrumentDayPrice.Min = candles[i].Low;
-                    instrumentDayPrice.Min = Math.Min(candles[i].Low, instrumentDayPrice.Min);
+                    instrumentDetails.Min = candles[i].Low;
+                    instrumentDetails.Min = Math.Min(candles[i].Low, instrumentDetails.Min);
                     haPreviounsCandle = Data.HACandle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
                     
@@ -116,7 +117,7 @@ namespace MyTrade.OANDA.Strategy
                 }
                 else
                 {
-                    instrumentDayPrice.EMA = ema.Average;
+                    instrumentDetails.EMA = ema.Average;
                 }
 
             }

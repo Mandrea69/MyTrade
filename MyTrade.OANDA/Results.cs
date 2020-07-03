@@ -12,7 +12,7 @@ namespace MyTrade.OANDA
     public class Results
     {
 
-        public static void Get(Instrument instrument, string HA_M15_Color, string HA_H1_Color, string HA_H4_Color, List<Candle> haDaily, Model.InstrumentDayPrice instrumentDayPrice)
+        public static void Get(Instrument instrument, string HA_M15_Color, string HA_H1_Color, string HA_H4_Color, List<Candle> haDaily, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
         {
             string dCandleColor = "";
             string originalCandleColor = "";
@@ -28,7 +28,7 @@ namespace MyTrade.OANDA
                         originalCandleColor = haDaily[haDaily.Count() - 1].OriginalColor.ToString();
                         dCandleColor = haDaily[haDaily.Count() - 1].HaColor.ToString();
                         string statusPrice = "";
-                        if (instrumentDayPrice.Current > instrumentDayPrice.EMA)
+                        if (instrumentDetails.Current > instrumentDetails.EMA)
                         {
                             statusPrice = "BUY";
                         }
@@ -79,7 +79,7 @@ namespace MyTrade.OANDA
                         originalCandleColor = haDaily[haDaily.Count() - 1].OriginalColor.ToString();
                         dCandleColor = haDaily[haDaily.Count() - 1].HaColor.ToString();
                         string statusPrice = "";
-                        if (instrumentDayPrice.Current < instrumentDayPrice.EMA)
+                        if (instrumentDetails.Current < instrumentDetails.EMA)
                         {
                             statusPrice = "SELL";
                         }
@@ -129,7 +129,7 @@ namespace MyTrade.OANDA
 
 
         }
-        public static Result GetResult(Instrument instrument, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, Model.InstrumentDayPrice instrumentDayPrice)
+        public static Result GetResult(Instrument instrument, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
         {
             Result result = null;
 
@@ -158,11 +158,13 @@ namespace MyTrade.OANDA
                             result.H4_HA_Color = H4_HA_Color;
                             result.H1_HA_Color = H1_HA_Color;
                             result.M15_HA_Color = M15_HA_Color;
-
+                            result.InstrumentDetails = instrumentDetails;
                             if (D_RealColor == CandleColor.GREEN)
                             {
-                                if (instrumentDayPrice.Current > instrumentDayPrice.EMA && instrumentDayPrice.Current> instrumentDayPrice.PivotPoints.PP && 
-                                instrumentDayPrice.Current < instrumentDayPrice.PivotPoints.R1)
+                                if (instrumentDetails.Current > instrumentDetails.EMA &&
+                                   ((instrumentDetails.Current> instrumentDetails.PivotPoints.PP && instrumentDetails.Current < instrumentDetails.PivotPoints.R1)||
+                                   (instrumentDetails.Current > instrumentDetails.PivotPoints.R1 && instrumentDetails.Current < instrumentDetails.PivotPoints.R2)
+                                   ))
                                 {
 
                                     if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
@@ -210,13 +212,16 @@ namespace MyTrade.OANDA
                             result.H4_HA_Color = H4_HA_Color;
                             result.H1_HA_Color = H1_HA_Color;
                             result.M15_HA_Color = M15_HA_Color;
+                        result.InstrumentDetails = instrumentDetails;
 
-                           
-                            if (D_RealColor == CandleColor.RED)
+                        if (D_RealColor == CandleColor.RED)
                             {
 
-                                if (instrumentDayPrice.Current < instrumentDayPrice.EMA && instrumentDayPrice.Current < instrumentDayPrice.PivotPoints.PP && instrumentDayPrice.Current > instrumentDayPrice.PivotPoints.S1)
-                                {
+                                if (instrumentDetails.Current < instrumentDetails.EMA &&                              
+                                   ((instrumentDetails.Current < instrumentDetails.PivotPoints.PP && instrumentDetails.Current > instrumentDetails.PivotPoints.S1) ||
+                                   (instrumentDetails.Current < instrumentDetails.PivotPoints.S1 && instrumentDetails.Current > instrumentDetails.PivotPoints.S2)
+                                   ))
+                            {
 
                                     if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
                                     {

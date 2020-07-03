@@ -23,5 +23,7 @@ namespace MyTrade.Core.Model
         public string Type { get; set; }
         public int NumberHaCandles { get; set; }
 
+        public InstrumentDetails InstrumentDetails { get; set; }
+
     }
 }
