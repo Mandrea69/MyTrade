@@ -87,7 +87,7 @@ namespace MyTrade.OANDA.Strategy
             PivotPoints pps = new PivotPoints();
            PivotPoint _pps = pps.Get(candles[wcandles.Count - 2]);
                    
-            instrumentDetails.PivotPoints = _pps;
+            instrumentDetails.W_PivotPoints = _pps;
             for (int i = 0; i < candles.Count; i++)
             {
 

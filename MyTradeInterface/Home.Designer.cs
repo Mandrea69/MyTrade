@@ -54,9 +54,10 @@
             // 
             this.cbStrategy.FormattingEnabled = true;
             this.cbStrategy.Items.AddRange(new object[] {
+            "Heiken Hashi H4 - Pivot Point Daily",
             "Heiken Hashi Daily - Pivot Point Daily",
             "Heiken Hashi Daily - Pivot Point Weekly",
-            "HA Weekly"});
+            "Heiken Hashi Weekly - Pivot Point Weekly"});
             this.cbStrategy.Location = new System.Drawing.Point(12, 56);
             this.cbStrategy.Name = "cbStrategy";
             this.cbStrategy.Size = new System.Drawing.Size(257, 21);

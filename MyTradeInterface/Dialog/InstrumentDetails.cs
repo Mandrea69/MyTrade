@@ -40,12 +40,22 @@ namespace MyTradeInterface.Dialog
             {
                 this.imgEma.Image = Resources.down;
             }
-
-            this.txtD_R2.Text =Math.Round(this.result.InstrumentDetails.PivotPoints.R2,5).ToString();
-            this.txtD_R1.Text = Math.Round(this.result.InstrumentDetails.PivotPoints.R1,5).ToString();
-            this.txtD_PP.Text = Math.Round(this.result.InstrumentDetails.PivotPoints.PP,5).ToString();
-            this.txtD_S1.Text = Math.Round(this.result.InstrumentDetails.PivotPoints.S1,5).ToString();
-            this.txtD_S2.Text = Math.Round(this.result.InstrumentDetails.PivotPoints.S2,5).ToString();
+            if (this.result.InstrumentDetails.D_PivotPoints != null)
+            {
+                this.txtD_R2.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.R2, 5).ToString();
+                this.txtD_R1.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.R1, 5).ToString();
+                this.txtD_PP.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.PP, 5).ToString();
+                this.txtD_S1.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.S1, 5).ToString();
+                this.txtD_S2.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.S2, 5).ToString();
+            }
+            if (this.result.InstrumentDetails.W_PivotPoints != null)
+            {
+                this.txtW_R2.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.R2, 5).ToString();
+                this.txtW_R1.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.R1, 5).ToString();
+                this.txtW_PP.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.PP, 5).ToString();
+                this.txtW_S1.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.S1, 5).ToString();
+                this.txtW_S2.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.S2, 5).ToString();
+            }
         }
     }
 }

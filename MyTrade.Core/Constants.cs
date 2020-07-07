@@ -10,8 +10,10 @@ namespace MyTrade.Core
         {
             public static string HeikenHashiDaily_PivotPointDaily= "Heiken Hashi Daily - Pivot Point Daily";
             public static string HeikenHashiDaily_PivotPointWeekly = "Heiken Hashi Daily - Pivot Point Weekly";
-            
-            public static string HA_Weekly="HA_Weekly";
+            public static string HeikenHashiWeekly_PivotPointWeekly = "Heiken Hashi Weekly - Pivot Point Weekly";
+            public static string HeikenHashiH4_PivotPointDaily = "Heiken Hashi H4 - Pivot Point Daily";
+
+
         }
         public enum CandleColor
         {

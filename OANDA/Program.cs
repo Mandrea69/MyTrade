@@ -16,6 +16,7 @@ using System.Runtime.CompilerServices;
 using System.Globalization;
 using OANDA.Utilities;
 using System.Reflection;
+using Candle = OANDA.Model.Candle;
 
 namespace OANDA
 {
@@ -26,93 +27,54 @@ namespace OANDA
 
         static void Main(string[] args)
         {
-
-         
-
-            //Console.WriteLine("1 Indeces and Currency - Daily");
-            //Console.WriteLine("2 Indeces and Currency - Weekly");
-            //Console.WriteLine("3 Calcolate Units");
-            //Console.WriteLine("4 Pivot Point");
-            //string selectedOption = Console.ReadLine();
-            //if (selectedOption == "1")
-            //{
-            //    HA_IndicesAndCurrency.Run();
-
-            //}
-            //else if (selectedOption == "2")
-            //{
-            //    HA_IndicesAndCurrencyW.Run();
-
-            //}
-            //else if (selectedOption == "3")
-            //{
-            //    Console.WriteLine("Insert Instrument");
-               
-            //    Model.Instrument instrument = AutoComplete.Run();
-            //    Console.WriteLine("Insert stop loss");
-            //    double sl = Convert.ToDouble(Console.ReadLine());
-            //    double currentPrice = Data.Prices.LastPrice(instrument.Name);
-            //    Utilities.Calculate.Units units = new Utilities.Calculate.Units(instrument, 100, currentPrice, sl);
-            //    Console.WriteLine(units.Get());
-
-
-            //}
-            //else if (selectedOption == "4")
-            //{
-                double h = 0;
-                double l = 0;
-                double c = 0;
-            double av_h = 0;
-            double av_l = 0;
-            double av_c = 0;
-            List<Model.Candle> candles= Data.Prices.GetCandles("EUR_NZD", 16, "D");
-            for (int i = 0; i < candles.Count-1; i++)
+           List<Model.Instrument> instruments= Data.Instrument.All();
+            foreach (Model.Instrument item in instruments)
             {
+                List<Candle> d_candles = Data.Prices.GetCandles(item.Name, 5, "D");
+                foreach (var c in d_candles)
+                {
+                    if (PinBar.PinUp(DateTime.Now, c.Open, c.Hight, c.Low, c.Close) == true)
+                    {
+                        Console.WriteLine(item.DisplayName +    " UP " + c.Time);
+                    }
+                    else if (PinBar.PinDown(DateTime.Now, c.Open, c.Hight, c.Low, c.Close) == true)
+                    {
+                        Console.WriteLine(item.DisplayName + " DOWN " + c.Time);
+                    }
 
-                h += candles[i].Hight;
-                l += candles[i].Low;
-                c += candles[i].Close;
+                }
             }
+         
+            //var a = "----------------------------";
+            //Console.WriteLine(a);
+            //Candle c = d_candles[d_candles.Count - 2];
+            //Console.WriteLine(c.Time);
+            //Console.WriteLine(c.Hight);
+            //Console.WriteLine(c.Low);
+            //Console.WriteLine(c.Hight);
+            //Console.WriteLine(c.Close);
 
-            //foreach (Model.Candle item in candles)
-            //    {
-            //        h += item.Hight;
-            //        l += item.Low;
-            //        c += item.Close;
-            //    }
-            av_h = candles[candles.Count-2].Hight;
-            Console.WriteLine("h - " + av_h);
-            av_l = candles[candles.Count - 2].Low;
-            Console.WriteLine("l - " + av_l);
-            av_c = candles[candles.Count - 2].Close;
-            Console.WriteLine("c - " + av_c);
+            //Get(c);
 
-            double av_o = candles[candles.Count - 2].Open;
-            Console.WriteLine("o - " + av_o);
-            //av_h =  h / 15;
-            //av_l = l / 15;
-            //av_c = c / 15;
 
-            double pp = (av_h + av_l + av_c) / 3;
-            Console.WriteLine("pp - " + pp);
-            double R1 = (2 * pp) - av_l;
-            Console.WriteLine("r1 -" + R1);
-            double S1 = (2 * pp) - av_h;
-            Console.WriteLine("s1 -" + S1);
-            double R2 = (pp - S1) + R1;
-            Console.WriteLine("r2 -" + R2);
-            double S2 = pp - (R1 - S1);
-            Console.WriteLine("s2 - " + S2);
-            double R3 = R2 + (av_h - av_l);
-            Console.WriteLine("r3 - "+ R3);
-            double S3 = S2 - (av_h - av_l);
-            Console.WriteLine("s3 - " + S3);
-            //}
-            //else
-            //{
+        }
+        public static void Get(Candle candleDayBefore)
+        {
+          
+            double h = candleDayBefore.Hight;
+            double l = candleDayBefore.Low;
+            double c = candleDayBefore.Close;
 
-            //    HA_Stocks.Run();
-            //}
+           Console.WriteLine("PP " + (h + l + c) / 3);
+            //pps.R1 = (2 * pps.PP) - l;
+            //pps.S1 = (2 * pps.PP) - h;
+
+            //pps.R2 = pps.PP + (h + l);
+            //pps.S2 = pps.PP - (h + l);
+
+            //pps.R3 = h + 2 * (pps.PP - l);
+            //pps.S3 = l - 2 * (h - pps.PP);
+            //return pps;
 
         }
     }

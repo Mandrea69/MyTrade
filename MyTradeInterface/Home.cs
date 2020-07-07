@@ -55,6 +55,9 @@ namespace MyTradeInterface
 
             if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointDaily)
             {
+                ChangeNameColumns(uc_gwOther, "D");
+                ChangeNameColumns(uc_gwSell, "D");
+                ChangeNameColumns(uc_gwBuy, "D");
                 this.uc_gwOther.Gw.Rows.Clear();
                 this.uc_gwOther.Gw.Refresh();
                 this.uc_gwSell.Gw.Rows.Clear();
@@ -72,6 +75,9 @@ namespace MyTradeInterface
             }
            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointWeekly)
             {
+                ChangeNameColumns(uc_gwOther, "D");
+                ChangeNameColumns(uc_gwSell, "D");
+                ChangeNameColumns(uc_gwBuy, "D");
                 this.uc_gwOther.Gw.Rows.Clear();
                 this.uc_gwOther.Gw.Refresh();
                 this.uc_gwSell.Gw.Rows.Clear();
@@ -87,6 +93,48 @@ namespace MyTradeInterface
 
 
             }
+            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiWeekly_PivotPointWeekly)
+            {
+                ChangeNameColumns(uc_gwOther,"W");
+                ChangeNameColumns(uc_gwSell, "W");
+                ChangeNameColumns(uc_gwBuy, "W");
+                this.uc_gwOther.Gw.Rows.Clear();
+                this.uc_gwOther.Gw.Refresh();
+                this.uc_gwSell.Gw.Rows.Clear();
+                this.uc_gwSell.Gw.Refresh();
+                this.uc_gwBuy.Gw.Rows.Clear();
+                this.uc_gwBuy.Gw.Refresh();
+
+
+                MyTrade.OANDA.Strategy.Strategy_HA_Weekly_PP_Weekly haHA_WeeklyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Weekly_PP_Weekly();
+                haHA_WeeklyStrategy.GetResult += HaDailyStrategy_GetResult;
+                haHA_WeeklyStrategy.Run();
+
+
+
+            }
+            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiH4_PivotPointDaily)
+            {
+                ChangeNameColumns(uc_gwOther, "H4");
+                ChangeNameColumns(uc_gwSell, "H4");
+                ChangeNameColumns(uc_gwBuy, "H4");
+                this.uc_gwOther.Gw.Rows.Clear();
+                this.uc_gwOther.Gw.Refresh();
+                this.uc_gwSell.Gw.Rows.Clear();
+                this.uc_gwSell.Gw.Refresh();
+                this.uc_gwBuy.Gw.Rows.Clear();
+                this.uc_gwBuy.Gw.Refresh();
+
+
+                MyTrade.OANDA.Strategy.Strategy_HA_H4_PP_DAily haHA_WeeklyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_H4_PP_DAily();
+                haHA_WeeklyStrategy.GetResult += HaDailyStrategy_GetResult;
+                haHA_WeeklyStrategy.Run();
+
+
+
+            }
+
+
             else
             {
 
@@ -123,7 +171,7 @@ namespace MyTradeInterface
                 this.lblBuyItems.Text = processedBuyItems.ToString();
                 this.lblBuyItems.Refresh();
 
-
+                results.Add(result);
             }
             else if (result.Action == MyTrade.Core.Constants.Action.SELL)
             {
@@ -131,6 +179,7 @@ namespace MyTradeInterface
                 processedSellItems += 1;
                 this.lblSellItems.Text = processedSellItems.ToString();
                 this.lblSellItems.Refresh();
+                results.Add(result);
             }
             else if (result.Action == MyTrade.Core.Constants.Action.WAIT)
             {
@@ -144,7 +193,7 @@ namespace MyTradeInterface
             this.txtProcessedItems.Text = processedItems.ToString();
             this.txtProcessedItems.Refresh();
 
-            results.Add(result);
+           
             this.uc_gwBuy.Results = results;
             this.uc_gwSell.Results = results;
             this.uc_gwOther.Results = results;
@@ -210,7 +259,38 @@ namespace MyTradeInterface
             uc_gw.Gw.Refresh();
            
         }
+        void ChangeNameColumns(HA_GridView uc_gw,string type)
+        {
+            if(type=="W")
+            {
+                uc_gw.Gw.Columns[2].HeaderText = "W";
+                uc_gw.Gw.Columns[3].HeaderText = "D";
+                uc_gw.Gw.Columns[4].HeaderText = "H4";
+                uc_gw.Gw.Columns[5].HeaderText = "H1";
+            }
+            else if (type == "D")
+            {
+                uc_gw.Gw.Columns[2].HeaderText = "D";
+                uc_gw.Gw.Columns[3].HeaderText = "H4";
+                uc_gw.Gw.Columns[4].HeaderText = "H1";
+                uc_gw.Gw.Columns[5].HeaderText = "M15";
+            }
+            else if (type == "H4")
+            {
+              
+                uc_gw.Gw.Columns[2].HeaderText = "H4";
+                uc_gw.Gw.Columns[3].HeaderText = "H1";
+                uc_gw.Gw.Columns[4].HeaderText = "M15";
+                uc_gw.Gw.Columns[5].HeaderText = "M5";
+            }
 
+
+
+
+
+
+
+        }
 
         private void refreshDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
