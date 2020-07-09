@@ -33,7 +33,7 @@
             this.txtStopLoss = new System.Windows.Forms.TextBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.pnlAutocomplete = new System.Windows.Forms.Panel();
-            this.lblResult = new System.Windows.Forms.Label();
+            this.txtResult = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +60,7 @@
             // txtStopLoss
             // 
             this.txtStopLoss.Location = new System.Drawing.Point(239, 20);
-            this.txtStopLoss.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStopLoss.Margin = new System.Windows.Forms.Padding(4);
             this.txtStopLoss.Name = "txtStopLoss";
             this.txtStopLoss.Size = new System.Drawing.Size(184, 23);
             this.txtStopLoss.TabIndex = 3;
@@ -68,7 +68,7 @@
             // btnCalculate
             // 
             this.btnCalculate.Location = new System.Drawing.Point(30, 75);
-            this.btnCalculate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCalculate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(201, 74);
             this.btnCalculate.TabIndex = 4;
@@ -83,28 +83,28 @@
             this.pnlAutocomplete.Size = new System.Drawing.Size(200, 36);
             this.pnlAutocomplete.TabIndex = 5;
             // 
-            // lblResult
+            // txtResult
             // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.Location = new System.Drawing.Point(239, 103);
-            this.lblResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(0, 46);
-            this.lblResult.TabIndex = 6;
+            this.txtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold);
+            this.txtResult.Location = new System.Drawing.Point(239, 96);
+            this.txtResult.Margin = new System.Windows.Forms.Padding(4);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
+            this.txtResult.Size = new System.Drawing.Size(184, 53);
+            this.txtResult.TabIndex = 7;
             // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblResult);
+            this.Controls.Add(this.txtResult);
             this.Controls.Add(this.pnlAutocomplete);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.txtStopLoss);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Calculator";
             this.Size = new System.Drawing.Size(490, 267);
             this.ResumeLayout(false);
@@ -119,6 +119,6 @@
         private System.Windows.Forms.TextBox txtStopLoss;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Panel pnlAutocomplete;
-        private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.TextBox txtResult;
     }
 }

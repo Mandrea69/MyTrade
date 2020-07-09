@@ -32,9 +32,21 @@ namespace MyTradeInterface
             List<Instrument> instruments = MyTrade.OANDA.Data.Instrument.AllFromDB();
             foreach (var instrument in instruments)
             {
-                List<Candle> candles= MyTrade.OANDA.Data.Prices.GetCandles(instrument.Name, 5, "W");
+                List<Candle> candles= MyTrade.OANDA.Data.Prices.GetCandles(instrument.Name, 21, "W");
                 MyTrade.Core.SqliteDataAccess.WeekyCandles.SaveCandles(candles);
                 this.lblWeeklyRefresh.Text = DateTime.Now.ToString();
+            }
+        }
+
+        private void btMonthlyRefresh_Click(object sender, EventArgs e)
+        {
+            MyTrade.Core.SqliteDataAccess.MonthlyCandles.CleanData();
+            List<Instrument> instruments = MyTrade.OANDA.Data.Instrument.AllFromDB();
+            foreach (var instrument in instruments)
+            {
+                List<Candle> candles = MyTrade.OANDA.Data.Prices.GetCandles(instrument.Name, 21, "M");
+                MyTrade.Core.SqliteDataAccess.MonthlyCandles.SaveCandles(candles);
+                this.LblMonthlyRefresh.Text = DateTime.Now.ToString();
             }
         }
     }

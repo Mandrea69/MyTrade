@@ -83,6 +83,48 @@ namespace MyTrade.Core
 
 
         }
+        public class MonthlyCandles
+        {
+            public static List<Model.Candle> LoadCandles(string instrument)
+            {
+                var dictionary = new Dictionary<string, object>
+                {
+                    { "@instrument", instrument }
+                };
+                var parameters = new DynamicParameters(dictionary);
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var output = cnn.Query<Model.Candle>("select * from MonthlyCandles where instrument=@instrument", parameters);
+                    return output.ToList();
+                }
+            }
+
+            public static void CleanData()
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("DELETE FROM MonthlyCandles");
+                }
+            }
+
+
+            public static void SaveCandles(List<Model.Candle> candles)
+            {
+
+                foreach (var candle in candles)
+                {
+
+
+                    using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        cnn.Execute("insert into MonthlyCandles (Open, Close,High,Low,Time,Instrument) values (@Open, @Close,@High,@Low,@Time,@Instrument)", candle);
+                    }
+                }
+            }
+
+
+
+        }
 
         private static string LoadConnectionString(string id = "Default")
         {

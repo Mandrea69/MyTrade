@@ -50,17 +50,18 @@ namespace MyTrade.OANDA.Strategy
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
             int emaPeriod = 21;
-            List<Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "W");
+            List<Candle> candles =MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
+            instrumentDetails.Current = candles.LastOrDefault().Close;
             EMA ema = new EMA(emaPeriod);
             PivotPoints pps = new PivotPoints();
-            PivotPoint _pps = pps.Get(candles[candles.Count - 2]);
-            instrumentDetails.D_PivotPoints = _pps;
+            PivotPoint _pps = pps.Get(candles[candles.Count - 2], instrumentDetails.Current);
+            instrumentDetails.W_PivotPoints = _pps;
             for (int i = 0; i < candles.Count; i++)
             {
 
 
                 instrumentDetails.Max = Math.Max(instrumentDetails.Max, candles[i].High);
-                instrumentDetails.Current = candles.LastOrDefault().Close;
+               
                 if (i == 0)
                 {
                     instrumentDetails.Min = candles[i].Low;

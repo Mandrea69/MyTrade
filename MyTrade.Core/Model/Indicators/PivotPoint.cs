@@ -19,5 +19,9 @@ namespace MyTrade.Core.Model.Indicators
         public double R3 { get; set; }
 
         public double S3 { get; set; }
+
+
+        public string Position { get; set; }
+
     }
 }

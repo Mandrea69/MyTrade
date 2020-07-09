@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace MyTrade.OANDA.Strategy
 {
-    public class Strategy_HA_Daily_PP_Weekly
+    public class Strategy_HA_Daily_PP_Monthly
     {
 
         static List<Instrument> instruments;
@@ -40,7 +40,7 @@ namespace MyTrade.OANDA.Strategy
             }
           
         }
-    
+
         
         public static List<Candle> HA_D_Candles(Instrument instrument, out InstrumentDetails instrumentDetails)
         {
@@ -53,9 +53,9 @@ namespace MyTrade.OANDA.Strategy
             List<Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "D");
             instrumentDetails.Current = candles.LastOrDefault().Close;
             EMA ema = new EMA(emaPeriod);
-            List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
+            List<MyTrade.Core.Model.Candle> mcandles = MyTrade.Core.SqliteDataAccess.MonthlyCandles.LoadCandles(instrument.Name);
             PivotPoints pps = new PivotPoints();
-           PivotPoint _pps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
+           PivotPoint _pps = pps.Get(mcandles[mcandles.Count - 2], instrumentDetails.Current);
                    
             instrumentDetails.W_PivotPoints = _pps;
             for (int i = 0; i < candles.Count; i++)

@@ -31,30 +31,33 @@ namespace MyTradeInterface.Dialog
 
         private void InstrumentDetails_Load(object sender, EventArgs e)
         {
-            this.txtCurrentPrice.Text =Math.Round( result.InstrumentDetails.Current,5).ToString();
-            if (this.result.InstrumentDetails.EMA < this.result.InstrumentDetails.Current)
+            if (result.InstrumentDetails != null)
             {
-                this.imgEma.Image = Resources.up;
-            }
-            else
-            {
-                this.imgEma.Image = Resources.down;
-            }
-            if (this.result.InstrumentDetails.D_PivotPoints != null)
-            {
-                this.txtD_R2.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.R2, 5).ToString();
-                this.txtD_R1.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.R1, 5).ToString();
-                this.txtD_PP.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.PP, 5).ToString();
-                this.txtD_S1.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.S1, 5).ToString();
-                this.txtD_S2.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.S2, 5).ToString();
-            }
-            if (this.result.InstrumentDetails.W_PivotPoints != null)
-            {
-                this.txtW_R2.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.R2, 5).ToString();
-                this.txtW_R1.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.R1, 5).ToString();
-                this.txtW_PP.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.PP, 5).ToString();
-                this.txtW_S1.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.S1, 5).ToString();
-                this.txtW_S2.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.S2, 5).ToString();
+                this.txtCurrentPrice.Text = Math.Round(result.InstrumentDetails.Current, 5).ToString();
+                if (this.result.InstrumentDetails.EMA < this.result.InstrumentDetails.Current)
+                {
+                    this.imgEma.Image = Resources.up;
+                }
+                else
+                {
+                    this.imgEma.Image = Resources.down;
+                }
+                if (this.result.InstrumentDetails.D_PivotPoints != null)
+                {
+                    this.txtD_R2.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.R2, 5).ToString();
+                    this.txtD_R1.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.R1, 5).ToString();
+                    this.txtD_PP.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.PP, 5).ToString();
+                    this.txtD_S1.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.S1, 5).ToString();
+                    this.txtD_S2.Text = Math.Round(this.result.InstrumentDetails.D_PivotPoints.S2, 5).ToString();
+                }
+                if (this.result.InstrumentDetails.W_PivotPoints != null)
+                {
+                    this.txtW_R2.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.R2, 5).ToString();
+                    this.txtW_R1.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.R1, 5).ToString();
+                    this.txtW_PP.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.PP, 5).ToString();
+                    this.txtW_S1.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.S1, 5).ToString();
+                    this.txtW_S2.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.S2, 5).ToString();
+                }
             }
         }
     }

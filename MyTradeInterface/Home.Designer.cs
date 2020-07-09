@@ -54,10 +54,11 @@
             // 
             this.cbStrategy.FormattingEnabled = true;
             this.cbStrategy.Items.AddRange(new object[] {
-            "Heiken Hashi H4 - Pivot Point Daily",
             "Heiken Hashi Daily - Pivot Point Daily",
             "Heiken Hashi Daily - Pivot Point Weekly",
-            "Heiken Hashi Weekly - Pivot Point Weekly"});
+            "Heiken Hashi Daily - Pivot Point Monthly",
+            "Heiken Hashi Weekly - Pivot Point Weekly",
+            "Heiken Hashi Monthly - Pivot Point Monthly"});
             this.cbStrategy.Location = new System.Drawing.Point(12, 56);
             this.cbStrategy.Name = "cbStrategy";
             this.cbStrategy.Size = new System.Drawing.Size(257, 21);
@@ -88,7 +89,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(496, 76);
+            this.label2.Location = new System.Drawing.Point(500, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 16);
             this.label2.TabIndex = 5;
@@ -96,10 +97,11 @@
             // 
             // txtProcessedItems
             // 
-            this.txtProcessedItems.Location = new System.Drawing.Point(831, 56);
+            this.txtProcessedItems.Location = new System.Drawing.Point(850, 59);
             this.txtProcessedItems.Name = "txtProcessedItems";
             this.txtProcessedItems.Size = new System.Drawing.Size(62, 20);
             this.txtProcessedItems.TabIndex = 7;
+            this.txtProcessedItems.TextChanged += new System.EventHandler(this.txtProcessedItems_TextChanged);
             // 
             // lblBuyItems
             // 
@@ -113,7 +115,7 @@
             // lblSellItems
             // 
             this.lblSellItems.AutoSize = true;
-            this.lblSellItems.Location = new System.Drawing.Point(611, 79);
+            this.lblSellItems.Location = new System.Drawing.Point(615, 79);
             this.lblSellItems.Name = "lblSellItems";
             this.lblSellItems.Size = new System.Drawing.Size(13, 13);
             this.lblSellItems.TabIndex = 9;
@@ -121,10 +123,11 @@
             // 
             // txtTotalInstruments
             // 
-            this.txtTotalInstruments.Location = new System.Drawing.Point(899, 56);
+            this.txtTotalInstruments.Location = new System.Drawing.Point(918, 59);
             this.txtTotalInstruments.Name = "txtTotalInstruments";
             this.txtTotalInstruments.Size = new System.Drawing.Size(62, 20);
             this.txtTotalInstruments.TabIndex = 11;
+            this.txtTotalInstruments.TextChanged += new System.EventHandler(this.txtTotalInstruments_TextChanged);
             // 
             // label3
             // 
@@ -154,7 +157,7 @@
             // 
             // pnlCalculator
             // 
-            this.pnlCalculator.Location = new System.Drawing.Point(499, 328);
+            this.pnlCalculator.Location = new System.Drawing.Point(503, 328);
             this.pnlCalculator.Name = "pnlCalculator";
             this.pnlCalculator.Size = new System.Drawing.Size(481, 217);
             this.pnlCalculator.TabIndex = 15;
@@ -165,7 +168,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(989, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(992, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -188,14 +191,14 @@
             // 
             this.pnlHA_buy.Location = new System.Drawing.Point(12, 95);
             this.pnlHA_buy.Name = "pnlHA_buy";
-            this.pnlHA_buy.Size = new System.Drawing.Size(481, 217);
+            this.pnlHA_buy.Size = new System.Drawing.Size(480, 217);
             this.pnlHA_buy.TabIndex = 17;
             // 
             // pnlHA_sell
             // 
-            this.pnlHA_sell.Location = new System.Drawing.Point(499, 95);
+            this.pnlHA_sell.Location = new System.Drawing.Point(503, 95);
             this.pnlHA_sell.Name = "pnlHA_sell";
-            this.pnlHA_sell.Size = new System.Drawing.Size(481, 217);
+            this.pnlHA_sell.Size = new System.Drawing.Size(480, 217);
             this.pnlHA_sell.TabIndex = 18;
             this.pnlHA_sell.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -203,14 +206,14 @@
             // 
             this.pnlHA_other.Location = new System.Drawing.Point(12, 328);
             this.pnlHA_other.Name = "pnlHA_other";
-            this.pnlHA_other.Size = new System.Drawing.Size(481, 217);
+            this.pnlHA_other.Size = new System.Drawing.Size(480, 217);
             this.pnlHA_other.TabIndex = 19;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 559);
+            this.ClientSize = new System.Drawing.Size(992, 559);
             this.Controls.Add(this.pnlHA_other);
             this.Controls.Add(this.pnlHA_sell);
             this.Controls.Add(this.pnlHA_buy);

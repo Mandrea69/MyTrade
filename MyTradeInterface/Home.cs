@@ -24,15 +24,35 @@ namespace MyTradeInterface
         HA_GridView uc_gwBuy = new HA_GridView();
         HA_GridView uc_gwSell = new HA_GridView();
         HA_GridView uc_gwOther = new HA_GridView();
-        List<Result> results = new List<Result>();
+        List<Result> results = null;
+        Calculator calculator = new Calculator();
         public Home()
         {
             InitializeComponent();
 
-            this.pnlCalculator.Controls.Add(new Calculator());
+            this.pnlCalculator.Controls.Add(calculator);
             this.pnlHA_buy.Controls.Add(uc_gwBuy);
             this.pnlHA_sell.Controls.Add(uc_gwSell);
             this.pnlHA_other.Controls.Add(uc_gwOther);
+            uc_gwOther.SelectedRow += Uc_gwOther_SelectedRow;
+            uc_gwSell.SelectedRow += Uc_gwOther_SelectedRow;
+            uc_gwBuy.SelectedRow += Uc_gwOther_SelectedRow;
+
+        }
+
+        private void Uc_gwOther_SelectedRow(Result result)
+        {
+            calculator.InstrumentDisplayName = result.DisplayName;
+            if(result.InstrumentDetails.W_PivotPoints!=null)
+            {
+                this.calculator.StopLoss = result.InstrumentDetails.W_PivotPoints.PP.ToString();
+            }
+            else if (result.InstrumentDetails.D_PivotPoints != null)
+            {
+                this.calculator.StopLoss = result.InstrumentDetails.D_PivotPoints.PP.ToString();
+            }
+
+
 
         }
 
@@ -64,7 +84,7 @@ namespace MyTradeInterface
                 this.uc_gwSell.Refresh();
                 this.uc_gwBuy.Gw.Rows.Clear();
                 this.uc_gwBuy.Gw.Refresh();
-
+                results = new List<Result>();
 
                 MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_DAily haDailyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_DAily();
                 haDailyStrategy.GetResult += HaDailyStrategy_GetResult ;
@@ -84,7 +104,7 @@ namespace MyTradeInterface
                 this.uc_gwSell.Gw.Refresh();
                 this.uc_gwBuy.Gw.Rows.Clear();
                 this.uc_gwBuy.Gw.Refresh();
-
+                results = new List<Result>();
 
                 MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Weekly haDailyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Weekly();
                 haDailyStrategy.GetResult += HaDailyStrategy_GetResult;
@@ -104,7 +124,7 @@ namespace MyTradeInterface
                 this.uc_gwSell.Gw.Refresh();
                 this.uc_gwBuy.Gw.Rows.Clear();
                 this.uc_gwBuy.Gw.Refresh();
-
+                results = new List<Result>();
 
                 MyTrade.OANDA.Strategy.Strategy_HA_Weekly_PP_Weekly haHA_WeeklyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Weekly_PP_Weekly();
                 haHA_WeeklyStrategy.GetResult += HaDailyStrategy_GetResult;
@@ -113,22 +133,42 @@ namespace MyTradeInterface
 
 
             }
-            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiH4_PivotPointDaily)
+            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointMonthly)
             {
-                ChangeNameColumns(uc_gwOther, "H4");
-                ChangeNameColumns(uc_gwSell, "H4");
-                ChangeNameColumns(uc_gwBuy, "H4");
+                ChangeNameColumns(uc_gwOther, "D");
+                ChangeNameColumns(uc_gwSell, "D");
+                ChangeNameColumns(uc_gwBuy, "D");
                 this.uc_gwOther.Gw.Rows.Clear();
                 this.uc_gwOther.Gw.Refresh();
                 this.uc_gwSell.Gw.Rows.Clear();
                 this.uc_gwSell.Gw.Refresh();
                 this.uc_gwBuy.Gw.Rows.Clear();
                 this.uc_gwBuy.Gw.Refresh();
+                results = new List<Result>();
+
+                MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Monthly haHA_MonthlyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Monthly();
+                haHA_MonthlyStrategy.GetResult += HaDailyStrategy_GetResult;
+                haHA_MonthlyStrategy.Run();
 
 
-                MyTrade.OANDA.Strategy.Strategy_HA_H4_PP_DAily haHA_WeeklyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_H4_PP_DAily();
-                haHA_WeeklyStrategy.GetResult += HaDailyStrategy_GetResult;
-                haHA_WeeklyStrategy.Run();
+
+            }
+            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiMonthly_PivotPointMonthly)
+            {
+                ChangeNameColumns(uc_gwOther, "M");
+                ChangeNameColumns(uc_gwSell, "M");
+                ChangeNameColumns(uc_gwBuy, "M");
+                this.uc_gwOther.Gw.Rows.Clear();
+                this.uc_gwOther.Gw.Refresh();
+                this.uc_gwSell.Gw.Rows.Clear();
+                this.uc_gwSell.Gw.Refresh();
+                this.uc_gwBuy.Gw.Rows.Clear();
+                this.uc_gwBuy.Gw.Refresh();
+                results = new List<Result>();
+
+                MyTrade.OANDA.Strategy.Strategy_HA_Monthly_PP_Monthly haHA_MonthlyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Monthly_PP_Monthly();
+                haHA_MonthlyStrategy.GetResult += HaDailyStrategy_GetResult;
+                haHA_MonthlyStrategy.Run();
 
 
 
@@ -138,17 +178,17 @@ namespace MyTradeInterface
             else
             {
 
-            List<MyTrade.Core.Model.Candle> wcandles=    MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles("EUR_USD");
-               PivotPoints pps = new PivotPoints();
-                 PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2]);
+            //List<MyTrade.Core.Model.Candle> wcandles=    MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles("EUR_USD");
+            //   PivotPoints pps = new PivotPoints();
+            //     PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2]);
 
 
-                List<Candle> candles = MyTrade.OANDA.Data.Prices.GetCandles("EUR_USD", 21, "D");
-                PivotPoints pps1 = new PivotPoints();
-               PivotPoint _pps1 = pps.Get(candles[candles.Count - 2]);
+            //    List<Candle> candles = MyTrade.OANDA.Data.Prices.GetCandles("EUR_USD", 21, "D");
+            //    PivotPoints pps1 = new PivotPoints();
+            //   PivotPoint _pps1 = pps.Get(candles[candles.Count - 2]);
 
 
-                MessageBox.Show(wpps.PP.ToString()  + " " + _pps1.PP.ToString());
+            //    MessageBox.Show(wpps.PP.ToString()  + " " + _pps1.PP.ToString());
 
 
 
@@ -187,6 +227,7 @@ namespace MyTradeInterface
                 processedWaitItems += 1;
                 this.lblwait.Text = processedWaitItems.ToString();
                 this.lblwait.Refresh();
+                results.Add(result);
             }
 
             processedItems += 1;
@@ -255,6 +296,8 @@ namespace MyTradeInterface
             }
 
             row.Cells[6].Value = result.NumberHaCandles.ToString();
+            if(result.PivotPointsPosition!=null)
+            row.Cells[7].Value = result.PivotPointsPosition.ToString();
             uc_gw.Gw.Rows.Add(row);
             uc_gw.Gw.Refresh();
            
@@ -275,13 +318,13 @@ namespace MyTradeInterface
                 uc_gw.Gw.Columns[4].HeaderText = "H1";
                 uc_gw.Gw.Columns[5].HeaderText = "M15";
             }
-            else if (type == "H4")
+            else if (type == "M")
             {
               
-                uc_gw.Gw.Columns[2].HeaderText = "H4";
-                uc_gw.Gw.Columns[3].HeaderText = "H1";
-                uc_gw.Gw.Columns[4].HeaderText = "M15";
-                uc_gw.Gw.Columns[5].HeaderText = "M5";
+                uc_gw.Gw.Columns[2].HeaderText = "M";
+                uc_gw.Gw.Columns[3].HeaderText = "W";
+                uc_gw.Gw.Columns[4].HeaderText = "D";
+                uc_gw.Gw.Columns[5].HeaderText = "H4";
             }
 
 
@@ -299,6 +342,16 @@ namespace MyTradeInterface
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtProcessedItems_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTotalInstruments_TextChanged(object sender, EventArgs e)
         {
 
         }

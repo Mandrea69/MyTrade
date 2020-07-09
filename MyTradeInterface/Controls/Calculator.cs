@@ -17,6 +17,15 @@ namespace MyTradeInterface.Controls
 
         TextBox txtInstrument;
         List<Instrument> instruments = null;
+        public string InstrumentDisplayName
+        {
+            set { this.txtInstrument.Text = value; }
+        }
+        public string StopLoss
+        {
+            set { this.txtStopLoss.Text = value; this.txtResult.Text = ""; }
+        }
+
         public Calculator()
         {
             InitializeComponent();
@@ -55,7 +64,7 @@ namespace MyTradeInterface.Controls
                 {
                     double currentPrice =MyTrade.OANDA.Data.Prices.LastPrice(instrumentDetails.FirstOrDefault().Name);
                     Calculate.Units units = new Calculate.Units(instrumentDetails.FirstOrDefault(), 100, currentPrice, Convert.ToDouble( this.txtStopLoss.Text));
-                    this.lblResult.Text = units.Get().ToString();
+                    this.txtResult.Text = units.Get().ToString();
                 }
             }
         }

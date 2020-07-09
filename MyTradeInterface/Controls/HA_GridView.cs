@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyTrade.Core.Model;
 
 namespace MyTradeInterface.Controls
 {
     public partial class HA_GridView : UserControl
     {
+
+
+
+        public delegate void _SelectedRow(Result result);
+        public event _SelectedRow SelectedRow;
         public HA_GridView()
         {
             InitializeComponent();
@@ -41,14 +47,16 @@ namespace MyTradeInterface.Controls
                           where x.DisplayName.ToLower().Trim() == instrumentDisplayName.ToLower().Trim()
                           select x;
 
-            if (_result.FirstOrDefault().Action != MyTrade.Core.Constants.Action.WAIT)
-            {
+          
                 Dialog.InstrumentDetails iDetails = new Dialog.InstrumentDetails();
                 iDetails.Result = _result.FirstOrDefault();
                 iDetails.Show();
-            }
-            
-          
+
+            SelectedRow(_result.FirstOrDefault());
+
+
+
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace MyTrade.Core.Indicators
 {
     public class PivotPoints
     {
-        public PivotPoint Get(Candle candleDayBefore)
+        public PivotPoint Get(Candle candleDayBefore,double currentPrice)
         {
             PivotPoint pps = new PivotPoint();
             double h = candleDayBefore.High;
@@ -25,19 +25,25 @@ namespace MyTrade.Core.Indicators
 
             pps.R3 =h + 2*(pps.PP - l);
             pps.S3 = l - 2 * (h- pps.PP );
+
+
+            if(currentPrice>pps.PP && currentPrice< pps.R1)
+            {
+                pps.Position = "PP-R1";
+            }
+            else if (currentPrice > pps.R1 && currentPrice < pps.R2)
+            {
+                pps.Position = "R1-R2";
+            }
+            else if (currentPrice < pps.PP && currentPrice > pps.S1)
+            {
+                pps.Position = "PP-S1";
+            }
+            else if (currentPrice < pps.S1 && currentPrice > pps.S2)
+            {
+                pps.Position = "S1-S2";
+            }
             return pps;
-
-            //Pivot(P) = (H + L + C) / 3
-            //Resistance(R1) = (2 x P) -L
-            //R2 = P + H - L
-            //R3 = H + 2 x(P - L)
-            //Support(S1) = (2 x P) -H
-            //S2 = P - H + L
-            //S3 = L - 2 x(H - P)
-
-
-
-
 
         }
 

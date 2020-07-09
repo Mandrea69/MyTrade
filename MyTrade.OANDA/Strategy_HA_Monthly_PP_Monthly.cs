@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace MyTrade.OANDA.Strategy
 {
-    public class Strategy_HA_H4_PP_DAily
+    public class Strategy_HA_Monthly_PP_Monthly
     {
 
         static List<Instrument> instruments;
@@ -28,24 +28,22 @@ namespace MyTrade.OANDA.Strategy
 
             foreach (Instrument instrument in instruments)
             {
-                //if (instrument.Name == "EUR_JPY")
-                //{
                 InstrumentDetails instrumentDetails = null;
-                List<Candle> ha_H4_Candles = HA_H4_Candles(instrument, out instrumentDetails);
+                List<Candle> ha_M_Candles = HA_M_Candles(instrument, out instrumentDetails);
+                Candle ha_W_LastCandle = HA_W_Candles(instrument);
+                Candle ha_D_LastCandle = HA_D_Candles(instrument); ;
+                Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
 
-                Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
-                Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
-                Candle ha_M5_LastCandle = HA_M5_Candles(instrument);
-                Result result = OANDA.Results.GetResult(instrument, ha_H4_Candles, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, ha_M5_LastCandle.HaColor, instrumentDetails);
+
+                Result result = OANDA.Results.GetResult(instrument, ha_M_Candles, ha_W_LastCandle.HaColor, ha_D_LastCandle.HaColor, ha_H4_LastCandle.HaColor, instrumentDetails);
                 if (result != null)
                     GetResult(result, instruments.Count());
-                //}
+
             }
 
         }
 
-
-        public static List<Candle> HA_H4_Candles(Instrument instrument, out InstrumentDetails instrumentDetails)
+        public static List<Candle> HA_M_Candles(Instrument instrument, out InstrumentDetails instrumentDetails)
         {
 
             instrumentDetails = new InstrumentDetails();
@@ -53,20 +51,18 @@ namespace MyTrade.OANDA.Strategy
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
             int emaPeriod = 21;
-            List<Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "H4");
+            List<Candle> candles = MyTrade.Core.SqliteDataAccess.MonthlyCandles.LoadCandles(instrument.Name);
+            instrumentDetails.Current = candles.LastOrDefault().Close;
             EMA ema = new EMA(emaPeriod);
-
-            List<Candle> d_candles = Data.Prices.GetCandles(instrument.Name, 10, "D");
             PivotPoints pps = new PivotPoints();
-            MyTrade.Core.Model.Indicators.PivotPoint d_pps = pps.Get(d_candles[d_candles.Count - 2]);
-            instrumentDetails.D_PivotPoints = d_pps;
-
+            PivotPoint _pps = pps.Get(candles[candles.Count - 2], instrumentDetails.Current);
+            instrumentDetails.W_PivotPoints = _pps;
             for (int i = 0; i < candles.Count; i++)
             {
 
 
                 instrumentDetails.Max = Math.Max(instrumentDetails.Max, candles[i].High);
-                instrumentDetails.Current = candles.LastOrDefault().Close;
+
                 if (i == 0)
                 {
                     instrumentDetails.Min = candles[i].Low;
@@ -101,13 +97,45 @@ namespace MyTrade.OANDA.Strategy
 
 
         }
-        public static Candle HA_M5_Candles(Instrument instrument)
+        public static Candle HA_D_Candles(Instrument instrument)
+        {
+
+
+            Candle haPreviounsCandle = null;
+            Candle haCurrentCandle = null;
+            List<Candle> haCandles = new List<Candle>();
+            List<Candle> candles = Data.Prices.GetCandles(instrument.Name, 10, "D");
+            for (int i = 0; i < candles.Count; i++)
+            {
+                if (i == 0)
+                {
+
+                    haPreviounsCandle = Data.HACandle.GeneratePrevious(candles[i]);
+                    haCandles.Add(haPreviounsCandle);
+
+                }
+
+                else
+                {
+
+                    haCurrentCandle = Data.HACandle.Generate(haPreviounsCandle, candles[i]);
+
+                    haCandles.Add(haCurrentCandle);
+                    haPreviounsCandle = haCurrentCandle;
+                }
+
+            }
+
+            return haCandles.LastOrDefault(); ;
+
+        }
+        public static Candle HA_H4_Candles(Instrument instrument)
         {
 
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
-            List<Candle> candles = Data.Prices.GetCandles(instrument.Name, 10, "M5");
+            List<Candle> candles = Data.Prices.GetCandles(instrument.Name, 10, "H4");
             for (int i = 0; i < candles.Count; i++)
             {
                 if (i == 0)
@@ -132,51 +160,29 @@ namespace MyTrade.OANDA.Strategy
 
 
         }
-        public static Candle HA_H1_Candles(Instrument instrument)
+        public static Candle HA_W_Candles(Instrument instrument)
         {
+
 
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
-            List<Candle> candles = Data.Prices.GetCandles(instrument.Name, 10, "H1");
+            List<Candle> candles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
+
             for (int i = 0; i < candles.Count; i++)
             {
+
+
+
+
                 if (i == 0)
                 {
+
                     haPreviounsCandle = Data.HACandle.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
 
                 }
-                else
-                {
 
-                    haCurrentCandle = Data.HACandle.Generate(haPreviounsCandle, candles[i]);
-                    haCandles.Add(haCurrentCandle);
-                    haPreviounsCandle = haCurrentCandle;
-                }
-
-            }
-
-
-            return haCandles.LastOrDefault();
-
-
-        }
-        public static Candle HA_M15_Candles(Instrument instrument)
-        {
-
-            Candle haPreviounsCandle = null;
-            Candle haCurrentCandle = null;
-            List<Candle> haCandles = new List<Candle>();
-            List<Candle> candles = Data.Prices.GetCandles(instrument.Name, 10, "M15");
-            for (int i = 0; i < candles.Count; i++)
-            {
-                if (i == 0)
-                {
-                    haPreviounsCandle = Data.HACandle.GeneratePrevious(candles[i]);
-                    haCandles.Add(haPreviounsCandle);
-
-                }
                 else
                 {
 
@@ -186,6 +192,7 @@ namespace MyTrade.OANDA.Strategy
                     haPreviounsCandle = haCurrentCandle;
                 }
 
+
             }
 
 
@@ -193,6 +200,7 @@ namespace MyTrade.OANDA.Strategy
 
 
         }
+
 
 
 

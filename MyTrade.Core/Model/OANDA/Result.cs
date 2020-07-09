@@ -24,6 +24,10 @@ namespace MyTrade.Core.Model
         public int NumberHaCandles { get; set; }
 
         public InstrumentDetails InstrumentDetails { get; set; }
-
+     
+        public string PivotPointsPosition
+        {
+            get;set;
+        }
     }
 }

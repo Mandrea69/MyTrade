@@ -34,8 +34,12 @@
             this.btnWeeklyCandles = new System.Windows.Forms.Button();
             this.gbWeeklyCandles = new System.Windows.Forms.GroupBox();
             this.lblWeeklyRefresh = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LblMonthlyRefresh = new System.Windows.Forms.Label();
+            this.btMonthlyRefresh = new System.Windows.Forms.Button();
             this.gbInstruments.SuspendLayout();
             this.gbWeeklyCandles.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbInstruments
@@ -96,11 +100,41 @@
             this.lblWeeklyRefresh.Size = new System.Drawing.Size(0, 13);
             this.lblWeeklyRefresh.TabIndex = 1;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.LblMonthlyRefresh);
+            this.groupBox1.Controls.Add(this.btMonthlyRefresh);
+            this.groupBox1.Location = new System.Drawing.Point(495, 41);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 123);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Monthly Candles";
+            // 
+            // LblMonthlyRefresh
+            // 
+            this.LblMonthlyRefresh.AutoSize = true;
+            this.LblMonthlyRefresh.Location = new System.Drawing.Point(26, 94);
+            this.LblMonthlyRefresh.Name = "LblMonthlyRefresh";
+            this.LblMonthlyRefresh.Size = new System.Drawing.Size(0, 13);
+            this.LblMonthlyRefresh.TabIndex = 1;
+            // 
+            // btMonthlyRefresh
+            // 
+            this.btMonthlyRefresh.Location = new System.Drawing.Point(26, 49);
+            this.btMonthlyRefresh.Name = "btMonthlyRefresh";
+            this.btMonthlyRefresh.Size = new System.Drawing.Size(146, 23);
+            this.btMonthlyRefresh.TabIndex = 0;
+            this.btMonthlyRefresh.Text = "Refresh";
+            this.btMonthlyRefresh.UseVisualStyleBackColor = true;
+            this.btMonthlyRefresh.Click += new System.EventHandler(this.btMonthlyRefresh_Click);
+            // 
             // RefreshData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 559);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbWeeklyCandles);
             this.Controls.Add(this.gbInstruments);
             this.Name = "RefreshData";
@@ -110,6 +144,8 @@
             this.gbInstruments.PerformLayout();
             this.gbWeeklyCandles.ResumeLayout(false);
             this.gbWeeklyCandles.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -122,5 +158,8 @@
         private System.Windows.Forms.GroupBox gbWeeklyCandles;
         private System.Windows.Forms.Label lblModified;
         private System.Windows.Forms.Label lblWeeklyRefresh;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label LblMonthlyRefresh;
+        private System.Windows.Forms.Button btMonthlyRefresh;
     }
 }

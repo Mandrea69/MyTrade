@@ -36,6 +36,7 @@
             this.HA_H1_Candle = new System.Windows.Forms.DataGridViewImageColumn();
             this.HA_M15_Candle = new System.Windows.Forms.DataGridViewImageColumn();
             this.N_Candles = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PPPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gw)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +53,13 @@
             this.HA_H4_Candle,
             this.HA_H1_Candle,
             this.HA_M15_Candle,
-            this.N_Candles});
-            this.gw.Location = new System.Drawing.Point(0, 2);
+            this.N_Candles,
+            this.PPPosition});
+            this.gw.Location = new System.Drawing.Point(0, 0);
             this.gw.Name = "gw";
+            this.gw.ReadOnly = true;
             this.gw.RowTemplate.Height = 32;
-            this.gw.Size = new System.Drawing.Size(464, 217);
+            this.gw.Size = new System.Drawing.Size(487, 220);
             this.gw.TabIndex = 2;
             this.gw.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gw_CellDoubleClick);
             // 
@@ -73,6 +76,7 @@
             this.D_Candle.Description = "Real Daily Candle";
             this.D_Candle.HeaderText = "D Real";
             this.D_Candle.Name = "D_Candle";
+            this.D_Candle.ReadOnly = true;
             this.D_Candle.ToolTipText = "Real Daily Candle";
             this.D_Candle.Width = 50;
             // 
@@ -80,6 +84,7 @@
             // 
             this.D_HA_Candle.HeaderText = "D";
             this.D_HA_Candle.Name = "D_HA_Candle";
+            this.D_HA_Candle.ReadOnly = true;
             this.D_HA_Candle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.D_HA_Candle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.D_HA_Candle.Width = 50;
@@ -88,6 +93,7 @@
             // 
             this.HA_H4_Candle.HeaderText = "H4";
             this.HA_H4_Candle.Name = "HA_H4_Candle";
+            this.HA_H4_Candle.ReadOnly = true;
             this.HA_H4_Candle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.HA_H4_Candle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.HA_H4_Candle.Width = 50;
@@ -96,19 +102,29 @@
             // 
             this.HA_H1_Candle.HeaderText = "H1";
             this.HA_H1_Candle.Name = "HA_H1_Candle";
+            this.HA_H1_Candle.ReadOnly = true;
             this.HA_H1_Candle.Width = 50;
             // 
             // HA_M15_Candle
             // 
             this.HA_M15_Candle.HeaderText = "M15";
             this.HA_M15_Candle.Name = "HA_M15_Candle";
+            this.HA_M15_Candle.ReadOnly = true;
             this.HA_M15_Candle.Width = 50;
             // 
             // N_Candles
             // 
             this.N_Candles.HeaderText = "N";
             this.N_Candles.Name = "N_Candles";
-            this.N_Candles.Width = 50;
+            this.N_Candles.ReadOnly = true;
+            this.N_Candles.Width = 20;
+            // 
+            // PPPosition
+            // 
+            this.PPPosition.HeaderText = "PP";
+            this.PPPosition.Name = "PPPosition";
+            this.PPPosition.ReadOnly = true;
+            this.PPPosition.Width = 50;
             // 
             // HA_GridView
             // 
@@ -132,5 +148,6 @@
         private System.Windows.Forms.DataGridViewImageColumn HA_H1_Candle;
         private System.Windows.Forms.DataGridViewImageColumn HA_M15_Candle;
         private System.Windows.Forms.DataGridViewTextBoxColumn N_Candles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PPPosition;
     }
 }

@@ -30,16 +30,37 @@ namespace OANDA
            List<Model.Instrument> instruments= Data.Instrument.All();
             foreach (Model.Instrument item in instruments)
             {
-                List<Candle> d_candles = Data.Prices.GetCandles(item.Name, 5, "D");
+                List<Candle> d_candles = Data.Prices.GetCandles(item.Name, 2, "D");
                 foreach (var c in d_candles)
                 {
-                    if (PinBar.PinUp(DateTime.Now, c.Open, c.Hight, c.Low, c.Close) == true)
+                   if( CandleStick.ShootingStar(c)==true)
                     {
-                        Console.WriteLine(item.DisplayName +    " UP " + c.Time);
+                        Console.WriteLine("ShootingStar " + item.DisplayName + " " + c.Time);
                     }
-                    else if (PinBar.PinDown(DateTime.Now, c.Open, c.Hight, c.Low, c.Close) == true)
+                    if (CandleStick.BlackSpinningTop(c) == true)
                     {
-                        Console.WriteLine(item.DisplayName + " DOWN " + c.Time);
+                        Console.WriteLine("BlackSpinningTop " + item.DisplayName + " " + c.Time);
+                    }
+                    if (CandleStick.BullishDragonflyDoji(c) == true)
+                    {
+                        Console.WriteLine("BullishDragonflyDoji " + item.DisplayName + " " + c.Time);
+                    }
+                    if (CandleStick.Hammer(c) == true)
+                    {
+                        Console.WriteLine("Hammer " + item.DisplayName + " " + c.Time);
+                    }
+                    if (CandleStick.HangingMan(c) == true)
+                    {
+                        Console.WriteLine("HangingMan " + item.DisplayName + " " + c.Time);
+                    }
+                    if (CandleStick.InvertedHammer(c) == true)
+                    {
+                        Console.WriteLine("HangingMan " + item.DisplayName + " " + c.Time);
+                    }
+                  
+                    if (CandleStick.WhiteSpinningTop(c) == true)
+                    {
+                        Console.WriteLine("WhiteSpinningTop " + item.DisplayName + " " + c.Time);
                     }
 
                 }

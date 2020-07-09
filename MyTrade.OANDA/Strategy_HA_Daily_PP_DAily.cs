@@ -84,14 +84,15 @@ namespace MyTrade.OANDA.Strategy
             List<Candle> haCandles = new List<Candle>();
            int emaPeriod = 21;
             List<Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "D");
+            instrumentDetails.Current = candles.LastOrDefault().Close;
             EMA ema = new EMA(emaPeriod);
             PivotPoints pps= new PivotPoints();
-            MyTrade.Core.Model.Indicators.PivotPoint d_pps = pps.Get(candles[candles.Count - 2]);
+            MyTrade.Core.Model.Indicators.PivotPoint d_pps = pps.Get(candles[candles.Count - 2], instrumentDetails.Current);
             instrumentDetails.D_PivotPoints = d_pps;
 
             List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
 
-            MyTrade.Core.Model.Indicators.PivotPoint w_pps = pps.Get(candles[wcandles.Count - 2]);
+            MyTrade.Core.Model.Indicators.PivotPoint w_pps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
 
             instrumentDetails.W_PivotPoints = w_pps;
 
@@ -100,7 +101,7 @@ namespace MyTrade.OANDA.Strategy
 
 
                 instrumentDetails.Max = Math.Max(instrumentDetails.Max, candles[i].High);
-                instrumentDetails.Current = candles.LastOrDefault().Close;
+              
                 if (i == 0)
                 {
                     instrumentDetails.Min = candles[i].Low;
