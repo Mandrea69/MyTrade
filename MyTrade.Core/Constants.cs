@@ -23,7 +23,10 @@ namespace MyTrade.Core
         {
             WAIT, BUY, SELL
         }
-
+        public enum TimeFrame
+        {
+            DAILY,WEEKLY,MONTHLY
+        }
         
 
     }

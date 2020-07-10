@@ -43,16 +43,17 @@ namespace MyTradeInterface
         private void Uc_gwOther_SelectedRow(Result result)
         {
             calculator.InstrumentDisplayName = result.DisplayName;
-            if(result.InstrumentDetails.W_PivotPoints!=null)
+
+          
+            if (result.InstrumentDetails.TimeFrame == TimeFrame.MONTHLY)
+            {
+                this.calculator.StopLoss = result.InstrumentDetails.M_PivotPoints.PP.ToString();
+            }
+            else
             {
                 this.calculator.StopLoss = result.InstrumentDetails.W_PivotPoints.PP.ToString();
-            }
-            else if (result.InstrumentDetails.D_PivotPoints != null)
-            {
-                this.calculator.StopLoss = result.InstrumentDetails.D_PivotPoints.PP.ToString();
-            }
 
-
+            }
 
         }
 
@@ -68,32 +69,13 @@ namespace MyTradeInterface
 
         private void btnExecute_Click(object sender, EventArgs e)
         {
-            processedItems=0;
-          processedBuyItems=0;
-          processedSellItems=0;
-          processedWaitItems=0;
+            processedItems = 0;
+            processedBuyItems = 0;
+            processedSellItems = 0;
+            processedWaitItems = 0;
 
-            if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointDaily)
-            {
-                ChangeNameColumns(uc_gwOther, "D");
-                ChangeNameColumns(uc_gwSell, "D");
-                ChangeNameColumns(uc_gwBuy, "D");
-                this.uc_gwOther.Gw.Rows.Clear();
-                this.uc_gwOther.Gw.Refresh();
-                this.uc_gwSell.Gw.Rows.Clear();
-                this.uc_gwSell.Refresh();
-                this.uc_gwBuy.Gw.Rows.Clear();
-                this.uc_gwBuy.Gw.Refresh();
-                results = new List<Result>();
-
-                MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_DAily haDailyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_DAily();
-                haDailyStrategy.GetResult += HaDailyStrategy_GetResult ;
-                haDailyStrategy.Run();
-
-
-
-            }
-           else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointWeekly)
+          
+             if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointWeekly)
             {
                 ChangeNameColumns(uc_gwOther, "D");
                 ChangeNameColumns(uc_gwSell, "D");
@@ -115,7 +97,7 @@ namespace MyTradeInterface
             }
             else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiWeekly_PivotPointWeekly)
             {
-                ChangeNameColumns(uc_gwOther,"W");
+                ChangeNameColumns(uc_gwOther, "W");
                 ChangeNameColumns(uc_gwSell, "W");
                 ChangeNameColumns(uc_gwBuy, "W");
                 this.uc_gwOther.Gw.Rows.Clear();
@@ -178,17 +160,17 @@ namespace MyTradeInterface
             else
             {
 
-            //List<MyTrade.Core.Model.Candle> wcandles=    MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles("EUR_USD");
-            //   PivotPoints pps = new PivotPoints();
-            //     PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2]);
+                //List<MyTrade.Core.Model.Candle> wcandles=    MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles("EUR_USD");
+                //   PivotPoints pps = new PivotPoints();
+                //     PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2]);
 
 
-            //    List<Candle> candles = MyTrade.OANDA.Data.Prices.GetCandles("EUR_USD", 21, "D");
-            //    PivotPoints pps1 = new PivotPoints();
-            //   PivotPoint _pps1 = pps.Get(candles[candles.Count - 2]);
+                //    List<Candle> candles = MyTrade.OANDA.Data.Prices.GetCandles("EUR_USD", 21, "D");
+                //    PivotPoints pps1 = new PivotPoints();
+                //   PivotPoint _pps1 = pps.Get(candles[candles.Count - 2]);
 
 
-            //    MessageBox.Show(wpps.PP.ToString()  + " " + _pps1.PP.ToString());
+                //    MessageBox.Show(wpps.PP.ToString()  + " " + _pps1.PP.ToString());
 
 
 
@@ -197,7 +179,7 @@ namespace MyTradeInterface
 
         }
 
-       
+
 
         private void HaDailyStrategy_GetResult(Result result, int nInstruments)
         {
@@ -205,7 +187,7 @@ namespace MyTradeInterface
             this.txtTotalInstruments.Refresh();
             if (result.Action == MyTrade.Core.Constants.Action.BUY)
             {
-               
+
                 CreateRow(uc_gwBuy, result);
                 processedBuyItems += 1;
                 this.lblBuyItems.Text = processedBuyItems.ToString();
@@ -234,7 +216,7 @@ namespace MyTradeInterface
             this.txtProcessedItems.Text = processedItems.ToString();
             this.txtProcessedItems.Refresh();
 
-           
+
             this.uc_gwBuy.Results = results;
             this.uc_gwSell.Results = results;
             this.uc_gwOther.Results = results;
@@ -248,10 +230,10 @@ namespace MyTradeInterface
         void CreateRow(HA_GridView uc_gw, Result result)
         {
             DataGridViewRow row = new DataGridViewRow();
-         
+
 
             row.CreateCells(uc_gw.Gw);
-           
+
 
             row.Cells[0].Value = result.DisplayName;
             if (result.D_RealColor == MyTrade.Core.Constants.CandleColor.GREEN)
@@ -270,7 +252,7 @@ namespace MyTradeInterface
             {
                 row.Cells[2].Value = Resources.red;
             }
-            if (result.H4_HA_Color ==CandleColor.GREEN)
+            if (result.H4_HA_Color == CandleColor.GREEN)
             {
                 row.Cells[3].Value = Resources.green;
             }
@@ -278,7 +260,7 @@ namespace MyTradeInterface
             {
                 row.Cells[3].Value = Resources.red;
             }
-            if (result.H1_HA_Color ==CandleColor.GREEN)
+            if (result.H1_HA_Color == CandleColor.GREEN)
             {
                 row.Cells[4].Value = Resources.green;
             }
@@ -296,15 +278,15 @@ namespace MyTradeInterface
             }
 
             row.Cells[6].Value = result.NumberHaCandles.ToString();
-            if(result.PivotPointsPosition!=null)
-            row.Cells[7].Value = result.PivotPointsPosition.ToString();
+            if (result.PivotPointsPosition != null)
+                row.Cells[7].Value = result.PivotPointsPosition.ToString();
             uc_gw.Gw.Rows.Add(row);
             uc_gw.Gw.Refresh();
-           
+
         }
-        void ChangeNameColumns(HA_GridView uc_gw,string type)
+        void ChangeNameColumns(HA_GridView uc_gw, string type)
         {
-            if(type=="W")
+            if (type == "W")
             {
                 uc_gw.Gw.Columns[2].HeaderText = "W";
                 uc_gw.Gw.Columns[3].HeaderText = "D";
@@ -320,7 +302,7 @@ namespace MyTradeInterface
             }
             else if (type == "M")
             {
-              
+
                 uc_gw.Gw.Columns[2].HeaderText = "M";
                 uc_gw.Gw.Columns[3].HeaderText = "W";
                 uc_gw.Gw.Columns[4].HeaderText = "D";

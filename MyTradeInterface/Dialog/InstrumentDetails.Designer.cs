@@ -34,16 +34,16 @@
             this.txtCurrentPrice = new System.Windows.Forms.TextBox();
             this.imgEma = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtD_R1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtD_PP = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtD_R2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtD_S2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtD_S1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtD_S2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtD_R2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtD_PP = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtD_R1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtW_S1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -115,79 +115,7 @@
             this.groupBox1.Size = new System.Drawing.Size(200, 180);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Daily Pivot Points";
-            // 
-            // txtD_R1
-            // 
-            this.txtD_R1.Location = new System.Drawing.Point(54, 55);
-            this.txtD_R1.Name = "txtD_R1";
-            this.txtD_R1.ReadOnly = true;
-            this.txtD_R1.Size = new System.Drawing.Size(100, 20);
-            this.txtD_R1.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "R1";
-            // 
-            // txtD_PP
-            // 
-            this.txtD_PP.Location = new System.Drawing.Point(54, 81);
-            this.txtD_PP.Name = "txtD_PP";
-            this.txtD_PP.ReadOnly = true;
-            this.txtD_PP.Size = new System.Drawing.Size(100, 20);
-            this.txtD_PP.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "PP";
-            // 
-            // txtD_R2
-            // 
-            this.txtD_R2.Location = new System.Drawing.Point(54, 29);
-            this.txtD_R2.Name = "txtD_R2";
-            this.txtD_R2.ReadOnly = true;
-            this.txtD_R2.Size = new System.Drawing.Size(100, 20);
-            this.txtD_R2.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(15, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "R2";
-            // 
-            // txtD_S2
-            // 
-            this.txtD_S2.Location = new System.Drawing.Point(54, 133);
-            this.txtD_S2.Name = "txtD_S2";
-            this.txtD_S2.ReadOnly = true;
-            this.txtD_S2.Size = new System.Drawing.Size(100, 20);
-            this.txtD_S2.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 140);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "S2";
+            this.groupBox1.Text = "Weekly Pivot Points";
             // 
             // txtD_S1
             // 
@@ -207,6 +135,78 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "S1";
             // 
+            // txtD_S2
+            // 
+            this.txtD_S2.Location = new System.Drawing.Point(54, 133);
+            this.txtD_S2.Name = "txtD_S2";
+            this.txtD_S2.ReadOnly = true;
+            this.txtD_S2.Size = new System.Drawing.Size(100, 20);
+            this.txtD_S2.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(16, 140);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "S2";
+            // 
+            // txtD_R2
+            // 
+            this.txtD_R2.Location = new System.Drawing.Point(54, 29);
+            this.txtD_R2.Name = "txtD_R2";
+            this.txtD_R2.ReadOnly = true;
+            this.txtD_R2.Size = new System.Drawing.Size(100, 20);
+            this.txtD_R2.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(15, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "R2";
+            // 
+            // txtD_PP
+            // 
+            this.txtD_PP.Location = new System.Drawing.Point(54, 81);
+            this.txtD_PP.Name = "txtD_PP";
+            this.txtD_PP.ReadOnly = true;
+            this.txtD_PP.Size = new System.Drawing.Size(100, 20);
+            this.txtD_PP.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(16, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "PP";
+            // 
+            // txtD_R1
+            // 
+            this.txtD_R1.Location = new System.Drawing.Point(54, 55);
+            this.txtD_R1.Name = "txtD_R1";
+            this.txtD_R1.ReadOnly = true;
+            this.txtD_R1.Size = new System.Drawing.Size(100, 20);
+            this.txtD_R1.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "R1";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtW_S1);
@@ -224,7 +224,7 @@
             this.groupBox2.Size = new System.Drawing.Size(200, 180);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Weekly Pivot Points";
+            this.groupBox2.Text = "Monthly Pivot Points";
             // 
             // txtW_S1
             // 

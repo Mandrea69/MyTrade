@@ -22,11 +22,15 @@ namespace MyTrade.Core.Model
         {
             get; set;
         }
-        public Indicators.PivotPoint D_PivotPoints
+        public Indicators.PivotPoint M_PivotPoints
         {
             get; set;
         }
         public Indicators.PivotPoint W_PivotPoints
+        {
+            get; set;
+        }
+        public Constants.TimeFrame TimeFrame
         {
             get; set;
         }

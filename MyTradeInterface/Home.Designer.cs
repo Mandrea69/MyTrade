@@ -54,7 +54,6 @@
             // 
             this.cbStrategy.FormattingEnabled = true;
             this.cbStrategy.Items.AddRange(new object[] {
-            "Heiken Hashi Daily - Pivot Point Daily",
             "Heiken Hashi Daily - Pivot Point Weekly",
             "Heiken Hashi Daily - Pivot Point Monthly",
             "Heiken Hashi Weekly - Pivot Point Weekly",

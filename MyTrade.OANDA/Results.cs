@@ -12,46 +12,101 @@ namespace MyTrade.OANDA
     public class Results
     {
 
-        public static Result GetResult(Instrument instrument, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
+           public static Result GetResult(Instrument instrument, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
         {
             Result result = null;
             string ppPosition = "";
-            Core.Model.Indicators.PivotPoint pps = instrumentDetails.D_PivotPoints;
-            if (pps == null)
+            Core.Model.Indicators.PivotPoint pps = instrumentDetails.W_PivotPoints;
+            if (instrumentDetails.TimeFrame== TimeFrame.MONTHLY)
             {
-                pps = instrumentDetails.W_PivotPoints;
+                pps = instrumentDetails.M_PivotPoints;
                 ppPosition = pps.Position;
             }
-            else
+             else
             {
                 ppPosition = pps.Position;
 
             }
+
+
+
 
             CandleColor D_RealColor = CandleColor.GREEN;
             CandleColor D_HA_Color = CandleColor.GREEN;
-            //if (instrument.DisplayName != "")
-            //{
             int i = haDaily.Count() - 1;
             D_RealColor = haDaily[haDaily.Count() - 1].OriginalColor;
-            while (i > 0)
+
+            if (instrumentDetails.Current > instrumentDetails.EMA)//UPTREND
             {
 
-                if (haDaily[i].HaColor == CandleColor.GREEN && haDaily[i - 1].HaColor == CandleColor.RED)
+                while (i > 0)
                 {
-                    if (haDaily.Count - i < 4)
+
+                    if (haDaily[i].HaColor == CandleColor.GREEN && haDaily[i - 1].HaColor == CandleColor.RED)
                     {
-                        if (D_RealColor == CandleColor.GREEN)
+                        if (haDaily.Count - i < 4)
                         {
-
-
-                            if (instrumentDetails.Current > instrumentDetails.EMA &&
-                               ((instrumentDetails.Current > pps.PP && instrumentDetails.Current < pps.R1) ||
-                               (instrumentDetails.Current > pps.R1 && instrumentDetails.Current < pps.R2)
-                               ))
+                            if (D_RealColor == CandleColor.GREEN)
                             {
-                                result = new Result();
+
+
+                                if ((instrumentDetails.Current > pps.PP && instrumentDetails.Current < pps.R1) ||
+                                   (instrumentDetails.Current > pps.R1 && instrumentDetails.Current < pps.R2)
+                                   )
+                                {
+                                    result = new Result();
+                                    D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
+                                    result.DisplayName = instrument.DisplayName;
+                                    result.Name = instrument.Name;
+                                    result.Type = instrument.Type;
+                                    result.NumberHaCandles = haDaily.Count - i;
+                                    result.D_HA_Color = D_HA_Color;
+                                    result.D_RealColor = D_RealColor;
+                                    result.H4_HA_Color = H4_HA_Color;
+                                    result.H1_HA_Color = H1_HA_Color;
+                                    result.M15_HA_Color = M15_HA_Color;
+                                    result.InstrumentDetails = instrumentDetails;
+                                    result.PivotPointsPosition = ppPosition;
+                                    if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
+                                    {
+                                        result.Action = Core.Constants.Action.BUY;
+                                    }
+                                    else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
+                                    {
+                                        result.Action = Core.Constants.Action.BUY;
+                                    }
+                                    else
+                                    {
+                                        result.Action = Core.Constants.Action.WAIT;
+
+                                    }
+
+                                }
+                                break;
+                            }
+                        }
+                    }
+                  
+                    i -= 1;
+                }
+            }
+            if (instrumentDetails.Current < instrumentDetails.EMA)//DOWNTREND
+            {
+                
+
+                while (i > 0)
+                {
+
+                    
+                     if (haDaily[i].HaColor == CandleColor.RED && haDaily[i - 1].HaColor == CandleColor.GREEN)
+                    {
+                        if (haDaily.Count - i < 4)
+                        {
+                            if (D_RealColor == CandleColor.RED)
+                            {
                                 D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
+                                result = new Result();
+
                                 result.DisplayName = instrument.DisplayName;
                                 result.Name = instrument.Name;
                                 result.Type = instrument.Type;
@@ -63,83 +118,50 @@ namespace MyTrade.OANDA
                                 result.M15_HA_Color = M15_HA_Color;
                                 result.InstrumentDetails = instrumentDetails;
                                 result.PivotPointsPosition = ppPosition;
-                                if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
-                                {
-                                    result.Action = Core.Constants.Action.BUY;
-                                }
-                                else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
-                                {
-                                    result.Action = Core.Constants.Action.BUY;
-                                }
-                                else
-                                {
-                                    result.Action = Core.Constants.Action.WAIT;
-
-                                }
-
-                            }
-                            break;
-                        }
-                    }
-                }
-                else if (haDaily[i].HaColor == CandleColor.RED && haDaily[i - 1].HaColor == CandleColor.GREEN)
-                {
-                    if (haDaily.Count - i < 4)
-                    {
-                        if (D_RealColor == CandleColor.RED)
-                        {
-                            D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
-                            result = new Result();
-
-                            result.DisplayName = instrument.DisplayName;
-                            result.Name = instrument.Name;
-                            result.Type = instrument.Type;
-                            result.NumberHaCandles = haDaily.Count - i;
-                            result.D_HA_Color = D_HA_Color;
-                            result.D_RealColor = D_RealColor;
-                            result.H4_HA_Color = H4_HA_Color;
-                            result.H1_HA_Color = H1_HA_Color;
-                            result.M15_HA_Color = M15_HA_Color;
-                            result.InstrumentDetails = instrumentDetails;
-                            result.PivotPointsPosition = ppPosition;
 
 
-                            if (instrumentDetails.Current < instrumentDetails.EMA &&
-                               ((instrumentDetails.Current < pps.PP && instrumentDetails.Current > pps.S1) ||
-                               (instrumentDetails.Current < pps.S1 && instrumentDetails.Current > pps.S2)
-                               ))
-                            {
+                                if ((instrumentDetails.Current < pps.PP && instrumentDetails.Current > pps.S1) ||
+                                   (instrumentDetails.Current < pps.S1 && instrumentDetails.Current > pps.S2)
+                                   )
+                                {
 
-                                if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
-                                {
-                                    result.Action = Core.Constants.Action.SELL;
-                                }
-                                else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
-                                {
-                                    result.Action = Core.Constants.Action.SELL;
-                                }
-                                else
-                                {
-                                    result.Action = Core.Constants.Action.WAIT;
+                                    if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
+                                    {
+                                        result.Action = Core.Constants.Action.SELL;
+                                    }
+                                    else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
+                                    {
+                                        result.Action = Core.Constants.Action.SELL;
+                                    }
+                                    else
+                                    {
+                                        result.Action = Core.Constants.Action.WAIT;
+
+                                    }
 
                                 }
+                                break;
 
                             }
 
 
+                         
+
                         }
-
-
-                        break;
-
                     }
+                    i -= 1;
                 }
-                i -= 1;
             }
+
+
+
+
+
+         
+           
             if (result == null)
             {
-                D_RealColor = haDaily[haDaily.Count() - 1].OriginalColor;
-                D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
+               
                 result = new Result();
                 result.DisplayName = instrument.DisplayName;
                 result.Name = instrument.Name;
@@ -155,7 +177,6 @@ namespace MyTrade.OANDA
             }
             return result;
         }
-
     }
 }
 

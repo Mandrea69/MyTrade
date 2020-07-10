@@ -28,15 +28,18 @@ namespace MyTrade.OANDA.Strategy
 
             foreach (Instrument instrument in instruments)
             {
+                //if (instrument.Name == "CHF_JPY")
+                //{
+
                     InstrumentDetails instrumentDetails = null;
-                    List<Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDetails);
-                    Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
-                    Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
-                    Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
-                    Result result = OANDA.Results.GetResult(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
-                    if (result != null)
-                        GetResult(result, instruments.Count());
-                
+                List<Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDetails);
+                Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
+                Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
+                Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
+                Result result = OANDA.Results.GetResult(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
+                if (result != null)
+                    GetResult(result, instruments.Count());
+            //}
             }
           
         }
@@ -55,9 +58,12 @@ namespace MyTrade.OANDA.Strategy
             EMA ema = new EMA(emaPeriod);
             List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
             PivotPoints pps = new PivotPoints();
-           PivotPoint _pps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
-                   
-            instrumentDetails.W_PivotPoints = _pps;
+            PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
+            instrumentDetails.W_PivotPoints = wpps;
+            List<MyTrade.Core.Model.Candle> mcandles = MyTrade.Core.SqliteDataAccess.MonthlyCandles.LoadCandles(instrument.Name);
+            PivotPoint mpps = pps.Get(mcandles[mcandles.Count - 2], instrumentDetails.Current);
+            instrumentDetails.M_PivotPoints = mpps;
+            instrumentDetails.TimeFrame = Core.Constants.TimeFrame.DAILY;
             for (int i = 0; i < candles.Count; i++)
             {
 

@@ -28,16 +28,19 @@ namespace MyTrade.OANDA.Strategy
 
             foreach (Instrument instrument in instruments)
             {
+
+                //if (instrument.Name == "AUD_NZD")
+                //{
                     InstrumentDetails instrumentDetails = null;
-                    List<Candle> ha_W_Candles = HA_W_Candles(instrument, out instrumentDetails);
+                List<Candle> ha_W_Candles = HA_W_Candles(instrument, out instrumentDetails);
                 Candle ha_D_LastCandle = HA_D_Candles(instrument); ;
                 Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
-                    Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
-                   
-                    Result result = OANDA.Results.GetResult(instrument, ha_W_Candles, ha_D_LastCandle.HaColor, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, instrumentDetails);
-                    if (result != null)
-                        GetResult(result, instruments.Count());
-                
+                Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
+
+                Result result = OANDA.Results.GetResult(instrument, ha_W_Candles, ha_D_LastCandle.HaColor, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, instrumentDetails);
+                if (result != null)
+                    GetResult(result, instruments.Count());
+            //}
             }
           
         }
@@ -54,8 +57,12 @@ namespace MyTrade.OANDA.Strategy
             instrumentDetails.Current = candles.LastOrDefault().Close;
             EMA ema = new EMA(emaPeriod);
             PivotPoints pps = new PivotPoints();
-            PivotPoint _pps = pps.Get(candles[candles.Count - 2], instrumentDetails.Current);
-            instrumentDetails.W_PivotPoints = _pps;
+            PivotPoint wpps = pps.Get(candles[candles.Count - 2], instrumentDetails.Current);
+            instrumentDetails.W_PivotPoints = wpps;
+            List<MyTrade.Core.Model.Candle> mcandles = MyTrade.Core.SqliteDataAccess.MonthlyCandles.LoadCandles(instrument.Name);
+            PivotPoint mpps = pps.Get(mcandles[mcandles.Count - 2], instrumentDetails.Current);
+            instrumentDetails.M_PivotPoints = mpps;
+            instrumentDetails.TimeFrame = Core.Constants.TimeFrame.WEEKLY;
             for (int i = 0; i < candles.Count; i++)
             {
 

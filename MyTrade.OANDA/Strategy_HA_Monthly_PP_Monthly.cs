@@ -56,7 +56,8 @@ namespace MyTrade.OANDA.Strategy
             EMA ema = new EMA(emaPeriod);
             PivotPoints pps = new PivotPoints();
             PivotPoint _pps = pps.Get(candles[candles.Count - 2], instrumentDetails.Current);
-            instrumentDetails.W_PivotPoints = _pps;
+            instrumentDetails.M_PivotPoints = _pps;
+            instrumentDetails.TimeFrame = Core.Constants.TimeFrame.MONTHLY;
             for (int i = 0; i < candles.Count; i++)
             {
 

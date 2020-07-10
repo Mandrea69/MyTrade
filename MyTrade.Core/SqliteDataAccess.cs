@@ -75,7 +75,7 @@ namespace MyTrade.Core
 
                     using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                     {
-                        cnn.Execute("insert into WeeklyCandles (Open, Close,High,Low,Time,Instrument) values (@Open, @Close,@High,@Low,@Time,@Instrument)", candle);
+                        cnn.Execute("insert into WeeklyCandles (Open, Close,High,Low,Time,Instrument,OriginalColor) values (@Open, @Close,@High,@Low,@Time,@Instrument,@OriginalColor)", candle);
                     }
                 }
             }
@@ -117,7 +117,7 @@ namespace MyTrade.Core
 
                     using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                     {
-                        cnn.Execute("insert into MonthlyCandles (Open, Close,High,Low,Time,Instrument) values (@Open, @Close,@High,@Low,@Time,@Instrument)", candle);
+                        cnn.Execute("insert into MonthlyCandles (Open, Close,High,Low,Time,Instrument,OriginalColor) values (@Open, @Close,@High,@Low,@Time,@Instrument,@OriginalColor)", candle);
                     }
                 }
             }
