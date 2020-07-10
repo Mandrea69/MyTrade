@@ -36,7 +36,11 @@ namespace MyTrade.OANDA
             int i = haDaily.Count() - 1;
             D_RealColor = haDaily[haDaily.Count() - 1].OriginalColor;
 
-            if (instrumentDetails.Current > instrumentDetails.EMA)//UPTREND
+            var ema = from x in instrumentDetails.EMAs
+                      where x.Period == 21
+                      select x;
+
+            if (instrumentDetails.Current > ema .FirstOrDefault().Value)// UPTREND
             {
 
                 while (i > 0)
@@ -90,7 +94,7 @@ namespace MyTrade.OANDA
                     i -= 1;
                 }
             }
-            if (instrumentDetails.Current < instrumentDetails.EMA)//DOWNTREND
+            if (instrumentDetails.Current < ema.FirstOrDefault().Value)//DOWNTREND
             {
                 
 

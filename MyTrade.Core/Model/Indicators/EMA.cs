@@ -7,6 +7,6 @@ namespace MyTrade.Core.Model.Indicators
      public class EMA
     {
         public int Period { get; set; }
-        public int Value { get; set; }
+        public double Value { get; set; }
     }
 }

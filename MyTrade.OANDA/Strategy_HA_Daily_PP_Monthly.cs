@@ -55,7 +55,7 @@ namespace MyTrade.OANDA.Strategy
            int emaPeriod = 21;
             List<Candle> candles = Data.Prices.GetCandles(instrument.Name, emaPeriod, "D");
             instrumentDetails.Current = candles.LastOrDefault().Close;
-            EMA ema = new EMA(emaPeriod);
+            Indicators.EMA ema = new Indicators.EMA(emaPeriod);
             List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
             PivotPoints pps = new PivotPoints();
             PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
@@ -94,7 +94,8 @@ namespace MyTrade.OANDA.Strategy
                 }
                 else
                 {
-                    instrumentDetails.EMA = ema.Average;
+                    instrumentDetails.EMAs = new List<Core.Model.Indicators.EMA>();
+                    instrumentDetails.EMAs.Add(new Core.Model.Indicators.EMA() { Period = 21, Value = ema.Average });
                 }
 
             }

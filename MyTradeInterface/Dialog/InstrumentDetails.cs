@@ -33,8 +33,12 @@ namespace MyTradeInterface.Dialog
         {
             if (result.InstrumentDetails != null)
             {
+                var ema = from x in result.InstrumentDetails.EMAs
+                          where x.Period == 21
+                          select x;
+               
                 this.txtCurrentPrice.Text = Math.Round(result.InstrumentDetails.Current, 5).ToString();
-                if (this.result.InstrumentDetails.EMA < this.result.InstrumentDetails.Current)
+                if (ema.FirstOrDefault().Value < this.result.InstrumentDetails.Current)
                 {
                     this.imgEma.Image = Resources.up;
                 }
