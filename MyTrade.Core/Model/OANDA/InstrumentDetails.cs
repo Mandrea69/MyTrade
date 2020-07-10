@@ -18,7 +18,7 @@ namespace MyTrade.Core.Model
         {
             get; set;
         }
-        public double EMA
+        public List<Indicators.EMA> EMAs
         {
             get; set;
         }
