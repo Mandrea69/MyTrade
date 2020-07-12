@@ -1,4 +1,5 @@
-﻿using MyTrade.Core.Model;
+﻿
+using MyTrade.Core.Model;
 using MyTrade.OANDA;
 using MyTrade.OANDA.Model;
 using MyTrade.OANDA.Model.Communication;

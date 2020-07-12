@@ -1,0 +1,15 @@
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.csprojAssemblyReference.cache
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.AssemblyInfoInputs.cache
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.AssemblyInfo.cs
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.csproj.CoreCompileInputs.cache
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTradeDB.db
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.Core.Strategy.deps.json
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.Core.Strategy.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.Core.Strategy.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.Core.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.OANDA.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.Core.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.OANDA.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.csproj.CopyComplete
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.pdb

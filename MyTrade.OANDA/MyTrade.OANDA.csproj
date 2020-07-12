@@ -11,11 +11,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Indicators\EMA.cs" />
     <Compile Remove="Indicators\PivotPoints.cs" />
     <Compile Remove="Model\Candle.cs" />
     <Compile Remove="Model\Instrument.cs" />
     <Compile Remove="Model\InstrumentDayPrice.cs" />
     <Compile Remove="Model\Result.cs" />
+    <Compile Remove="Results.cs" />
+    <Compile Remove="Strategy_HA_Daily_PP_Monthly.cs" />
+    <Compile Remove="Strategy_HA_Daily_PP_Monthly_EMAs.cs" />
+    <Compile Remove="Strategy_HA_Daily_PP_Weekly.cs" />
+    <Compile Remove="Strategy_HA_Monthly_PP_Monthly.cs" />
+    <Compile Remove="Strategy_HA_Weekly_PP_Weekly.cs" />
   </ItemGroup>
 
   <ItemGroup>

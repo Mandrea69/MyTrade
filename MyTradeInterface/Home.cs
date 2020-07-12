@@ -88,7 +88,7 @@ namespace MyTradeInterface
                 this.uc_gwBuy.Gw.Refresh();
                 results = new List<Result>();
 
-                MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Weekly haDailyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Weekly();
+                MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Weekly haDailyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Weekly();
                 haDailyStrategy.GetResult += HaDailyStrategy_GetResult;
                 haDailyStrategy.Run();
 
@@ -108,7 +108,7 @@ namespace MyTradeInterface
                 this.uc_gwBuy.Gw.Refresh();
                 results = new List<Result>();
 
-                MyTrade.OANDA.Strategy.Strategy_HA_Weekly_PP_Weekly haHA_WeeklyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Weekly_PP_Weekly();
+                MyTrade.Core.Strategy.Strategy_HA_Weekly_PP_Weekly haHA_WeeklyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Weekly_PP_Weekly();
                 haHA_WeeklyStrategy.GetResult += HaDailyStrategy_GetResult;
                 haHA_WeeklyStrategy.Run();
 
@@ -128,7 +128,7 @@ namespace MyTradeInterface
                 this.uc_gwBuy.Gw.Refresh();
                 results = new List<Result>();
 
-                MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Monthly haHA_MonthlyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Daily_PP_Monthly();
+                MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly haHA_MonthlyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly();
                 haHA_MonthlyStrategy.GetResult += HaDailyStrategy_GetResult;
                 haHA_MonthlyStrategy.Run();
 
@@ -148,13 +148,39 @@ namespace MyTradeInterface
                 this.uc_gwBuy.Gw.Refresh();
                 results = new List<Result>();
 
-                MyTrade.OANDA.Strategy.Strategy_HA_Monthly_PP_Monthly haHA_MonthlyStrategy = new MyTrade.OANDA.Strategy.Strategy_HA_Monthly_PP_Monthly();
+                MyTrade.Core.Strategy.Strategy_HA_Monthly_PP_Monthly haHA_MonthlyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Monthly_PP_Monthly();
                 haHA_MonthlyStrategy.GetResult += HaDailyStrategy_GetResult;
                 haHA_MonthlyStrategy.Run();
 
 
 
             }
+            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PPMonthly_EMAs)
+            {
+                ChangeNameColumns(uc_gwOther, "D");
+                ChangeNameColumns(uc_gwSell, "D");
+                ChangeNameColumns(uc_gwBuy, "D");
+                this.uc_gwOther.Gw.Rows.Clear();
+                this.uc_gwOther.Gw.Refresh();
+                this.uc_gwSell.Gw.Rows.Clear();
+                this.uc_gwSell.Gw.Refresh();
+                this.uc_gwBuy.Gw.Rows.Clear();
+                this.uc_gwBuy.Gw.Refresh();
+                results = new List<Result>();
+
+                MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly_EMAs haHA_EMAs_Strategy = new MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly_EMAs();
+                haHA_EMAs_Strategy.GetResult += HaDailyStrategy_GetResult;
+                haHA_EMAs_Strategy.Run();
+
+
+
+            }
+
+
+
+
+
+            
 
 
             else
@@ -220,11 +246,6 @@ namespace MyTradeInterface
             this.uc_gwBuy.Results = results;
             this.uc_gwSell.Results = results;
             this.uc_gwOther.Results = results;
-        }
-
-        private void Home_Load(object sender, EventArgs e)
-        {
-
         }
 
         void CreateRow(HA_GridView uc_gw, Result result)
@@ -322,20 +343,18 @@ namespace MyTradeInterface
             RefreshData rd = new RefreshData();
             rd.ShowDialog(this);
         }
+        private void strategyTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StrategyTest rd = new StrategyTest();
+            rd.ShowDialog(this);
+        }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void txtProcessedItems_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTotalInstruments_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

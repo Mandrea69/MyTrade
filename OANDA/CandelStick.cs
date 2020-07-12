@@ -105,7 +105,7 @@ namespace OANDA
                 double L_C = lastcandle.Close;
 
 
-                return ((C1 > O1) AND(O > C) AND(O >= C1) AND(O1 >= C) AND((O - C) > (C1 - O1)))
+                return true; /*((C1 > O1) AND(O > C) AND(O >= C1) AND(O1 >= C) AND((O - C) > (C1 - O1)))*/
 
             }
             else
@@ -115,11 +115,11 @@ namespace OANDA
 
 
 
-         
 
 
 
-            return (((H - L) > 4 * (O - C)) && ((H - C) / (.001 + H - L) >= 0.75) && ((H - O) / (.001 + H - L) >= 0.75));
+
+            return true; /*(((H - L) > 4 * (O - C)) && ((H - C) / (.001 + H - L) >= 0.75) && ((H - O) / (.001 + H - L) >= 0.75));*/
         }
 
 

@@ -47,6 +47,7 @@
             this.pnlHA_buy = new System.Windows.Forms.Panel();
             this.pnlHA_sell = new System.Windows.Forms.Panel();
             this.pnlHA_other = new System.Windows.Forms.Panel();
+            this.strategyTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,10 +55,11 @@
             // 
             this.cbStrategy.FormattingEnabled = true;
             this.cbStrategy.Items.AddRange(new object[] {
-            "Heiken Hashi Daily - Pivot Point Weekly",
-            "Heiken Hashi Daily - Pivot Point Monthly",
-            "Heiken Hashi Weekly - Pivot Point Weekly",
-            "Heiken Hashi Monthly - Pivot Point Monthly"});
+            "HA Daily - PP Weekly",
+            "HA Daily - PP Monthly",
+            "HA Weekly - PP Weekly",
+            "HA Monthly - PP Monthly",
+            "HA Daily - PP Monthly - EMAs"});
             this.cbStrategy.Location = new System.Drawing.Point(12, 56);
             this.cbStrategy.Name = "cbStrategy";
             this.cbStrategy.Size = new System.Drawing.Size(257, 21);
@@ -100,7 +102,6 @@
             this.txtProcessedItems.Name = "txtProcessedItems";
             this.txtProcessedItems.Size = new System.Drawing.Size(62, 20);
             this.txtProcessedItems.TabIndex = 7;
-            this.txtProcessedItems.TextChanged += new System.EventHandler(this.txtProcessedItems_TextChanged);
             // 
             // lblBuyItems
             // 
@@ -126,7 +127,6 @@
             this.txtTotalInstruments.Name = "txtTotalInstruments";
             this.txtTotalInstruments.Size = new System.Drawing.Size(62, 20);
             this.txtTotalInstruments.TabIndex = 11;
-            this.txtTotalInstruments.TextChanged += new System.EventHandler(this.txtTotalInstruments_TextChanged);
             // 
             // label3
             // 
@@ -174,7 +174,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshDataToolStripMenuItem});
+            this.refreshDataToolStripMenuItem,
+            this.strategyTestToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -182,7 +183,7 @@
             // refreshDataToolStripMenuItem
             // 
             this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
-            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.refreshDataToolStripMenuItem.Text = "Refresh Data";
             this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.refreshDataToolStripMenuItem_Click);
             // 
@@ -208,6 +209,13 @@
             this.pnlHA_other.Size = new System.Drawing.Size(480, 217);
             this.pnlHA_other.TabIndex = 19;
             // 
+            // strategyTestToolStripMenuItem
+            // 
+            this.strategyTestToolStripMenuItem.Name = "strategyTestToolStripMenuItem";
+            this.strategyTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.strategyTestToolStripMenuItem.Text = "Strategy Test";
+            this.strategyTestToolStripMenuItem.Click += new System.EventHandler(this.strategyTestToolStripMenuItem_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,7 +240,6 @@
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My Trade";
-            this.Load += new System.EventHandler(this.Home_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -260,6 +267,7 @@
         private System.Windows.Forms.Panel pnlHA_buy;
         private System.Windows.Forms.Panel pnlHA_sell;
         private System.Windows.Forms.Panel pnlHA_other;
+        private System.Windows.Forms.ToolStripMenuItem strategyTestToolStripMenuItem;
     }
 }
 

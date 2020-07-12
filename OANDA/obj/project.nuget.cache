@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "bs/eKhvkGQaREjZr4RTcYzui81AggX97erAj77qq2wqCBLO7sKwh+UzHWs2ZdWyiFlGji2knvWvZ83jy5SSevw==",
+  "dgSpecHash": "CTOJXX5NrWnE8QMMovJYGfgg9gsrcCXBOxITnP+O25kwMAeMobC18aKkqjvR7zh4agjRGaJz7D904CP8OZOmWQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andrea\\Source\\Repos\\MyTrade\\OANDA\\OANDA.csproj",
+  "projectFilePath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\OANDA\\OANDA.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Andrea\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
-    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
-    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
-    "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
+    "C:\\Users\\a.mercuri\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\a.mercuri\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\a.mercuri\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\a.mercuri\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\a.mercuri\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyTrade.Core\MyTrade.Core.csproj" />
+    <ProjectReference Include="..\MyTrade.OANDA\MyTrade.OANDA.csproj" />
+  </ItemGroup>
+
+</Project>

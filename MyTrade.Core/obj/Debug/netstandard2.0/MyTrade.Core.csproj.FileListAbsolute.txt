@@ -15,3 +15,12 @@ C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.dll
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.pdb
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTradeDB.db
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTradeDB.db
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTrade.Core.deps.json
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTrade.Core.dll
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\bin\Debug\netstandard2.0\MyTrade.Core.pdb
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.AssemblyInfoInputs.cache
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.AssemblyInfo.cs
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.csproj.CoreCompileInputs.cache
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.dll
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.Core\obj\Debug\netstandard2.0\MyTrade.Core.pdb

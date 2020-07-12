@@ -19,3 +19,16 @@ C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.Core.dll
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.Core.pdb
 C:\Users\SPProjectFarm\source\repos\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.csproj.CopyComplete
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTradeDB.db
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.OANDA.deps.json
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.OANDA.dll
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.OANDA.pdb
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.Core.dll
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\bin\Debug\netstandard2.0\MyTrade.Core.pdb
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.csprojAssemblyReference.cache
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.AssemblyInfoInputs.cache
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.AssemblyInfo.cs
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.csproj.CoreCompileInputs.cache
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.csproj.CopyComplete
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.dll
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTrade.OANDA\obj\Debug\netstandard2.0\MyTrade.OANDA.pdb

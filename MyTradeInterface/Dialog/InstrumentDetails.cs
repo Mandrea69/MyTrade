@@ -33,18 +33,38 @@ namespace MyTradeInterface.Dialog
         {
             if (result.InstrumentDetails != null)
             {
-                var ema = from x in result.InstrumentDetails.EMAs
+                var ema = from x in result.InstrumentDetails.EMAs //strategia ha pp
                           where x.Period == 21
                           select x;
-               
-                this.txtCurrentPrice.Text = Math.Round(result.InstrumentDetails.Current, 5).ToString();
-                if (ema.FirstOrDefault().Value < this.result.InstrumentDetails.Current)
+                if (ema.Count()> 0)
                 {
-                    this.imgEma.Image = Resources.up;
+                    this.lblEMA.Text = "Ema 21 periods";
+                    this.txtCurrentPrice.Text = Math.Round(result.InstrumentDetails.Current, 5).ToString();
+                    if (ema.FirstOrDefault().Value < this.result.InstrumentDetails.Current)
+                    {
+                        this.imgEma.Image = Resources.up;
+                    }
+                    else
+                    {
+                        this.imgEma.Image = Resources.down;
+                    }
                 }
                 else
                 {
-                    this.imgEma.Image = Resources.down;
+                    this.lblEMA.Text = "Ema 9 periods";
+                    var ema9 = from x in result.InstrumentDetails.EMAs //strategia ha pp emas
+                              where x.Period == 9
+                              select x;
+                    this.txtCurrentPrice.Text = Math.Round(result.InstrumentDetails.Current, 5).ToString();
+                    if (ema9.FirstOrDefault().Value < this.result.InstrumentDetails.Current)
+                    {
+                        this.imgEma.Image = Resources.up;
+                    }
+                    else
+                    {
+                        this.imgEma.Image = Resources.down;
+                    }
+
                 }
                 if (this.result.InstrumentDetails.W_PivotPoints != null)
                 {

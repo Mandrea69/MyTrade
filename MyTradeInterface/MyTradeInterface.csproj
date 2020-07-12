@@ -108,6 +108,12 @@
     <Compile Include="RefreshData.Designer.cs">
       <DependentUpon>RefreshData.cs</DependentUpon>
     </Compile>
+    <Compile Include="StrategyTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StrategyTest.Designer.cs">
+      <DependentUpon>StrategyTest.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controls\Calculator.resx">
       <DependentUpon>Calculator.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +139,9 @@
     <EmbeddedResource Include="RefreshData.resx">
       <DependentUpon>RefreshData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StrategyTest.resx">
+      <DependentUpon>StrategyTest.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,6 +157,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyTrade.Core.Strategy\MyTrade.Core.Strategy.csproj">
+      <Project>{fd818701-fe74-47cc-a217-127758826122}</Project>
+      <Name>MyTrade.Core.Strategy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyTrade.Core\MyTrade.Core.csproj">
       <Project>{56ae0f02-8228-4410-95bb-88176360802f}</Project>
       <Name>MyTrade.Core</Name>

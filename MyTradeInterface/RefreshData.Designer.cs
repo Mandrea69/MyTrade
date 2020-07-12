@@ -133,10 +133,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 559);
+            this.ClientSize = new System.Drawing.Size(992, 559);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbWeeklyCandles);
             this.Controls.Add(this.gbInstruments);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RefreshData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Refresh Data";
