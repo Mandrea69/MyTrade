@@ -62,5 +62,38 @@ namespace OANDA.Data
 
             return candles;
         }
+
+        public static List<Model.Candle> GetCandles(string instrument,DateTime from, string granularity)
+        {
+            List<Model.Candle> candles = new List<Model.Candle>();
+            string responseString = Data.OANDARestResponse.Get(Constants.url.Candels(instrument,from, granularity));
+            var candlesResponse = JsonSerializer.Deserialize<CandleResponse>(responseString);
+            foreach (var item in candlesResponse.candles)
+            {
+
+                Model.Candle _candle = new Model.Candle();
+                _candle.Open = Convert.ToDouble(item.mid.o);
+                _candle.Close = Convert.ToDouble(item.mid.c);
+                _candle.Hight = Convert.ToDouble(item.mid.h);
+                _candle.Low = Convert.ToDouble(item.mid.l);
+                _candle.Complete = item.complete;
+                _candle.Time = item.time.AddDays(1);
+
+                if (_candle.Close > _candle.Open)
+                {
+                    _candle.OriginalColor = Constants.CandelColour.GREEN;
+                }
+                else if (_candle.Close < _candle.Open)
+                {
+                    _candle.OriginalColor = Constants.CandelColour.RED;
+                }
+
+                candles.Add(_candle);
+            }
+
+
+
+            return candles;
+        }
     }
 }

@@ -38,6 +38,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.gwResults = new System.Windows.Forms.DataGridView();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpenDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpenPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CloseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClosePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pips = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gwResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,10 +140,47 @@
             // gwResults
             // 
             this.gwResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gwResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Action,
+            this.OpenDate,
+            this.OpenPrice,
+            this.CloseDate,
+            this.ClosePrice,
+            this.Pips});
             this.gwResults.Location = new System.Drawing.Point(15, 106);
             this.gwResults.Name = "gwResults";
             this.gwResults.Size = new System.Drawing.Size(796, 441);
             this.gwResults.TabIndex = 12;
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            // 
+            // OpenDate
+            // 
+            this.OpenDate.HeaderText = "Open Date";
+            this.OpenDate.Name = "OpenDate";
+            // 
+            // OpenPrice
+            // 
+            this.OpenPrice.HeaderText = "Open Price";
+            this.OpenPrice.Name = "OpenPrice";
+            // 
+            // CloseDate
+            // 
+            this.CloseDate.HeaderText = "Close Date";
+            this.CloseDate.Name = "CloseDate";
+            // 
+            // ClosePrice
+            // 
+            this.ClosePrice.HeaderText = "Close Price";
+            this.ClosePrice.Name = "ClosePrice";
+            // 
+            // Pips
+            // 
+            this.Pips.HeaderText = "Pips";
+            this.Pips.Name = "Pips";
             // 
             // StrategyTest
             // 
@@ -177,5 +220,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView gwResults;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpenDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpenPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CloseDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClosePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pips;
     }
 }

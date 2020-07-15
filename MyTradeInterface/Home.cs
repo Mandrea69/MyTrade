@@ -1,4 +1,5 @@
-﻿using MyTrade.Core.Indicators;
+﻿using MyTrade.Core;
+using MyTrade.Core.Indicators;
 using MyTrade.Core.Model;
 using MyTrade.Core.Model.Indicators;
 using MyTrade.OANDA.Indicators;
@@ -38,6 +39,9 @@ namespace MyTradeInterface
             uc_gwSell.SelectedRow += Uc_gwOther_SelectedRow;
             uc_gwBuy.SelectedRow += Uc_gwOther_SelectedRow;
 
+            this.cbStrategy.DataSource = Constants.Strategy.Strategies();
+
+
         }
 
         private void Uc_gwOther_SelectedRow(Result result)
@@ -75,7 +79,7 @@ namespace MyTradeInterface
             processedWaitItems = 0;
 
           
-             if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointWeekly)
+           if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PPMonthly_EMAs)
             {
                 ChangeNameColumns(uc_gwOther, "D");
                 ChangeNameColumns(uc_gwSell, "D");
@@ -88,14 +92,14 @@ namespace MyTradeInterface
                 this.uc_gwBuy.Gw.Refresh();
                 results = new List<Result>();
 
-                MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Weekly haDailyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Weekly();
-                haDailyStrategy.GetResult += HaDailyStrategy_GetResult;
-                haDailyStrategy.Run();
+                MyTrade.Core.Strategy.HA_EMAs.Daily haHA_EMAs_Strategy = new MyTrade.Core.Strategy.HA_EMAs.Daily();
+                haHA_EMAs_Strategy.GetResult += HaDailyStrategy_GetResult;
+                haHA_EMAs_Strategy.Run();
 
 
 
             }
-            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiWeekly_PivotPointWeekly)
+            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiWeekly_PPMonthly_EMAs)
             {
                 ChangeNameColumns(uc_gwOther, "W");
                 ChangeNameColumns(uc_gwSell, "W");
@@ -108,34 +112,14 @@ namespace MyTradeInterface
                 this.uc_gwBuy.Gw.Refresh();
                 results = new List<Result>();
 
-                MyTrade.Core.Strategy.Strategy_HA_Weekly_PP_Weekly haHA_WeeklyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Weekly_PP_Weekly();
-                haHA_WeeklyStrategy.GetResult += HaDailyStrategy_GetResult;
-                haHA_WeeklyStrategy.Run();
+                MyTrade.Core.Strategy.HA_EMAs.Weekly haHA_EMAs_Strategy = new MyTrade.Core.Strategy.HA_EMAs.Weekly();
+                haHA_EMAs_Strategy.GetResult += HaDailyStrategy_GetResult;
+                haHA_EMAs_Strategy.Run();
 
 
 
             }
-            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PivotPointMonthly)
-            {
-                ChangeNameColumns(uc_gwOther, "D");
-                ChangeNameColumns(uc_gwSell, "D");
-                ChangeNameColumns(uc_gwBuy, "D");
-                this.uc_gwOther.Gw.Rows.Clear();
-                this.uc_gwOther.Gw.Refresh();
-                this.uc_gwSell.Gw.Rows.Clear();
-                this.uc_gwSell.Gw.Refresh();
-                this.uc_gwBuy.Gw.Rows.Clear();
-                this.uc_gwBuy.Gw.Refresh();
-                results = new List<Result>();
-
-                MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly haHA_MonthlyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly();
-                haHA_MonthlyStrategy.GetResult += HaDailyStrategy_GetResult;
-                haHA_MonthlyStrategy.Run();
-
-
-
-            }
-            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiMonthly_PivotPointMonthly)
+            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiMonthly_PPMonthly_EMAs)
             {
                 ChangeNameColumns(uc_gwOther, "M");
                 ChangeNameColumns(uc_gwSell, "M");
@@ -148,27 +132,7 @@ namespace MyTradeInterface
                 this.uc_gwBuy.Gw.Refresh();
                 results = new List<Result>();
 
-                MyTrade.Core.Strategy.Strategy_HA_Monthly_PP_Monthly haHA_MonthlyStrategy = new MyTrade.Core.Strategy.Strategy_HA_Monthly_PP_Monthly();
-                haHA_MonthlyStrategy.GetResult += HaDailyStrategy_GetResult;
-                haHA_MonthlyStrategy.Run();
-
-
-
-            }
-            else if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PPMonthly_EMAs)
-            {
-                ChangeNameColumns(uc_gwOther, "D");
-                ChangeNameColumns(uc_gwSell, "D");
-                ChangeNameColumns(uc_gwBuy, "D");
-                this.uc_gwOther.Gw.Rows.Clear();
-                this.uc_gwOther.Gw.Refresh();
-                this.uc_gwSell.Gw.Rows.Clear();
-                this.uc_gwSell.Gw.Refresh();
-                this.uc_gwBuy.Gw.Rows.Clear();
-                this.uc_gwBuy.Gw.Refresh();
-                results = new List<Result>();
-
-                MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly_EMAs haHA_EMAs_Strategy = new MyTrade.Core.Strategy.Strategy_HA_Daily_PP_Monthly_EMAs();
+                MyTrade.Core.Strategy.HA_EMAs.Monthly haHA_EMAs_Strategy = new MyTrade.Core.Strategy.HA_EMAs.Monthly();
                 haHA_EMAs_Strategy.GetResult += HaDailyStrategy_GetResult;
                 haHA_EMAs_Strategy.Run();
 
@@ -180,7 +144,7 @@ namespace MyTradeInterface
 
 
 
-            
+
 
 
             else

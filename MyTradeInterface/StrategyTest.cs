@@ -67,6 +67,56 @@ namespace MyTradeInterface
 
         private void btnExecute_Click(object sender, EventArgs e)
         {
+            if (cbStrategy.SelectedItem.ToString() == MyTrade.Core.Constants.Strategy.HeikenHashiDaily_PPMonthly_EMAs)
+            {
+                //ChangeNameColumns(uc_gwOther, "D");
+                //ChangeNameColumns(uc_gwSell, "D");
+                //ChangeNameColumns(uc_gwBuy, "D");
+                //this.uc_gwOther.Gw.Rows.Clear();
+                //this.uc_gwOther.Gw.Refresh();
+                //this.uc_gwSell.Gw.Rows.Clear();
+                //this.uc_gwSell.Gw.Refresh();
+                //this.uc_gwBuy.Gw.Rows.Clear();
+                //this.uc_gwBuy.Gw.Refresh();
+                //results = new List<Result>();
+
+                MyTrade.Core.StrategyTest.Strategy_HA_Daily_PP_Monthly_EMAs strategy = new MyTrade.Core.StrategyTest.Strategy_HA_Daily_PP_Monthly_EMAs();
+                strategy.GetResult += Strategy_GetResult; ;
+
+                var instrument = from x in instruments
+                                        where x.DisplayName == this.txtInstrument.Text
+                                        select x;
+                if (instrument.Count() > 0)
+                {
+                    strategy.Run(instrument.FirstOrDefault());
+                }
+
+
+
+            }
+        }
+
+        private void Strategy_GetResult(TestResult_Order result)
+        {
+            CreateRow(this.gwResults, result);
+        }
+
+        void CreateRow(DataGridView gw, TestResult_Order order)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+
+
+            row.CreateCells(gw);
+
+
+            row.Cells[0].Value = order.Action;
+            row.Cells[1].Value = order.OpenDate;
+            row.Cells[2].Value = order.OpenPrice;
+            row.Cells[3].Value = order.CloseDate;
+            row.Cells[4].Value = order.ClosePrice;
+            row.Cells[5].Value = order.Pips;
+            gw.Rows.Add(row);
+            gw.Refresh();
 
         }
     }

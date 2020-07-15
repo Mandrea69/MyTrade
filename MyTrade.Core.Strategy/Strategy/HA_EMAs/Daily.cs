@@ -12,9 +12,9 @@ using System.Text;
 using System.Threading;
 using EMA = MyTrade.Core.Indicators.EMA;
 
-namespace MyTrade.Core.Strategy
+namespace MyTrade.Core.Strategy.HA_EMAs
 {
-    public class Strategy_HA_Daily_PP_Monthly
+    public class Daily
     {
 
         static List<Instrument> instruments;
@@ -37,7 +37,7 @@ namespace MyTrade.Core.Strategy
                 Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
                 Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
                 Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
-                Result result = Results.GetResult_HA_PP(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
+                Result result = Results.GetResult_HA_EMAs(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
                 if (result != null)
                     GetResult(result, instruments.Count());
             //}
@@ -53,10 +53,12 @@ namespace MyTrade.Core.Strategy
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
-           int emaPeriod = 21;
-            List<Candle> candles = OANDA.Data.Prices.GetCandles(instrument.Name, emaPeriod, "D");
+             int ema50Period = 50;
+            int ema9Period = 9;
+            List<Candle> candles = OANDA.Data.Prices.GetCandles(instrument.Name, ema50Period, "D");
             instrumentDetails.Current = candles.LastOrDefault().Close;
-            EMA ema = new EMA(emaPeriod);
+            EMA ema50 = new EMA(ema50Period);
+            EMA ema9 = new EMA(ema9Period);
             List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
             PivotPoints pps = new PivotPoints();
             PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
@@ -89,15 +91,25 @@ namespace MyTrade.Core.Strategy
                     haPreviounsCandle = haCurrentCandle;
                 }
 
-                if (i < (emaPeriod-1))
+
+                if (i == (candles.Count - 1))
                 {
-                    ema.AddDataPoint(candles[i].Close);
+                    if (instrumentDetails.EMAs == null)
+                    {
+                        instrumentDetails.EMAs = new List<Core.Model.Indicators.EMA>();
+                    }
+                    ema50.AddDataPoint(candles[i].Close);
+                    ema9.AddDataPoint(candles[i].Close);
+                    instrumentDetails.EMAs.Add(new Core.Model.Indicators.EMA() { Period = 50, Value = ema50.Average });
+                    instrumentDetails.EMAs.Add(new Core.Model.Indicators.EMA() { Period = 9, Value = ema9.Average });
                 }
                 else
                 {
-                    instrumentDetails.EMAs = new List<Core.Model.Indicators.EMA>();
-                    instrumentDetails.EMAs.Add(new Core.Model.Indicators.EMA() { Period = 21, Value = ema.Average });
+                    ema50.AddDataPoint(candles[i].Close);
+                    ema9.AddDataPoint(candles[i].Close);
                 }
+
+              
 
             }
 

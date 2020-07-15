@@ -21,6 +21,15 @@ namespace OANDA
             {
                 return "https://api-fxpractice.oanda.com/v3/accounts/" + oaAccessToken + "/instruments/" + instrument + "/candles?count=" + numberCandels + "&granularity=" + granularity;
             }
+
+            public static string Candels(string instrument, DateTime from, string granularity)
+            {
+
+                string url= "https://api-fxpractice.oanda.com/v3/accounts/" + oaAccessToken + "/instruments/" + instrument + "/candles?from=" + from.ToString("yyyy-MM-dd") + "&granularity=" + granularity;
+
+                return url;
+            }
+
             public class IEX
             {
                 public static string DAY_Candels(string instrument)

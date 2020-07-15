@@ -44,22 +44,18 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.strategyTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlHA_buy = new System.Windows.Forms.Panel();
             this.pnlHA_sell = new System.Windows.Forms.Panel();
             this.pnlHA_other = new System.Windows.Forms.Panel();
-            this.strategyTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbStrategy
             // 
             this.cbStrategy.FormattingEnabled = true;
-            this.cbStrategy.Items.AddRange(new object[] {
-            "HA Daily - PP Weekly",
-            "HA Daily - PP Monthly",
-            "HA Weekly - PP Weekly",
-            "HA Monthly - PP Monthly",
-            "HA Daily - PP Monthly - EMAs"});
             this.cbStrategy.Location = new System.Drawing.Point(12, 56);
             this.cbStrategy.Name = "cbStrategy";
             this.cbStrategy.Size = new System.Drawing.Size(257, 21);
@@ -164,7 +160,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsToolStripMenuItem});
+            this.toolsToolStripMenuItem,
+            this.orderToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(992, 24);
@@ -183,9 +180,16 @@
             // refreshDataToolStripMenuItem
             // 
             this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
-            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.refreshDataToolStripMenuItem.Text = "Refresh Data";
             this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.refreshDataToolStripMenuItem_Click);
+            // 
+            // strategyTestToolStripMenuItem
+            // 
+            this.strategyTestToolStripMenuItem.Name = "strategyTestToolStripMenuItem";
+            this.strategyTestToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.strategyTestToolStripMenuItem.Text = "Strategy Test";
+            this.strategyTestToolStripMenuItem.Click += new System.EventHandler(this.strategyTestToolStripMenuItem_Click);
             // 
             // pnlHA_buy
             // 
@@ -209,12 +213,19 @@
             this.pnlHA_other.Size = new System.Drawing.Size(480, 217);
             this.pnlHA_other.TabIndex = 19;
             // 
-            // strategyTestToolStripMenuItem
+            // orderToolStripMenuItem
             // 
-            this.strategyTestToolStripMenuItem.Name = "strategyTestToolStripMenuItem";
-            this.strategyTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.strategyTestToolStripMenuItem.Text = "Strategy Test";
-            this.strategyTestToolStripMenuItem.Click += new System.EventHandler(this.strategyTestToolStripMenuItem_Click);
+            this.orderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusToolStripMenuItem});
+            this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
+            this.orderToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.orderToolStripMenuItem.Text = "Order";
+            // 
+            // statusToolStripMenuItem
+            // 
+            this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statusToolStripMenuItem.Text = "Status";
             // 
             // Home
             // 
@@ -268,6 +279,8 @@
         private System.Windows.Forms.Panel pnlHA_sell;
         private System.Windows.Forms.Panel pnlHA_other;
         private System.Windows.Forms.ToolStripMenuItem strategyTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
     }
 }
 

@@ -8,12 +8,18 @@ namespace MyTrade.Core
     {
         public class Strategy
         {
-            public static string HeikenHashiDaily_PPMonthly_EMAs= "HA Daily - PP Monthly - EMAs";
-            public static string HeikenHashiDaily_PivotPointWeekly = "HA Daily - PP Weekly";
-            public static string HeikenHashiWeekly_PivotPointWeekly = "HA Weekly - PP Weekly";
-            public static string HeikenHashiDaily_PivotPointMonthly = "HA Daily - PP Monthly";
-            public static string HeikenHashiMonthly_PivotPointMonthly = "HA Monthly - PP Monthly";
-
+            public static List<string> Strategies()
+            {
+                List<string> st = new List<string>();
+                st.Add("HA Daily - EMAs");
+                st.Add("HA Weekly - EMAs");
+                st.Add("HA Monthly - EMAs");
+                return st;
+            }
+            public static string HeikenHashiDaily_PPMonthly_EMAs= "HA Daily - EMAs";
+            public static string HeikenHashiWeekly_PPMonthly_EMAs = "HA Weekly - EMAs";
+            public static string HeikenHashiMonthly_PPMonthly_EMAs = "HA Monthly - EMAs";
+          
         }
         public enum CandleColor
         {

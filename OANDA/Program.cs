@@ -27,55 +27,59 @@ namespace OANDA
 
         static void Main(string[] args)
         {
-           List<Model.Instrument> instruments= Data.Instrument.All();
-            foreach (Model.Instrument item in instruments)
+            //List<Model.Instrument> instruments= Data.Instrument.All();
+            // foreach (Model.Instrument item in instruments)
+            // {
+            //     List<Candle> d_candles = Data.Prices.GetCandles(item.Name, 2, "D");
+            //     foreach (var c in d_candles)
+            //     {
+            //        if( CandleStick.ShootingStar(c)==true)
+            //         {
+            //             Console.WriteLine("ShootingStar " + item.DisplayName + " " + c.Time);
+            //         }
+            //         if (CandleStick.BlackSpinningTop(c) == true)
+            //         {
+            //             Console.WriteLine("BlackSpinningTop " + item.DisplayName + " " + c.Time);
+            //         }
+            //         if (CandleStick.BullishDragonflyDoji(c) == true)
+            //         {
+            //             Console.WriteLine("BullishDragonflyDoji " + item.DisplayName + " " + c.Time);
+            //         }
+            //         if (CandleStick.Hammer(c) == true)
+            //         {
+            //             Console.WriteLine("Hammer " + item.DisplayName + " " + c.Time);
+            //         }
+            //         if (CandleStick.HangingMan(c) == true)
+            //         {
+            //             Console.WriteLine("HangingMan " + item.DisplayName + " " + c.Time);
+            //         }
+            //         if (CandleStick.InvertedHammer(c) == true)
+            //         {
+            //             Console.WriteLine("HangingMan " + item.DisplayName + " " + c.Time);
+            //         }
+
+            //         if (CandleStick.WhiteSpinningTop(c) == true)
+            //         {
+            //             Console.WriteLine("WhiteSpinningTop " + item.DisplayName + " " + c.Time);
+            //         }
+
+            //     }
+            // }
+
+            DateTime openDate = new DateTime(2020, 6, 5);
+            DateTime currentWeekstartDate = openDate;
+            DateTime previousWeekStartDate = openDate.AddDays(-1);
+            if (Convert.ToInt16(openDate.DayOfWeek) > 1)
             {
-                List<Candle> d_candles = Data.Prices.GetCandles(item.Name, 2, "D");
-                foreach (var c in d_candles)
-                {
-                   if( CandleStick.ShootingStar(c)==true)
-                    {
-                        Console.WriteLine("ShootingStar " + item.DisplayName + " " + c.Time);
-                    }
-                    if (CandleStick.BlackSpinningTop(c) == true)
-                    {
-                        Console.WriteLine("BlackSpinningTop " + item.DisplayName + " " + c.Time);
-                    }
-                    if (CandleStick.BullishDragonflyDoji(c) == true)
-                    {
-                        Console.WriteLine("BullishDragonflyDoji " + item.DisplayName + " " + c.Time);
-                    }
-                    if (CandleStick.Hammer(c) == true)
-                    {
-                        Console.WriteLine("Hammer " + item.DisplayName + " " + c.Time);
-                    }
-                    if (CandleStick.HangingMan(c) == true)
-                    {
-                        Console.WriteLine("HangingMan " + item.DisplayName + " " + c.Time);
-                    }
-                    if (CandleStick.InvertedHammer(c) == true)
-                    {
-                        Console.WriteLine("HangingMan " + item.DisplayName + " " + c.Time);
-                    }
-                  
-                    if (CandleStick.WhiteSpinningTop(c) == true)
-                    {
-                        Console.WriteLine("WhiteSpinningTop " + item.DisplayName + " " + c.Time);
-                    }
-
-                }
+                currentWeekstartDate = openDate.AddDays(-(Convert.ToInt16(openDate.DayOfWeek) - 1));
+                previousWeekStartDate = currentWeekstartDate.AddDays(-7);
             }
-         
-            //var a = "----------------------------";
-            //Console.WriteLine(a);
-            //Candle c = d_candles[d_candles.Count - 2];
-            //Console.WriteLine(c.Time);
-            //Console.WriteLine(c.Hight);
-            //Console.WriteLine(c.Low);
-            //Console.WriteLine(c.Hight);
-            //Console.WriteLine(c.Close);
 
-            //Get(c);
+
+            List<Model.Candle> candles=  Data.Prices.GetCandles("GBP_CAD", previousWeekStartDate, "W");
+            Console.WriteLine(candles.FirstOrDefault().Time);
+            MyTrade.Core.Indicators.PivotPoints pp = new MyTrade.Core.Indicators.PivotPoints();
+          
 
 
         }
