@@ -29,18 +29,18 @@ namespace MyTrade.Core.Strategy.HA_EMAs
 
             foreach (Instrument instrument in instruments)
             {
-                //if (instrument.DisplayName == "Brent Crude Oil")
+                //if (instrument.Name == "CHF_JPY")
                 //{
 
                     InstrumentDetails instrumentDetails = null;
-                List<Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDetails);
-                Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
-                Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
-                Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
-                Result result = Results.GetResult_HA_EMAs(instrument, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
-                if (result != null)
-                    GetResult(result, instruments.Count());
-            //}
+                    List<Candle> ha_D_Candles = HA_D_Candles(instrument, out instrumentDetails);
+                    Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
+                    Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
+                    Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
+                    Result result = Results.GetResult_HA_EMAs(instrument, ha_D_Candles[ha_D_Candles.Count-1].OriginalColor, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
+                    if (result != null)
+                        GetResult(result, instruments.Count());
+                //}
             }
           
         }

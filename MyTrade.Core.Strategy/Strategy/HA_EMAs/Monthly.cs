@@ -36,8 +36,9 @@ namespace MyTrade.Core.Strategy.HA_EMAs
                 List<Candle> ha_M_Candles = HA_M_Candles(instrument, out instrumentDetails);
                 Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
                 Candle ha_W_LastCandle = HA_W_Candles(instrument);
-                Candle ha_D_LastCandle = HA_D_Candles(instrument); ;
-                Result result = Results.GetResult_HA_EMAs(instrument, ha_M_Candles, ha_W_LastCandle.HaColor, ha_D_LastCandle.HaColor, ha_H4_LastCandle.HaColor, instrumentDetails);
+                Candle ha_D_LastCandle = HA_D_Candles(instrument);
+               Constants.CandleColor daily_CandleColor = OANDA.Data.Prices.GetCandles(instrument.Name, 2, "D").LastOrDefault().OriginalColor;
+                Result result = Results.GetResult_HA_EMAs(instrument, daily_CandleColor, ha_M_Candles, ha_W_LastCandle.HaColor, ha_D_LastCandle.HaColor, ha_H4_LastCandle.HaColor, instrumentDetails);
                 if (result != null)
                     GetResult(result, instruments.Count());
             //}
@@ -189,7 +190,6 @@ namespace MyTrade.Core.Strategy.HA_EMAs
 
 
         }
-
         public static Candle HA_D_Candles(Instrument instrument)
         {
 

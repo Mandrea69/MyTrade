@@ -181,7 +181,7 @@ namespace MyTrade.Core.Strategy
             }
             return result;
         }
-        public static Result GetResult_HA_EMAs(Instrument instrument, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
+        public static Result GetResult_HA_EMAs(Instrument instrument,CandleColor Daily_RealColor, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
         {
             Result result = null;
             string ppPosition = "";
@@ -203,7 +203,7 @@ namespace MyTrade.Core.Strategy
             CandleColor D_RealColor = CandleColor.GREEN;
             CandleColor D_HA_Color = CandleColor.GREEN;
             int i = haDaily.Count() - 1;
-            D_RealColor = haDaily[haDaily.Count() - 1].OriginalColor;
+            D_RealColor = Daily_RealColor;
 
             var ema50 = from x in instrumentDetails.EMAs
                         where x.Period == 50
@@ -281,7 +281,7 @@ namespace MyTrade.Core.Strategy
                             if (haDaily[haDaily.Count() - 1].Close < ema50.FirstOrDefault().Value &&
                             haDaily[haDaily.Count() - 1].Close < ema9.FirstOrDefault().Value)
                             {
-                    
+
                                 if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
                                 {
                                     result.Action = Core.Constants.Action.SELL;
@@ -297,7 +297,7 @@ namespace MyTrade.Core.Strategy
                                 }
                                 break;
                             }
-                        
+
 
                         }
 
@@ -305,6 +305,169 @@ namespace MyTrade.Core.Strategy
                 }
                 i -= 1;
             }
+
+            if (result == null)
+            {
+
+                result = new Result();
+                result.DisplayName = instrument.DisplayName;
+                result.Name = instrument.Name;
+                result.Type = instrument.Type;
+                result.NumberHaCandles = 0;
+                result.D_HA_Color = D_HA_Color;
+                result.D_RealColor = D_RealColor;
+                result.H4_HA_Color = H4_HA_Color;
+                result.H1_HA_Color = H1_HA_Color;
+                result.M15_HA_Color = M15_HA_Color;
+                result.Action = Core.Constants.Action.WAIT;
+                result.PivotPointsPosition = ppPosition;
+            }
+            return result;
+        }
+        public static Result GetResult_HA_EMAs1(Instrument instrument, List<Candle> haDailys, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
+        {
+            Result result = null;
+            string ppPosition = "";
+            Core.Model.Indicators.PivotPoint pps = instrumentDetails.W_PivotPoints;
+            if (instrumentDetails.TimeFrame == TimeFrame.MONTHLY)
+            {
+                pps = instrumentDetails.M_PivotPoints;
+                ppPosition = pps.Position;
+            }
+            else
+            {
+                ppPosition = pps.Position;
+
+            }
+
+
+
+
+            CandleColor D_RealColor = CandleColor.GREEN;
+            CandleColor D_HA_Color = CandleColor.GREEN;
+
+            D_RealColor = haDailys[haDailys.Count() - 1].OriginalColor;
+
+            var ema50 = from x in instrumentDetails.EMAs
+                        where x.Period == 50
+                        select x;
+            var ema9 = from x in instrumentDetails.EMAs
+                       where x.Period == 9
+                       select x;
+
+
+
+            List<Model.Candle> last_ha_candles = haDailys.Reverse<Model.Candle>().Take(5).Reverse().ToList<Model.Candle>();
+            int i = last_ha_candles.Count() - 1;
+            while (i > 0)
+            {
+                Model.Candle current = last_ha_candles[i];
+                Model.Candle previous = null;
+
+                previous = last_ha_candles[i - 1];
+                if ((current.HaColor == CandleColor.GREEN && previous.HaColor == CandleColor.RED))
+                {
+
+                    if (D_RealColor == CandleColor.GREEN)
+                    {
+
+                        if (current.Close > ema50.FirstOrDefault().Value && current.Close > ema9.FirstOrDefault().Value)
+                        {
+                            result = new Result();
+                            D_HA_Color = current.HaColor;
+                            result.DisplayName = instrument.DisplayName;
+                            result.Name = instrument.Name;
+                            result.Type = instrument.Type;
+                            result.NumberHaCandles = last_ha_candles.Count - i;
+                            result.D_HA_Color = D_HA_Color;
+                            result.D_RealColor = D_RealColor;
+                            result.H4_HA_Color = H4_HA_Color;
+                            result.H1_HA_Color = H1_HA_Color;
+                            result.M15_HA_Color = M15_HA_Color;
+                            result.InstrumentDetails = instrumentDetails;
+                            result.PivotPointsPosition = ppPosition;
+                            if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
+                            {
+                                result.Action = Core.Constants.Action.BUY;
+                            }
+                            else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
+                            {
+                                result.Action = Core.Constants.Action.BUY;
+                            }
+                            else
+                            {
+                                result.Action = Core.Constants.Action.WAIT;
+
+                            }
+                            break;
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+                else if (current.HaColor == CandleColor.RED && previous.HaColor == CandleColor.GREEN)
+
+                {
+                    if (D_RealColor == CandleColor.RED)
+                    {
+                        if (current.Close < ema50.FirstOrDefault().Value && current.Close < ema9.FirstOrDefault().Value)
+                        {
+                            D_HA_Color = current.HaColor;
+                            result = new Result();
+
+                            result.DisplayName = instrument.DisplayName;
+                            result.Name = instrument.Name;
+                            result.Type = instrument.Type;
+                            result.NumberHaCandles = last_ha_candles.Count - i;
+                            result.D_HA_Color = D_HA_Color;
+                            result.D_RealColor = D_RealColor;
+                            result.H4_HA_Color = H4_HA_Color;
+                            result.H1_HA_Color = H1_HA_Color;
+                            result.M15_HA_Color = M15_HA_Color;
+                            result.InstrumentDetails = instrumentDetails;
+                            result.PivotPointsPosition = ppPosition;
+
+                            if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
+                            {
+                                result.Action = Core.Constants.Action.SELL;
+                            }
+                            else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
+                            {
+                                result.Action = Core.Constants.Action.SELL;
+                            }
+                            else
+                            {
+                                result.Action = Core.Constants.Action.WAIT;
+
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+
+                i -= 1;
+
+            }
+
 
             if (result == null)
             {
