@@ -49,5 +49,12 @@ namespace MyTradeInterface
                 this.LblMonthlyRefresh.Text = DateTime.Now.ToString();
             }
         }
+
+        private void btnStockINstrumentsRefresh_Click(object sender, EventArgs e)
+        {
+            List<Instrument> instruments = MyTrade.Alpaca.Data.Instrument.All();
+            MyTrade.Core.SqliteDataAccess.StockInstruments.SaveInstruments(instruments);
+            this.lblStockInstumentsModiifed.Text = DateTime.Now.ToString();
+        }
     }
 }

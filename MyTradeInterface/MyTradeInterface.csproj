@@ -94,24 +94,36 @@
     <Compile Include="Dialog\InstrumentDetails.Designer.cs">
       <DependentUpon>InstrumentDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="Forms\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Forms\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Instruments_Currency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Instruments_Currency.Designer.cs">
+      <DependentUpon>Instruments_Currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Instuments_Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Instuments_Stock.Designer.cs">
+      <DependentUpon>Instuments_Stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RefreshData.cs">
+    <Compile Include="Forms\RefreshData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RefreshData.Designer.cs">
+    <Compile Include="Forms\RefreshData.Designer.cs">
       <DependentUpon>RefreshData.cs</DependentUpon>
     </Compile>
-    <Compile Include="StrategyTest.cs">
+    <Compile Include="Forms\StrategyTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StrategyTest.Designer.cs">
+    <Compile Include="Forms\StrategyTest.Designer.cs">
       <DependentUpon>StrategyTest.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Controls\Calculator.resx">
@@ -123,8 +135,14 @@
     <EmbeddedResource Include="Dialog\InstrumentDetails.resx">
       <DependentUpon>InstrumentDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Instruments_Currency.resx">
+      <DependentUpon>Instruments_Currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Instuments_Stock.resx">
+      <DependentUpon>Instuments_Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -136,10 +154,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RefreshData.resx">
+    <EmbeddedResource Include="Forms\RefreshData.resx">
       <DependentUpon>RefreshData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StrategyTest.resx">
+    <EmbeddedResource Include="Forms\StrategyTest.resx">
       <DependentUpon>StrategyTest.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -157,6 +175,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyTrade.Alpaca\MyTrade.Alpaca.csproj">
+      <Project>{1740f041-447f-4065-ad75-3130e39d2dfa}</Project>
+      <Name>MyTrade.Alpaca</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyTrade.Core.Strategy\MyTrade.Core.Strategy.csproj">
       <Project>{fd818701-fe74-47cc-a217-127758826122}</Project>
       <Name>MyTrade.Core.Strategy</Name>
@@ -176,6 +198,7 @@
     <None Include="Resources\up.png" />
     <None Include="Resources\red.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

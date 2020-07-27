@@ -74,7 +74,7 @@ namespace MyTrade.Core.Strategy.HA_PP
                 {
                     instrumentDetails.Min = candles[i].Low;
                     instrumentDetails.Min = Math.Min(candles[i].Low, instrumentDetails.Min);
-                    haPreviounsCandle = OANDA.Data.HACandle.GeneratePrevious(candles[i]);
+                    haPreviounsCandle = HeikinAshi.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
 
                 }
@@ -82,7 +82,7 @@ namespace MyTrade.Core.Strategy.HA_PP
                 else
                 {
 
-                    haCurrentCandle = OANDA.Data.HACandle.Generate(haPreviounsCandle, candles[i]);
+                    haCurrentCandle = HeikinAshi.Generate(haPreviounsCandle, candles[i]);
 
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
@@ -119,7 +119,7 @@ namespace MyTrade.Core.Strategy.HA_PP
                 if (i == 0)
                 {
 
-                    haPreviounsCandle = OANDA.Data.HACandle.GeneratePrevious(candles[i]);
+                    haPreviounsCandle = HeikinAshi.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
 
                 }
@@ -127,7 +127,7 @@ namespace MyTrade.Core.Strategy.HA_PP
                 else
                 {
 
-                    haCurrentCandle = OANDA.Data.HACandle.Generate(haPreviounsCandle, candles[i]);
+                    haCurrentCandle = HeikinAshi.Generate(haPreviounsCandle, candles[i]);
 
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
@@ -149,14 +149,14 @@ namespace MyTrade.Core.Strategy.HA_PP
             {
                 if (i == 0)
                 {
-                    haPreviounsCandle = OANDA.Data.HACandle.GeneratePrevious(candles[i]);
+                    haPreviounsCandle = HeikinAshi.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
 
                 }
                 else
                 {
 
-                    haCurrentCandle = OANDA.Data.HACandle.Generate(haPreviounsCandle, candles[i]);
+                    haCurrentCandle = HeikinAshi.Generate(haPreviounsCandle, candles[i]);
 
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
@@ -180,14 +180,14 @@ namespace MyTrade.Core.Strategy.HA_PP
             {
                 if (i == 0)
                 {
-                    haPreviounsCandle = OANDA.Data.HACandle.GeneratePrevious(candles[i]);
+                    haPreviounsCandle = HeikinAshi.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
 
                 }
                 else
                 {
 
-                    haCurrentCandle = OANDA.Data.HACandle.Generate(haPreviounsCandle, candles[i]);
+                    haCurrentCandle = HeikinAshi.Generate(haPreviounsCandle, candles[i]);
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;
                 }

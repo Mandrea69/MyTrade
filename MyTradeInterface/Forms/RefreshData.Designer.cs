@@ -37,9 +37,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LblMonthlyRefresh = new System.Windows.Forms.Label();
             this.btMonthlyRefresh = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblStockInstumentsModiifed = new System.Windows.Forms.Label();
+            this.btnStockINstrumentsRefresh = new System.Windows.Forms.Button();
             this.gbInstruments.SuspendLayout();
             this.gbWeeklyCandles.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbInstruments
@@ -129,11 +133,41 @@
             this.btMonthlyRefresh.UseVisualStyleBackColor = true;
             this.btMonthlyRefresh.Click += new System.EventHandler(this.btMonthlyRefresh_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblStockInstumentsModiifed);
+            this.groupBox2.Controls.Add(this.btnStockINstrumentsRefresh);
+            this.groupBox2.Location = new System.Drawing.Point(12, 216);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 123);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Stock Instruments";
+            // 
+            // lblStockInstumentsModiifed
+            // 
+            this.lblStockInstumentsModiifed.AutoSize = true;
+            this.lblStockInstumentsModiifed.Location = new System.Drawing.Point(23, 94);
+            this.lblStockInstumentsModiifed.Name = "lblStockInstumentsModiifed";
+            this.lblStockInstumentsModiifed.Size = new System.Drawing.Size(0, 13);
+            this.lblStockInstumentsModiifed.TabIndex = 1;
+            // 
+            // btnStockINstrumentsRefresh
+            // 
+            this.btnStockINstrumentsRefresh.Location = new System.Drawing.Point(26, 49);
+            this.btnStockINstrumentsRefresh.Name = "btnStockINstrumentsRefresh";
+            this.btnStockINstrumentsRefresh.Size = new System.Drawing.Size(146, 23);
+            this.btnStockINstrumentsRefresh.TabIndex = 0;
+            this.btnStockINstrumentsRefresh.Text = "Refresh";
+            this.btnStockINstrumentsRefresh.UseVisualStyleBackColor = true;
+            this.btnStockINstrumentsRefresh.Click += new System.EventHandler(this.btnStockINstrumentsRefresh_Click);
+            // 
             // RefreshData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 559);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbWeeklyCandles);
             this.Controls.Add(this.gbInstruments);
@@ -148,6 +182,8 @@
             this.gbWeeklyCandles.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +199,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label LblMonthlyRefresh;
         private System.Windows.Forms.Button btMonthlyRefresh;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblStockInstumentsModiifed;
+        private System.Windows.Forms.Button btnStockINstrumentsRefresh;
     }
 }

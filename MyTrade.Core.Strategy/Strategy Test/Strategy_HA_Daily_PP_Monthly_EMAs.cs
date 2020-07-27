@@ -71,7 +71,7 @@ namespace MyTrade.Core.StrategyTest
                 if (i == 0)
                 {
 
-                    haPreviounsCandle = OANDA.Data.HACandle.GeneratePrevious(candles[i]);
+                    haPreviounsCandle = HeikinAshi.GeneratePrevious(candles[i]);
                     haCandles.Add(haPreviounsCandle);
 
                 }
@@ -79,7 +79,7 @@ namespace MyTrade.Core.StrategyTest
                 else
                 {
 
-                    haCurrentCandle = OANDA.Data.HACandle.Generate(haPreviounsCandle, candles[i]);
+                    haCurrentCandle = HeikinAshi.Generate(haPreviounsCandle, candles[i]);
 
                     haCandles.Add(haCurrentCandle);
                     haPreviounsCandle = haCurrentCandle;

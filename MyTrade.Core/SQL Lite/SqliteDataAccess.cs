@@ -33,9 +33,60 @@ namespace MyTrade.Core
 
                     using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                     {
-                        cnn.Execute("insert into Instruments (Name, Type,DisplayName,PipLocation) values (@Name, @Type,@DisplayName,@PipLocation)", instrument);
+                        cnn.Execute("insert into Instruments (Name, Type,DisplayName,PipLocation,IsFavorite) values (@Name, @Type,@DisplayName,@PipLocation,@IsFavorite)", instrument);
                     }
                 }
+            }
+
+            public static void UpdateIsFavorite(Model.Instrument instrument)
+            {
+
+
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("UPDATE Instruments SET IsFavorite=@IsFavorite where ID=@ID", instrument);
+                }
+
+            }
+
+
+        }
+        public class StockInstruments
+        {
+            public static List<Model.Instrument> LoadInstruments()
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var output = cnn.Query<Model.Instrument>("select * from StockInstruments", new DynamicParameters());
+                    return output.ToList();
+                }
+            }
+            public static void SaveInstruments(List<Model.Instrument> instruments)
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("DELETE FROM StockInstruments");
+                }
+                foreach (var instrument in instruments)
+                {
+
+
+                    using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        cnn.Execute("insert into StockInstruments (Name, Type,DisplayName,PipLocation,IsFavorite) values (@Name, @Type,@DisplayName,@PipLocation,@IsFavorite)", instrument);
+                    }
+                }
+            }
+
+            public static void UpdateIsFavorite(Model.Instrument instrument)
+            {
+               
+
+                    using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        cnn.Execute("UPDATE StockInstruments SET IsFavorite=@IsFavorite where ID=@ID", instrument);
+                    }
+                
             }
 
 

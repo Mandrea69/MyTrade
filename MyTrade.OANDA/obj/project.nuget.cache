@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R49KICjdbyyWZiN4r2iohrKexCmgV0XrvEzH2JyJ7djNIFGZfTcSI4U5Xyg+BbU7JiFNRb4Ebs1hyLmBIYfNwg==",
+  "dgSpecHash": "1Sj2jOSQnraEGp5TWpRjn7Jtsoh+NaNlxkV2H3I7YxWJEcWyGsadJncCwxYLg1OJe4iaAjyH7VTMg+DihBV9fQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj",
+  "projectFilePath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\a.mercuri\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\a.mercuri\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

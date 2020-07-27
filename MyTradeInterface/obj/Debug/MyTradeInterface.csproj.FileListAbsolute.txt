@@ -88,3 +88,7 @@ C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\obj\Debug\MyT
 C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\obj\Debug\MyTradeInterface.StrategyTest.resources
 C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\bin\Debug\MyTrade.Core.Strategy.dll
 C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\bin\Debug\MyTrade.Core.Strategy.pdb
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\bin\Debug\MyTrade.Alpaca.dll
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\bin\Debug\MyTrade.Alpaca.pdb
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\obj\Debug\MyTradeInterface.Forms.Instruments_Currency.resources
+C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\MyTradeInterface\obj\Debug\MyTradeInterface.Forms.Instuments_Stock.resources

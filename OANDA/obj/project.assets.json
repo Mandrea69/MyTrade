@@ -222,6 +222,20 @@
           }
         }
       },
+      "MyTrade.Alpaca/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "MyTrade.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/MyTrade.Alpaca.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyTrade.Alpaca.dll": {}
+        }
+      },
       "MyTrade.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -700,6 +714,11 @@
         "version.txt"
       ]
     },
+    "MyTrade.Alpaca/1.0.0": {
+      "type": "project",
+      "path": "../MyTrade.Alpaca/MyTrade.Alpaca.csproj",
+      "msbuildProject": "../MyTrade.Alpaca/MyTrade.Alpaca.csproj"
+    },
     "MyTrade.Core/1.0.0": {
       "type": "project",
       "path": "../MyTrade.Core/MyTrade.Core.csproj",
@@ -708,6 +727,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
+      "MyTrade.Alpaca >= 1.0.0",
       "MyTrade.Core >= 1.0.0",
       "Newtonsoft.Json >= 12.0.3"
     ]
@@ -718,11 +738,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\OANDA\\OANDA.csproj",
+      "projectUniqueName": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\OANDA\\OANDA.csproj",
       "projectName": "OANDA",
-      "projectPath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\OANDA\\OANDA.csproj",
+      "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\OANDA\\OANDA.csproj",
       "packagesPath": "C:\\Users\\a.mercuri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\OANDA\\obj\\",
+      "outputPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\OANDA\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\a.mercuri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -738,8 +758,11 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj": {
-              "projectPath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj"
+            "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Alpaca\\MyTrade.Alpaca.csproj": {
+              "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Alpaca\\MyTrade.Alpaca.csproj"
+            },
+            "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj": {
+              "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj"
             }
           }
         }

@@ -319,6 +319,16 @@ namespace MyTradeInterface
 
         }
 
-      
+        private void currencyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyTradeInterface.Forms.Instruments_Currency rd = new MyTradeInterface.Forms.Instruments_Currency();
+            rd.ShowDialog(this);
+        }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyTradeInterface.Forms.Instuments_Stock rd = new MyTradeInterface.Forms.Instuments_Stock();
+            rd.ShowDialog(this);
+        }
     }
 }

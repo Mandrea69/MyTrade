@@ -1,0 +1,13 @@
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\bin\Debug\netstandard2.0\MyTradeDB.db
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\bin\Debug\netstandard2.0\MyTrade.Alpaca.deps.json
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\bin\Debug\netstandard2.0\MyTrade.Alpaca.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\bin\Debug\netstandard2.0\MyTrade.Core.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\bin\Debug\netstandard2.0\MyTrade.Core.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\obj\Debug\netstandard2.0\MyTrade.Alpaca.csprojAssemblyReference.cache
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\obj\Debug\netstandard2.0\MyTrade.Alpaca.AssemblyInfoInputs.cache
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\obj\Debug\netstandard2.0\MyTrade.Alpaca.AssemblyInfo.cs
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\obj\Debug\netstandard2.0\MyTrade.Alpaca.csproj.CopyComplete
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\bin\Debug\netstandard2.0\MyTrade.Alpaca.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\obj\Debug\netstandard2.0\MyTrade.Alpaca.csproj.CoreCompileInputs.cache
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\obj\Debug\netstandard2.0\MyTrade.Alpaca.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Alpaca\obj\Debug\netstandard2.0\MyTrade.Alpaca.pdb

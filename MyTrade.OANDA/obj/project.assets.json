@@ -935,11 +935,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj",
+      "projectUniqueName": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj",
       "projectName": "MyTrade.OANDA",
-      "projectPath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj",
+      "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj",
       "packagesPath": "C:\\Users\\a.mercuri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\obj\\",
+      "outputPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\a.mercuri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -955,8 +955,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj": {
-              "projectPath": "C:\\Users\\a.mercuri\\Source\\Repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj"
+            "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj": {
+              "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj"
             }
           }
         }

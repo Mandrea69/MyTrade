@@ -23,7 +23,7 @@ namespace MyTrade.OANDA.Data
                 _instrument.DisplayName = item.displayName;
                 _instrument.Type = item.type;
                 _instrument.PipLocation = Math.Abs(item.pipLocation);
-
+                _instrument.IsFavorite = false;
 
                 instruments.Add(_instrument);
             }

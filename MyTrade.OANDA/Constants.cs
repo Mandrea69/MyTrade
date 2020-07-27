@@ -7,7 +7,7 @@ namespace MyTrade.OANDA
 {
     public class Constants
     {
-
+     
         public static string oaAccessToken = "101-004-15144635-001";
          public class url
         {

@@ -39,17 +39,20 @@
             this.txtTotalInstruments = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblwait = new System.Windows.Forms.Label();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlCalculator = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.strategyTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.instrumentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlHA_buy = new System.Windows.Forms.Panel();
             this.pnlHA_sell = new System.Windows.Forms.Panel();
             this.pnlHA_other = new System.Windows.Forms.Panel();
-            this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,13 +146,6 @@
             this.lblwait.TabIndex = 14;
             this.lblwait.Text = "0";
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "Image";
-            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
             // pnlCalculator
             // 
             this.pnlCalculator.Location = new System.Drawing.Point(503, 328);
@@ -161,6 +157,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem,
+            this.instrumentsToolStripMenuItem,
             this.orderToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -191,6 +188,43 @@
             this.strategyTestToolStripMenuItem.Text = "Strategy Test";
             this.strategyTestToolStripMenuItem.Click += new System.EventHandler(this.strategyTestToolStripMenuItem_Click);
             // 
+            // orderToolStripMenuItem
+            // 
+            this.orderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusToolStripMenuItem});
+            this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
+            this.orderToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.orderToolStripMenuItem.Text = "Order";
+            // 
+            // statusToolStripMenuItem
+            // 
+            this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.statusToolStripMenuItem.Text = "Status";
+            // 
+            // instrumentsToolStripMenuItem
+            // 
+            this.instrumentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currencyToolStripMenuItem,
+            this.stockToolStripMenuItem});
+            this.instrumentsToolStripMenuItem.Name = "instrumentsToolStripMenuItem";
+            this.instrumentsToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.instrumentsToolStripMenuItem.Text = "Instruments";
+            // 
+            // currencyToolStripMenuItem
+            // 
+            this.currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
+            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.currencyToolStripMenuItem.Text = "Currency";
+            this.currencyToolStripMenuItem.Click += new System.EventHandler(this.currencyToolStripMenuItem_Click);
+            // 
+            // stockToolStripMenuItem
+            // 
+            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stockToolStripMenuItem.Text = "Stock";
+            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
+            // 
             // pnlHA_buy
             // 
             this.pnlHA_buy.Location = new System.Drawing.Point(12, 95);
@@ -213,19 +247,12 @@
             this.pnlHA_other.Size = new System.Drawing.Size(480, 217);
             this.pnlHA_other.TabIndex = 19;
             // 
-            // orderToolStripMenuItem
+            // dataGridViewImageColumn1
             // 
-            this.orderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusToolStripMenuItem});
-            this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
-            this.orderToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.orderToolStripMenuItem.Text = "Order";
-            // 
-            // statusToolStripMenuItem
-            // 
-            this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            this.statusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.statusToolStripMenuItem.Text = "Status";
+            this.dataGridViewImageColumn1.HeaderText = "Image";
+            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
             // Home
             // 
@@ -281,6 +308,9 @@
         private System.Windows.Forms.ToolStripMenuItem strategyTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem instrumentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem currencyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
     }
 }
 

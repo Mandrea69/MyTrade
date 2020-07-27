@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.0": {
       "OANDA/1.0.0": {
         "dependencies": {
+          "MyTrade.Alpaca": "1.0.0",
           "MyTrade.Core": "1.0.0",
           "Newtonsoft.Json": "12.0.3"
         },
@@ -232,6 +233,15 @@
           }
         }
       },
+      "MyTrade.Alpaca/1.0.0": {
+        "dependencies": {
+          "MyTrade.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "MyTrade.Alpaca.dll": {}
+        }
+      },
       "MyTrade.Core/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.35",
@@ -340,6 +350,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "MyTrade.Alpaca/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "MyTrade.Core/1.0.0": {
       "type": "project",

@@ -27,6 +27,9 @@ namespace OANDA
 
         static void Main(string[] args)
         {
+            MyTrade.Alpaca.Data.Instrument.All();
+
+
             //List<Model.Instrument> instruments= Data.Instrument.All();
             // foreach (Model.Instrument item in instruments)
             // {
@@ -66,19 +69,19 @@ namespace OANDA
             //     }
             // }
 
-            DateTime openDate = new DateTime(2020, 6, 5);
-            DateTime currentWeekstartDate = openDate;
-            DateTime previousWeekStartDate = openDate.AddDays(-1);
-            if (Convert.ToInt16(openDate.DayOfWeek) > 1)
-            {
-                currentWeekstartDate = openDate.AddDays(-(Convert.ToInt16(openDate.DayOfWeek) - 1));
-                previousWeekStartDate = currentWeekstartDate.AddDays(-7);
-            }
+            //DateTime openDate = new DateTime(2020, 6, 5);
+            //DateTime currentWeekstartDate = openDate;
+            //DateTime previousWeekStartDate = openDate.AddDays(-1);
+            //if (Convert.ToInt16(openDate.DayOfWeek) > 1)
+            //{
+            //    currentWeekstartDate = openDate.AddDays(-(Convert.ToInt16(openDate.DayOfWeek) - 1));
+            //    previousWeekStartDate = currentWeekstartDate.AddDays(-7);
+            //}
 
 
-            List<Model.Candle> candles=  Data.Prices.GetCandles("GBP_CAD", previousWeekStartDate, "W");
-            Console.WriteLine(candles.FirstOrDefault().Time);
-            MyTrade.Core.Indicators.PivotPoints pp = new MyTrade.Core.Indicators.PivotPoints();
+            //List<Model.Candle> candles=  Data.Prices.GetCandles("GBP_CAD", previousWeekStartDate, "W");
+            //Console.WriteLine(candles.FirstOrDefault().Time);
+            //MyTrade.Core.Indicators.PivotPoints pp = new MyTrade.Core.Indicators.PivotPoints();
           
 
 

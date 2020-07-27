@@ -11,7 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Candle.cs" />
     <Compile Remove="Indicators\EMA.cs" />
+    <Compile Remove="Indicators\HeikinAshi.cs" />
     <Compile Remove="Indicators\PivotPoints.cs" />
     <Compile Remove="Model\Candle.cs" />
     <Compile Remove="Model\Instrument.cs" />
