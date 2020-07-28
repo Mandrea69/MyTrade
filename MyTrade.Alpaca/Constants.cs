@@ -17,11 +17,10 @@ namespace MyTrade.Alpaca
             {
                 return "https://data.alpaca.markets/v1/bars/" + granularity + "?symbols=" + instrument + "&limit=" + numberCandels;
             }
-            public static string Candels(string instrument, DateTime from, string granularity)
+            public static string Candles(string instrument, DateTime from, string granularity)
             {
-
-                string url = "https://api-fxpractice.oanda.com/v3/accounts/" + oaAccessToken + "/instruments/" + instrument + "/candles?from=" + from.ToString("yyyy-MM-dd") + "&granularity=" + granularity;
-
+                string url= "https://data.alpaca.markets/v1/bars/" + granularity + "?symbols=" + instrument + "&start=" + from.ToString("yyyy-MM-dd");
+               
                 return url;
             }
         }

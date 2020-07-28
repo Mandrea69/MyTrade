@@ -228,6 +228,20 @@
           }
         }
       },
+      "MyTrade.Alpaca/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "MyTrade.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/MyTrade.Alpaca.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyTrade.Alpaca.dll": {}
+        }
+      },
       "MyTrade.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -930,6 +944,11 @@
         "version.txt"
       ]
     },
+    "MyTrade.Alpaca/1.0.0": {
+      "type": "project",
+      "path": "../MyTrade.Alpaca/MyTrade.Alpaca.csproj",
+      "msbuildProject": "../MyTrade.Alpaca/MyTrade.Alpaca.csproj"
+    },
     "MyTrade.Core/1.0.0": {
       "type": "project",
       "path": "../MyTrade.Core/MyTrade.Core.csproj",
@@ -943,6 +962,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "MyTrade.Alpaca >= 1.0.0",
       "MyTrade.Core >= 1.0.0",
       "MyTrade.OANDA >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
@@ -974,6 +994,9 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+            "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Alpaca\\MyTrade.Alpaca.csproj": {
+              "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Alpaca\\MyTrade.Alpaca.csproj"
+            },
             "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj": {
               "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj"
             },

@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "MyTrade.Core.Strategy/1.0.0": {
         "dependencies": {
+          "MyTrade.Alpaca": "1.0.0",
           "MyTrade.Core": "1.0.0",
           "MyTrade.OANDA": "1.0.0",
           "NETStandard.Library": "2.0.3"
@@ -159,6 +160,15 @@
           }
         }
       },
+      "MyTrade.Alpaca/1.0.0": {
+        "dependencies": {
+          "MyTrade.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "MyTrade.Alpaca.dll": {}
+        }
+      },
       "MyTrade.Core/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.35",
@@ -297,6 +307,11 @@
       "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
+    },
+    "MyTrade.Alpaca/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "MyTrade.Core/1.0.0": {
       "type": "project",

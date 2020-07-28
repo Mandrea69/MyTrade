@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyTrade.Alpaca\MyTrade.Alpaca.csproj" />
     <ProjectReference Include="..\MyTrade.Core\MyTrade.Core.csproj" />
     <ProjectReference Include="..\MyTrade.OANDA\MyTrade.OANDA.csproj" />
   </ItemGroup>

@@ -13,3 +13,5 @@ C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debu
 C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.csproj.CopyComplete
 C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.dll
 C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\obj\Debug\netstandard2.0\MyTrade.Core.Strategy.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.Alpaca.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\MyTrade.Core.Strategy\bin\Debug\netstandard2.0\MyTrade.Alpaca.pdb
