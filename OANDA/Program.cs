@@ -27,7 +27,18 @@ namespace OANDA
 
         static void Main(string[] args)
         {
-            MyTrade.Alpaca.Data.Instrument.All();
+
+            MyTrade.Alpaca.Data.Prices.LastPrice("NFLX");
+            
+
+            //var now = DateTime.Now.AddMonths(-1);
+            //var first = new DateTime(now.Year, now.Month, 1);
+            //var last = first.AddMonths(1).AddDays(-1);
+            //Console.WriteLine(first + " " + last);
+
+
+
+         
 
 
             //List<Model.Instrument> instruments= Data.Instrument.All();
@@ -82,7 +93,7 @@ namespace OANDA
             //List<Model.Candle> candles=  Data.Prices.GetCandles("GBP_CAD", previousWeekStartDate, "W");
             //Console.WriteLine(candles.FirstOrDefault().Time);
             //MyTrade.Core.Indicators.PivotPoints pp = new MyTrade.Core.Indicators.PivotPoints();
-          
+
 
 
         }

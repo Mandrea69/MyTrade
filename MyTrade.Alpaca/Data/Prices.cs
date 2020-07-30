@@ -1,4 +1,5 @@
 ﻿
+using MyTrade.Alpaca.Model;
 using MyTrade.Alpaca.Model.Communication;
 using MyTrade.Core.Model;
 using Newtonsoft.Json;
@@ -23,20 +24,28 @@ namespace MyTrade.Alpaca.Data
         //    return prices;
 
         //}
-        //public static double LastPrice(string institution)
-        //{
-        //    double lastPrice = 0;
-        //    string responseString = Data.OANDARestResponse.Get(Constants.url.RATES + institution);
-        //    var pricesResponse = JsonConvert.DeserializeObject<PricesResponse>(responseString);
-        //    lastPrice = (Convert.ToDouble(pricesResponse.prices[0].closeoutAsk) + Convert.ToDouble(pricesResponse.prices[0].closeoutBid)) / 2;
-                    
-        //    return lastPrice;
-        //}
+        public static double LastPrice(string instruments)
+        {
+            double lastPrice = 0;
+            string responseString = Data.Call.Get(Constants.url.LastPrice(instruments));
+            var pricesResponse = JsonConvert.DeserializeObject<PricesResponse>(responseString);
+            lastPrice = (Convert.ToDouble(pricesResponse.last.askprice) + Convert.ToDouble(pricesResponse.last.bidprice)) / 2;
+
+            return lastPrice;
+        }
         public static List<Candle> GetCandles(string instrument,int numberCandels,string granularity)
         {
             List<Candle> candles = new List<Candle>();
             string responseString = Data.Call.Get(Constants.url.Candles(instrument, numberCandels, granularity));
+
+            int index = responseString.IndexOf(":");
+
+            responseString = responseString.Substring(index + 1);
+            int index1 = responseString.LastIndexOf("}");
+            responseString = responseString.Substring(0, index1);
+
             JArray a = JArray.Parse(responseString);
+          
             IList<CandleResponse> jCandles = a.Select(p => new CandleResponse
             {
                 o = (double)p["o"],
@@ -80,6 +89,62 @@ namespace MyTrade.Alpaca.Data
         {
             List<Candle> candles = new List<Candle>();
             string responseString = Data.Call.Get(Constants.url.Candles(instrument, from, granularity));
+            int index = responseString.IndexOf(":");
+
+            responseString = responseString.Substring(index + 1);
+            int index1 = responseString.LastIndexOf("}");
+            responseString = responseString.Substring(0, index1);
+            JArray a = JArray.Parse(responseString);
+            IList<CandleResponse> jCandles = a.Select(p => new CandleResponse
+            {
+                o = (double)p["o"],
+                c = (double)p["c"],
+                h = (double)p["h"],
+                l = (double)p["l"],
+                t = (long)p["t"],
+
+
+            }).ToList();
+
+            foreach (var item in jCandles)
+            {
+
+                Candle _candle = new Candle();
+                _candle.Instrument = instrument;
+                _candle.Open = Convert.ToDouble(item.o);
+                _candle.Close = Convert.ToDouble(item.c);
+                _candle.High = Convert.ToDouble(item.h);
+                _candle.Low = Convert.ToDouble(item.l);
+                _candle.Complete = true;
+                _candle.Time = FromUnixTime(item.t);
+
+                if (_candle.Close > _candle.Open)
+                {
+                    _candle.OriginalColor = CandleColor.GREEN;
+                }
+                else if (_candle.Close < _candle.Open)
+                {
+                    _candle.OriginalColor = CandleColor.RED;
+                }
+
+                candles.Add(_candle);
+            }
+
+
+
+            return candles;
+        }
+        public static List<Candle> GetCandles(string instrument, DateTime from, DateTime to, string granularity)
+        {
+            List<Candle> candles = new List<Candle>();
+            string responseString = Data.Call.Get(Constants.url.Candles(instrument, from,to, granularity));
+            int index = responseString.IndexOf(":");
+           
+            responseString = responseString.Substring(index+1);
+            int index1 = responseString.LastIndexOf("}");
+            responseString = responseString.Substring(0,index1);
+
+
             JArray a = JArray.Parse(responseString);
             IList<CandleResponse> jCandles = a.Select(p => new CandleResponse
             {
@@ -123,8 +188,9 @@ namespace MyTrade.Alpaca.Data
 
         static DateTime FromUnixTime(long unixTime)
         {
-            return epoch.AddSeconds(unixTime);
+            return DateTimeOffset.FromUnixTimeSeconds(unixTime).DateTime;
+           
         }
-        private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+      
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MyTrade.Alpaca.Model.Communication
 {
+
     public class CandleResponse
     {
          

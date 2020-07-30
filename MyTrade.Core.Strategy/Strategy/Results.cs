@@ -237,11 +237,12 @@ namespace MyTrade.Core.Strategy
                                 result.M15_HA_Color = M15_HA_Color;
                                 result.InstrumentDetails = instrumentDetails;
                                 result.PivotPointsPosition = ppPosition;
-                                if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
-                                {
-                                    result.Action = Core.Constants.Action.BUY;
-                                }
-                                else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
+                                //if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
+                                //{
+                                //    result.Action = Core.Constants.Action.BUY;
+                                //}
+                                //else 
+                                if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
                                 {
                                     result.Action = Core.Constants.Action.BUY;
                                 }
@@ -282,11 +283,12 @@ namespace MyTrade.Core.Strategy
                             haDaily[haDaily.Count() - 1].Close < ema9.FirstOrDefault().Value)
                             {
 
-                                if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
-                                {
-                                    result.Action = Core.Constants.Action.SELL;
-                                }
-                                else if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
+                                //if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
+                                //{
+                                //    result.Action = Core.Constants.Action.SELL;
+                                //}
+                                //else 
+                                if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
                                 {
                                     result.Action = Core.Constants.Action.SELL;
                                 }

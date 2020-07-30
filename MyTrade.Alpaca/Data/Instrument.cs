@@ -60,7 +60,7 @@ namespace MyTrade.Alpaca.Data
      
         public static List<MyTrade.Core.Model.Instrument> AllFromDB()
         {
-          return MyTrade.Core.SqliteDataAccess.Instruments.LoadInstruments(); ;
+          return MyTrade.Core.SqliteDataAccess.StockInstruments.LoadInstruments(); ;
         }
 
        

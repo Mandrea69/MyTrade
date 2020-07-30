@@ -44,15 +44,17 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.strategyTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instrumentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlHA_buy = new System.Windows.Forms.Panel();
             this.pnlHA_sell = new System.Windows.Forms.Panel();
             this.pnlHA_other = new System.Windows.Forms.Panel();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.rbCurrencies = new System.Windows.Forms.RadioButton();
+            this.rbStocks = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,6 +190,29 @@
             this.strategyTestToolStripMenuItem.Text = "Strategy Test";
             this.strategyTestToolStripMenuItem.Click += new System.EventHandler(this.strategyTestToolStripMenuItem_Click);
             // 
+            // instrumentsToolStripMenuItem
+            // 
+            this.instrumentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.currencyToolStripMenuItem,
+            this.stockToolStripMenuItem});
+            this.instrumentsToolStripMenuItem.Name = "instrumentsToolStripMenuItem";
+            this.instrumentsToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.instrumentsToolStripMenuItem.Text = "Instruments";
+            // 
+            // currencyToolStripMenuItem
+            // 
+            this.currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
+            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.currencyToolStripMenuItem.Text = "Currency";
+            this.currencyToolStripMenuItem.Click += new System.EventHandler(this.currencyToolStripMenuItem_Click);
+            // 
+            // stockToolStripMenuItem
+            // 
+            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.stockToolStripMenuItem.Text = "Stock";
+            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
+            // 
             // orderToolStripMenuItem
             // 
             this.orderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -201,29 +226,6 @@
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
             this.statusToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.statusToolStripMenuItem.Text = "Status";
-            // 
-            // instrumentsToolStripMenuItem
-            // 
-            this.instrumentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currencyToolStripMenuItem,
-            this.stockToolStripMenuItem});
-            this.instrumentsToolStripMenuItem.Name = "instrumentsToolStripMenuItem";
-            this.instrumentsToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.instrumentsToolStripMenuItem.Text = "Instruments";
-            // 
-            // currencyToolStripMenuItem
-            // 
-            this.currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
-            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.currencyToolStripMenuItem.Text = "Currency";
-            this.currencyToolStripMenuItem.Click += new System.EventHandler(this.currencyToolStripMenuItem_Click);
-            // 
-            // stockToolStripMenuItem
-            // 
-            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stockToolStripMenuItem.Text = "Stock";
-            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
             // 
             // pnlHA_buy
             // 
@@ -254,11 +256,35 @@
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
+            // rbCurrencies
+            // 
+            this.rbCurrencies.AutoSize = true;
+            this.rbCurrencies.Checked = true;
+            this.rbCurrencies.Location = new System.Drawing.Point(15, 33);
+            this.rbCurrencies.Name = "rbCurrencies";
+            this.rbCurrencies.Size = new System.Drawing.Size(75, 17);
+            this.rbCurrencies.TabIndex = 20;
+            this.rbCurrencies.TabStop = true;
+            this.rbCurrencies.Text = "Currencies";
+            this.rbCurrencies.UseVisualStyleBackColor = true;
+            // 
+            // rbStocks
+            // 
+            this.rbStocks.AutoSize = true;
+            this.rbStocks.Location = new System.Drawing.Point(106, 33);
+            this.rbStocks.Name = "rbStocks";
+            this.rbStocks.Size = new System.Drawing.Size(58, 17);
+            this.rbStocks.TabIndex = 21;
+            this.rbStocks.Text = "Stocks";
+            this.rbStocks.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 559);
+            this.Controls.Add(this.rbStocks);
+            this.Controls.Add(this.rbCurrencies);
             this.Controls.Add(this.pnlHA_other);
             this.Controls.Add(this.pnlHA_sell);
             this.Controls.Add(this.pnlHA_buy);
@@ -311,6 +337,8 @@
         private System.Windows.Forms.ToolStripMenuItem instrumentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currencyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rbCurrencies;
+        private System.Windows.Forms.RadioButton rbStocks;
     }
 }
 

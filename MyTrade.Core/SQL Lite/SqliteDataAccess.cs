@@ -134,6 +134,48 @@ namespace MyTrade.Core
 
 
         }
+        public class WeekyStocksCandles
+        {
+            public static List<Model.Candle> LoadCandles(string instrument)
+            {
+                var dictionary = new Dictionary<string, object>
+                {
+                    { "@instrument", instrument }
+                };
+                var parameters = new DynamicParameters(dictionary);
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var output = cnn.Query<Model.Candle>("select * from WeeklyStocksCandles where instrument=@instrument", parameters);
+                    return output.ToList();
+                }
+            }
+
+            public static void CleanData()
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("DELETE FROM WeeklyStocksCandles");
+                }
+            }
+
+
+            public static void SaveCandles(List<Model.Candle> candles)
+            {
+
+                foreach (var candle in candles)
+                {
+
+
+                    using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        cnn.Execute("insert into WeeklyStocksCandles (Open, Close,High,Low,Time,Instrument,OriginalColor) values (@Open, @Close,@High,@Low,@Time,@Instrument,@OriginalColor)", candle);
+                    }
+                }
+            }
+
+
+
+        }
         public class MonthlyCandles
         {
             public static List<Model.Candle> LoadCandles(string instrument)
@@ -169,6 +211,48 @@ namespace MyTrade.Core
                     using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                     {
                         cnn.Execute("insert into MonthlyCandles (Open, Close,High,Low,Time,Instrument,OriginalColor) values (@Open, @Close,@High,@Low,@Time,@Instrument,@OriginalColor)", candle);
+                    }
+                }
+            }
+
+
+
+        }
+        public class MonthlyStocksCandles
+        {
+            public static List<Model.Candle> LoadCandles(string instrument)
+            {
+                var dictionary = new Dictionary<string, object>
+                {
+                    { "@instrument", instrument }
+                };
+                var parameters = new DynamicParameters(dictionary);
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var output = cnn.Query<Model.Candle>("select * from MonthlyStocksCandles where instrument=@instrument", parameters);
+                    return output.ToList();
+                }
+            }
+
+            public static void CleanData()
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Execute("DELETE FROM MonthlyStocksCandles");
+                }
+            }
+
+
+            public static void SaveCandles(List<Model.Candle> candles)
+            {
+
+                foreach (var candle in candles)
+                {
+
+
+                    using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                    {
+                        cnn.Execute("insert into MonthlyStocksCandles (Open, Close,High,Low,Time,Instrument,OriginalColor) values (@Open, @Close,@High,@Low,@Time,@Instrument,@OriginalColor)", candle);
                     }
                 }
             }

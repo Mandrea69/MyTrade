@@ -25,12 +25,28 @@ namespace MyTradeInterface.Controls
         {
             set { this.txtStopLoss.Text = value; this.txtResult.Text = ""; }
         }
-
+        public bool IsCurrency
+        {
+            get;
+            set;
+           
+        }
         public Calculator()
         {
-            InitializeComponent();
-         instruments=   MyTrade.OANDA.Data.Instrument.AllFromDB();
             var source = new AutoCompleteStringCollection();
+            InitializeComponent();
+            if(IsCurrency==true)
+            {
+
+                instruments = MyTrade.OANDA.Data.Instrument.AllFromDB();
+            }
+            else
+            {
+                instruments = MyTrade.Core.SqliteDataAccess.StockInstruments.LoadInstruments().Where(x => x.IsFavorite == true).OrderBy(x => x.Type).OrderBy(x => x.DisplayName).ToList();
+
+            }
+
+
 
             foreach (Instrument item in instruments)
             {
@@ -57,14 +73,37 @@ namespace MyTradeInterface.Controls
         {
             if(this.txtInstrument.Text!="" && this.txtStopLoss.Text!="")
             {
+                if (IsCurrency == true)
+                {
+
+                    instruments = MyTrade.OANDA.Data.Instrument.AllFromDB();
+                }
+                else
+                {
+                    instruments = MyTrade.Core.SqliteDataAccess.StockInstruments.LoadInstruments().Where(x => x.IsFavorite == true).OrderBy(x => x.Type).OrderBy(x => x.DisplayName).ToList();
+
+                }
+
+
+
                 var instrumentDetails = from x in instruments
                                         where x.DisplayName == this.txtInstrument.Text
                                         select x;
                 if(instrumentDetails.Count()>0)
                 {
-                    double currentPrice =MyTrade.OANDA.Data.Prices.LastPrice(instrumentDetails.FirstOrDefault().Name);
-                    Calculate.Units units = new Calculate.Units(instrumentDetails.FirstOrDefault(), 100, currentPrice, Convert.ToDouble( this.txtStopLoss.Text));
-                    this.txtResult.Text = units.Get().ToString();
+                    if(this.IsCurrency==true)
+                    {
+                        double currentPrice = MyTrade.OANDA.Data.Prices.LastPrice(instrumentDetails.FirstOrDefault().Name);
+                        Calculate.Units units = new Calculate.Units(instrumentDetails.FirstOrDefault(), 100, currentPrice, Convert.ToDouble(this.txtStopLoss.Text));
+                        this.txtResult.Text = units.Get().ToString();
+                    }
+                    else
+                    {
+                        double currentPrice = MyTrade.Alpaca.Data.Prices.LastPrice(instrumentDetails.FirstOrDefault().Name);
+                        Calculate.Units units = new Calculate.Units(instrumentDetails.FirstOrDefault(), 100, currentPrice, Convert.ToDouble(this.txtStopLoss.Text));
+                        this.txtResult.Text = units.Get().ToString();
+                    }
+                 
                 }
             }
         }

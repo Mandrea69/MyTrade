@@ -23,7 +23,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs.Stocks
         public  void Run()
         {
 
-            instruments = MyTrade.Core.SqliteDataAccess.StockInstruments.LoadInstruments().OrderBy(x => x.Type).OrderBy(x => x.DisplayName).ToList();
+            instruments = MyTrade.Core.SqliteDataAccess.StockInstruments.LoadInstruments().Where(x=>x.IsFavorite==true ).OrderBy(x => x.Type).OrderBy(x => x.DisplayName).ToList();
 
             foreach (Instrument instrument in instruments)
             {
@@ -57,12 +57,12 @@ namespace MyTrade.Core.Strategy.HA_EMAs.Stocks
             instrumentDetails.Current = candles.LastOrDefault().Close;
             EMA ema50 = new EMA(ema50Period);
             EMA ema9 = new EMA(ema9Period);
-            List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
+            List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyStocksCandles.LoadCandles(instrument.Name);
             PivotPoints pps = new PivotPoints();
-            PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
+            PivotPoint wpps = pps.Get(wcandles.FirstOrDefault(), instrumentDetails.Current);
             instrumentDetails.W_PivotPoints = wpps;
-            List<MyTrade.Core.Model.Candle> mcandles = MyTrade.Core.SqliteDataAccess.MonthlyCandles.LoadCandles(instrument.Name);
-            PivotPoint mpps = pps.Get(mcandles[mcandles.Count - 2], instrumentDetails.Current);
+            List<MyTrade.Core.Model.Candle> mcandles = MyTrade.Core.SqliteDataAccess.MonthlyStocksCandles.LoadCandles(instrument.Name);
+            PivotPoint mpps = pps.Get(mcandles.FirstOrDefault(), instrumentDetails.Current);
             instrumentDetails.M_PivotPoints = mpps;
             instrumentDetails.TimeFrame = Core.Constants.TimeFrame.DAILY;
             for (int i = 0; i < candles.Count; i++)
@@ -122,7 +122,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs.Stocks
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
-            List<Candle> candles = OANDA.Data.Prices.GetCandles(instrument.Name, 10, "H4");
+            List<Candle> candles = MyTrade.Alpaca.Data.Prices.GetCandles(instrument.Name, 10, "15Min");
             for (int i = 0; i < candles.Count; i++)
             {
                 if (i == 0)
@@ -153,7 +153,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs.Stocks
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
-            List<Candle> candles = OANDA.Data.Prices.GetCandles(instrument.Name, 10, "H1");
+            List<Candle> candles = MyTrade.Alpaca.Data.Prices.GetCandles(instrument.Name, 10, "15Min");
             for (int i = 0; i < candles.Count; i++)
             {
                 if (i == 0)
@@ -183,7 +183,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs.Stocks
             Candle haPreviounsCandle = null;
             Candle haCurrentCandle = null;
             List<Candle> haCandles = new List<Candle>();
-            List<Candle> candles = OANDA.Data.Prices.GetCandles(instrument.Name, 10, "M15");
+            List<Candle> candles = MyTrade.Alpaca.Data.Prices.GetCandles(instrument.Name, 10, "15Min");
             for (int i = 0; i < candles.Count; i++)
             {
                 if (i == 0)

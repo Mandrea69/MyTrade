@@ -56,5 +56,45 @@ namespace MyTradeInterface
             MyTrade.Core.SqliteDataAccess.StockInstruments.SaveInstruments(instruments);
             this.lblStockInstumentsModiifed.Text = DateTime.Now.ToString();
         }
+
+        private void btnStocksMontly_Click(object sender, EventArgs e)
+        {
+            MyTrade.Core.SqliteDataAccess.MonthlyStocksCandles.CleanData();
+            List<Instrument> instruments = MyTrade.Alpaca.Data.Instrument.AllFromDB().Where(x=>x.IsFavorite==true).ToList();
+            DateTime start = new DateTime();
+            DateTime end = new DateTime();
+
+            MyTrade.Core.Utilities.Calculate.Date.StartEndOfMonthBefore(DateTime.Now,out start,out end);
+            foreach (Instrument  item in instruments)
+            {
+              List<MyTrade.Core.Model.Candle> candles = MyTrade.Alpaca.Data.Prices.GetCandles(item.Name, start, end, "1D");
+                List<MyTrade.Core.Model.Candle> _candles = new List<Candle>();
+                MyTrade.Core.Model.Candle monthlyBar=MyTrade.Core.Utilities.Calculate.Bars.MonthlyBar(candles);
+                monthlyBar.Instrument = item.Name;
+                _candles.Add(monthlyBar);
+                MyTrade.Core.SqliteDataAccess.MonthlyStocksCandles.SaveCandles(_candles);
+            }
+        }
+
+        private void btnStocksWeeklyCandles_Click(object sender, EventArgs e)
+        {
+
+            MyTrade.Core.SqliteDataAccess.WeekyStocksCandles.CleanData();
+            List<Instrument> instruments = MyTrade.Alpaca.Data.Instrument.AllFromDB().Where(x => x.IsFavorite == true).ToList();
+            DateTime start = new DateTime();
+            DateTime end = new DateTime();
+
+            MyTrade.Core.Utilities.Calculate.Date.StartEndOfWeekBefore(DateTime.Now, out start, out end);
+            foreach (Instrument item in instruments)
+            {
+                List<MyTrade.Core.Model.Candle> candles = MyTrade.Alpaca.Data.Prices.GetCandles(item.Name, start, end, "1D");
+                List<MyTrade.Core.Model.Candle> _candles = new List<Candle>();
+                MyTrade.Core.Model.Candle weeklyBar = MyTrade.Core.Utilities.Calculate.Bars.WeeklyBar(candles);
+                weeklyBar.Instrument = item.Name;
+                _candles.Add(weeklyBar);
+                MyTrade.Core.SqliteDataAccess.WeekyStocksCandles.SaveCandles(_candles);
+            }
+
+        }
     }
 }
