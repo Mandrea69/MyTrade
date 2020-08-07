@@ -6,9 +6,9 @@ namespace MyTrade.Core.Model
 {
    public  class Result
     {
-        
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
+        public Instrument Instrument { get; set; }
+        //public string Name { get; set; }
+        //public string DisplayName { get; set; }
         public Constants.CandleColor W_RealColor { get; set; }
 
         public Constants.CandleColor W_HA_Color { get; set; }
@@ -20,7 +20,7 @@ namespace MyTrade.Core.Model
         public Constants.CandleColor M15_HA_Color { get; set; }
 
         public Constants.Action Action { get; set; }
-        public string Type { get; set; }
+   
         public int NumberHaCandles { get; set; }
 
         public InstrumentDetails InstrumentDetails { get; set; }

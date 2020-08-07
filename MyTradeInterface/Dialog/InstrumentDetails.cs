@@ -1,4 +1,5 @@
-﻿using MyTradeInterface.Properties;
+﻿using MyTrade.Alpaca;
+using MyTradeInterface.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,13 +20,13 @@ namespace MyTradeInterface.Dialog
             set
             {
                 result = value;
-                this.Text = "Details: " + this.result.DisplayName;
+                this.Text = "Details: " + this.result.Instrument.DisplayName;
             }
         }
         public InstrumentDetails()
         {
             InitializeComponent();
-        
+
 
         }
 
@@ -33,39 +34,22 @@ namespace MyTradeInterface.Dialog
         {
             if (result.InstrumentDetails != null)
             {
-                var ema = from x in result.InstrumentDetails.EMAs //strategia ha pp
-                          where x.Period == 21
-                          select x;
-                if (ema.Count()> 0)
-                {
-                    this.lblEMA.Text = "Ema 21 periods";
-                    this.txtCurrentPrice.Text = Math.Round(result.InstrumentDetails.Current, 5).ToString();
-                    if (ema.FirstOrDefault().Value < this.result.InstrumentDetails.Current)
-                    {
-                        this.imgEma.Image = Resources.up;
-                    }
-                    else
-                    {
-                        this.imgEma.Image = Resources.down;
-                    }
-                }
-                else
-                {
-                    this.lblEMA.Text = "Ema 9 periods";
-                    var ema9 = from x in result.InstrumentDetails.EMAs //strategia ha pp emas
-                              where x.Period == 9
-                              select x;
-                    this.txtCurrentPrice.Text = Math.Round(result.InstrumentDetails.Current, 5).ToString();
-                    if (ema9.FirstOrDefault().Value < this.result.InstrumentDetails.Current)
-                    {
-                        this.imgEma.Image = Resources.up;
-                    }
-                    else
-                    {
-                        this.imgEma.Image = Resources.down;
-                    }
+                SetImages(this.result.InstrumentDetails);
 
-                }
+            }
+
+            if (this.result.Instrument.Type != "NASDAQ")
+            {
+                MyTrade.Core.Model.InstrumentDetails iDetails = MyTrade.Core.Strategy.HA_EMAs.Weekly.WeeklyinstrumentDetails(this.result.Instrument);
+                SetImagesWeeklyReference(iDetails);
+
+            }
+            else
+            {
+                this.gbWeekly.Visible = false;
+            }
+            if (this.result.InstrumentDetails!=null)
+            {
                 if (this.result.InstrumentDetails.W_PivotPoints != null)
                 {
                     this.txtD_R2.Text = Math.Round(this.result.InstrumentDetails.W_PivotPoints.R2, 5).ToString();
@@ -82,7 +66,101 @@ namespace MyTradeInterface.Dialog
                     this.txtW_S1.Text = Math.Round(this.result.InstrumentDetails.M_PivotPoints.S1, 5).ToString();
                     this.txtW_S2.Text = Math.Round(this.result.InstrumentDetails.M_PivotPoints.S2, 5).ToString();
                 }
+
             }
+           
+        }
+        public void SetImages(MyTrade.Core.Model.InstrumentDetails instrumentDetails)
+        {
+            var emas = (from x in instrumentDetails.EMAs
+                        orderby x.Period
+                        select x).ToList();
+
+            if (emas.Count() > 0)
+            {
+                this.txtCurrentPrice.Text = Math.Round(instrumentDetails.Current, 5).ToString();
+                for (int i = 0; i < emas.Count(); i++)
+                {
+                    if (i == 0)
+                    {
+                        this.lblEma1.Text = "Ema " + emas[i].Period + " periods";
+                        if (emas[i].Value < instrumentDetails.Current)
+                        {
+                            this.imgEma1.Image = Resources.up;
+                        }
+                        else
+                        {
+                            this.imgEma1.Image = Resources.down;
+                        }
+                    }
+                    else
+                    {
+                        this.lblEma2.Text = "Ema " + emas[i].Period + " periods";
+                        if (emas[i].Value < instrumentDetails.Current)
+                        {
+                            this.imgEma2.Image = Resources.up;
+                        }
+                        else
+                        {
+                            this.imgEma2.Image = Resources.down;
+                        }
+
+                    }
+
+
+                }
+
+            }
+
+
+
+        }
+        public void SetImagesWeeklyReference(MyTrade.Core.Model.InstrumentDetails instrumentDetails)
+        {
+            var emas = (from x in instrumentDetails.EMAs
+                        orderby x.Period
+                        select x).ToList();
+
+            if (emas.Count() > 0)
+            {
+               
+                for (int i = 0; i < emas.Count(); i++)
+                {
+                    if (i == 0)
+                    {
+                        this.lblEmaW1.Text = "Ema " + emas[i].Period + " periods";
+                        if (emas[i].Value < instrumentDetails.Current)
+                        {
+                            this.imgEmaW1.Image = Resources.up;
+                        }
+                        else
+                        {
+                            this.imgEmaW1.Image = Resources.down;
+                        }
+                    }
+                    else
+                    {
+                        this.lblEmaW2.Text = "Ema " + emas[i].Period + " periods";
+                        if (emas[i].Value < instrumentDetails.Current)
+                        {
+                            this.imgEmaW2.Image = Resources.up;
+                        }
+                        else
+                        {
+                            this.imgEmaW2.Image = Resources.down;
+                        }
+
+                    }
+
+
+                }
+
+            }
+
+
+
         }
     }
+
+
 }

@@ -50,18 +50,21 @@ namespace MyTradeInterface
             {
                 calculator.IsCurrency = true;
             }
-            calculator.InstrumentDisplayName = result.DisplayName;
+            calculator.InstrumentDisplayName = result.Instrument.DisplayName;
 
+          if(result.InstrumentDetails!=null)
+            {
+                if (result.InstrumentDetails.TimeFrame == TimeFrame.MONTHLY)
+                {
+                    this.calculator.StopLoss = result.InstrumentDetails.M_PivotPoints.PP.ToString();
+                }
+                else
+                {
+                    this.calculator.StopLoss = result.InstrumentDetails.W_PivotPoints.PP.ToString();
+
+                }
+            }
           
-            if (result.InstrumentDetails.TimeFrame == TimeFrame.MONTHLY)
-            {
-                this.calculator.StopLoss = result.InstrumentDetails.M_PivotPoints.PP.ToString();
-            }
-            else
-            {
-                this.calculator.StopLoss = result.InstrumentDetails.W_PivotPoints.PP.ToString();
-
-            }
 
         }
 
@@ -271,7 +274,7 @@ namespace MyTradeInterface
             row.CreateCells(uc_gw.Gw);
 
 
-            row.Cells[0].Value = result.DisplayName;
+            row.Cells[0].Value = result.Instrument.DisplayName;
             if (result.D_RealColor == MyTrade.Core.Constants.CandleColor.GREEN)
             {
                 row.Cells[1].Value = Resources.green;

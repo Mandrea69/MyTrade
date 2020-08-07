@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstrumentDetails));
-            this.lblEMA = new System.Windows.Forms.Label();
+            this.lblEma1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrentPrice = new System.Windows.Forms.TextBox();
-            this.imgEma = new System.Windows.Forms.PictureBox();
+            this.imgEma1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtD_S1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,26 +55,39 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtW_R1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.imgEma)).BeginInit();
+            this.imgEma2 = new System.Windows.Forms.PictureBox();
+            this.lblEma2 = new System.Windows.Forms.Label();
+            this.imgEmaW1 = new System.Windows.Forms.PictureBox();
+            this.lblEmaW1 = new System.Windows.Forms.Label();
+            this.imgEmaW2 = new System.Windows.Forms.PictureBox();
+            this.lblEmaW2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbWeekly = new System.Windows.Forms.GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEma1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEma2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEmaW1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEmaW2)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.gbWeekly.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblEMA
+            // lblEma1
             // 
-            this.lblEMA.AutoSize = true;
-            this.lblEMA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEMA.Location = new System.Drawing.Point(242, 46);
-            this.lblEMA.Name = "lblEMA";
-            this.lblEMA.Size = new System.Drawing.Size(94, 13);
-            this.lblEMA.TabIndex = 0;
-            this.lblEMA.Text = "Ema 21 periods";
+            this.lblEma1.AutoSize = true;
+            this.lblEma1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEma1.Location = new System.Drawing.Point(60, 36);
+            this.lblEma1.Name = "lblEma1";
+            this.lblEma1.Size = new System.Drawing.Size(94, 13);
+            this.lblEma1.TabIndex = 0;
+            this.lblEma1.Text = "Ema 21 periods";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 46);
+            this.label1.Location = new System.Drawing.Point(27, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 2;
@@ -82,21 +95,21 @@
             // 
             // txtCurrentPrice
             // 
-            this.txtCurrentPrice.Location = new System.Drawing.Point(105, 39);
+            this.txtCurrentPrice.Location = new System.Drawing.Point(114, 16);
             this.txtCurrentPrice.Name = "txtCurrentPrice";
             this.txtCurrentPrice.ReadOnly = true;
             this.txtCurrentPrice.Size = new System.Drawing.Size(100, 20);
             this.txtCurrentPrice.TabIndex = 3;
             // 
-            // imgEma
+            // imgEma1
             // 
-            this.imgEma.Image = ((System.Drawing.Image)(resources.GetObject("imgEma.Image")));
-            this.imgEma.InitialImage = ((System.Drawing.Image)(resources.GetObject("imgEma.InitialImage")));
-            this.imgEma.Location = new System.Drawing.Point(207, 39);
-            this.imgEma.Name = "imgEma";
-            this.imgEma.Size = new System.Drawing.Size(29, 30);
-            this.imgEma.TabIndex = 1;
-            this.imgEma.TabStop = false;
+            this.imgEma1.Image = ((System.Drawing.Image)(resources.GetObject("imgEma1.Image")));
+            this.imgEma1.InitialImage = ((System.Drawing.Image)(resources.GetObject("imgEma1.InitialImage")));
+            this.imgEma1.Location = new System.Drawing.Point(25, 19);
+            this.imgEma1.Name = "imgEma1";
+            this.imgEma1.Size = new System.Drawing.Size(29, 30);
+            this.imgEma1.TabIndex = 1;
+            this.imgEma1.TabStop = false;
             // 
             // groupBox1
             // 
@@ -110,7 +123,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtD_R1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(30, 85);
+            this.groupBox1.Location = new System.Drawing.Point(30, 205);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 180);
             this.groupBox1.TabIndex = 4;
@@ -219,7 +232,7 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtW_R1);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(245, 85);
+            this.groupBox2.Location = new System.Drawing.Point(250, 205);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 180);
             this.groupBox2.TabIndex = 14;
@@ -316,17 +329,106 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "R1";
             // 
+            // imgEma2
+            // 
+            this.imgEma2.Image = ((System.Drawing.Image)(resources.GetObject("imgEma2.Image")));
+            this.imgEma2.InitialImage = ((System.Drawing.Image)(resources.GetObject("imgEma2.InitialImage")));
+            this.imgEma2.Location = new System.Drawing.Point(25, 55);
+            this.imgEma2.Name = "imgEma2";
+            this.imgEma2.Size = new System.Drawing.Size(29, 30);
+            this.imgEma2.TabIndex = 16;
+            this.imgEma2.TabStop = false;
+            // 
+            // lblEma2
+            // 
+            this.lblEma2.AutoSize = true;
+            this.lblEma2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEma2.Location = new System.Drawing.Point(60, 72);
+            this.lblEma2.Name = "lblEma2";
+            this.lblEma2.Size = new System.Drawing.Size(94, 13);
+            this.lblEma2.TabIndex = 15;
+            this.lblEma2.Text = "Ema 21 periods";
+            // 
+            // imgEmaW1
+            // 
+            this.imgEmaW1.Image = ((System.Drawing.Image)(resources.GetObject("imgEmaW1.Image")));
+            this.imgEmaW1.InitialImage = ((System.Drawing.Image)(resources.GetObject("imgEmaW1.InitialImage")));
+            this.imgEmaW1.Location = new System.Drawing.Point(23, 19);
+            this.imgEmaW1.Name = "imgEmaW1";
+            this.imgEmaW1.Size = new System.Drawing.Size(29, 30);
+            this.imgEmaW1.TabIndex = 18;
+            this.imgEmaW1.TabStop = false;
+      
+            // 
+            // lblEmaW1
+            // 
+            this.lblEmaW1.AutoSize = true;
+            this.lblEmaW1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmaW1.Location = new System.Drawing.Point(58, 36);
+            this.lblEmaW1.Name = "lblEmaW1";
+            this.lblEmaW1.Size = new System.Drawing.Size(94, 13);
+            this.lblEmaW1.TabIndex = 17;
+            this.lblEmaW1.Text = "Ema 21 periods";
+        
+            // 
+            // imgEmaW2
+            // 
+            this.imgEmaW2.Image = ((System.Drawing.Image)(resources.GetObject("imgEmaW2.Image")));
+            this.imgEmaW2.InitialImage = ((System.Drawing.Image)(resources.GetObject("imgEmaW2.InitialImage")));
+            this.imgEmaW2.Location = new System.Drawing.Point(23, 55);
+            this.imgEmaW2.Name = "imgEmaW2";
+            this.imgEmaW2.Size = new System.Drawing.Size(29, 30);
+            this.imgEmaW2.TabIndex = 19;
+            this.imgEmaW2.TabStop = false;
+            // 
+            // lblEmaW2
+            // 
+            this.lblEmaW2.AutoSize = true;
+            this.lblEmaW2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmaW2.Location = new System.Drawing.Point(58, 72);
+            this.lblEmaW2.Name = "lblEmaW2";
+            this.lblEmaW2.Size = new System.Drawing.Size(94, 13);
+            this.lblEmaW2.TabIndex = 20;
+            this.lblEmaW2.Text = "Ema 21 periods";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.imgEma1);
+            this.groupBox3.Controls.Add(this.lblEma1);
+            this.groupBox3.Controls.Add(this.lblEma2);
+            this.groupBox3.Controls.Add(this.imgEma2);
+            this.groupBox3.Location = new System.Drawing.Point(30, 63);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 100);
+            this.groupBox3.TabIndex = 21;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Current Time Frame";
+            // 
+            // gbWeekly
+            // 
+            this.gbWeekly.Controls.Add(this.imgEmaW1);
+            this.gbWeekly.Controls.Add(this.lblEmaW1);
+            this.gbWeekly.Controls.Add(this.lblEmaW2);
+            this.gbWeekly.Controls.Add(this.imgEmaW2);
+            this.gbWeekly.Location = new System.Drawing.Point(250, 63);
+            this.gbWeekly.Name = "gbWeekly";
+            this.gbWeekly.Size = new System.Drawing.Size(210, 100);
+            this.gbWeekly.TabIndex = 22;
+            this.gbWeekly.TabStop = false;
+            this.gbWeekly.Text = "Weekly Time Frame";
+          
+            // 
             // InstrumentDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 342);
+            this.ClientSize = new System.Drawing.Size(477, 406);
+            this.Controls.Add(this.gbWeekly);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtCurrentPrice);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.imgEma);
-            this.Controls.Add(this.lblEMA);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InstrumentDetails";
@@ -335,11 +437,18 @@
             this.Text = "Instrument Details";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.InstrumentDetails_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imgEma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEma1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEma2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEmaW1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgEmaW2)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.gbWeekly.ResumeLayout(false);
+            this.gbWeekly.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,8 +456,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblEMA;
-        private System.Windows.Forms.PictureBox imgEma;
+        private System.Windows.Forms.Label lblEma1;
+        private System.Windows.Forms.PictureBox imgEma1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCurrentPrice;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -373,5 +482,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtW_R1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox imgEma2;
+        private System.Windows.Forms.Label lblEma2;
+        private System.Windows.Forms.PictureBox imgEmaW1;
+        private System.Windows.Forms.Label lblEmaW1;
+        private System.Windows.Forms.PictureBox imgEmaW2;
+        private System.Windows.Forms.Label lblEmaW2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbWeekly;
     }
 }

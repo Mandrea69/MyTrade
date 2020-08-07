@@ -47,7 +47,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs
         }
 
         
-        public static List<Candle> HA_W_Candles(Instrument instrument, out InstrumentDetails instrumentDetails)
+         static List<Candle> HA_W_Candles(Instrument instrument, out InstrumentDetails instrumentDetails)
         {
 
             instrumentDetails = new InstrumentDetails();
@@ -119,7 +119,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs
 
 
         }
-        public static Candle HA_H4_Candles(Instrument instrument)
+         static Candle HA_H4_Candles(Instrument instrument)
         {
 
             Candle haPreviounsCandle = null;
@@ -150,7 +150,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs
 
 
         }
-        public static Candle HA_H1_Candles(Instrument instrument)
+         static Candle HA_H1_Candles(Instrument instrument)
         {
 
             Candle haPreviounsCandle = null;
@@ -180,7 +180,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs
 
 
         }
-        public static Candle HA_D_Candles(Instrument instrument)
+         static Candle HA_D_Candles(Instrument instrument)
         {
 
 
@@ -213,7 +213,61 @@ namespace MyTrade.Core.Strategy.HA_EMAs
 
         }
 
+        public static InstrumentDetails WeeklyinstrumentDetails (Instrument instrument)
+        {
 
+            InstrumentDetails instrumentDetails = new InstrumentDetails();
+            int ema50Period = 50;
+            int ema9Period = 9;
+            List<Candle> candles = OANDA.Data.Prices.GetCandles(instrument.Name, ema50Period, "W");
+            instrumentDetails.Current = candles.LastOrDefault().Close;
+            EMA ema50 = new EMA(ema50Period);
+            EMA ema9 = new EMA(ema9Period);
+            List<MyTrade.Core.Model.Candle> wcandles = MyTrade.Core.SqliteDataAccess.WeekyCandles.LoadCandles(instrument.Name);
+            PivotPoints pps = new PivotPoints();
+            PivotPoint wpps = pps.Get(wcandles[wcandles.Count - 2], instrumentDetails.Current);
+            instrumentDetails.W_PivotPoints = wpps;
+          
+            instrumentDetails.TimeFrame = Core.Constants.TimeFrame.DAILY;
+            for (int i = 0; i < candles.Count; i++)
+            {
+
+
+                instrumentDetails.Max = Math.Max(instrumentDetails.Max, candles[i].High);
+
+                if (i == 0)
+                {
+                    instrumentDetails.Min = candles[i].Low;
+                    instrumentDetails.Min = Math.Min(candles[i].Low, instrumentDetails.Min);
+               
+
+                }
+                if (i == (candles.Count - 1))
+                {
+                    if (instrumentDetails.EMAs == null)
+                    {
+                        instrumentDetails.EMAs = new List<Core.Model.Indicators.EMA>();
+                    }
+                    ema50.AddDataPoint(candles[i].Close);
+                    ema9.AddDataPoint(candles[i].Close);
+                    instrumentDetails.EMAs.Add(new Core.Model.Indicators.EMA() { Period = 50, Value = ema50.Average });
+                    instrumentDetails.EMAs.Add(new Core.Model.Indicators.EMA() { Period = 9, Value = ema9.Average });
+                }
+                else
+                {
+                    ema50.AddDataPoint(candles[i].Close);
+                    ema9.AddDataPoint(candles[i].Close);
+                }
+
+
+
+            }
+
+
+            return instrumentDetails;
+
+
+        }
 
     }
 }

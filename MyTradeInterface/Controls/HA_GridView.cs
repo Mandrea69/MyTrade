@@ -44,7 +44,7 @@ namespace MyTradeInterface.Controls
            string instrumentDisplayName = this.gw.Rows[e.RowIndex].Cells[0].Value.ToString();
 
             var _result = from x in this.results
-                          where x.DisplayName.ToLower().Trim() == instrumentDisplayName.ToLower().Trim()
+                          where x.Instrument.DisplayName.ToLower().Trim() == instrumentDisplayName.ToLower().Trim()
                           select x;
 
           

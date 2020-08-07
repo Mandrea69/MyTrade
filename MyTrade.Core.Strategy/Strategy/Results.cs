@@ -60,9 +60,7 @@ namespace MyTrade.Core.Strategy
                                 {
                                     result = new Result();
                                     D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
-                                    result.DisplayName = instrument.DisplayName;
-                                    result.Name = instrument.Name;
-                                    result.Type = instrument.Type;
+                                    result.Instrument = instrument;
                                     result.NumberHaCandles = haDaily.Count - i;
                                     result.D_HA_Color = D_HA_Color;
                                     result.D_RealColor = D_RealColor;
@@ -111,9 +109,8 @@ namespace MyTrade.Core.Strategy
                                 D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
                                 result = new Result();
 
-                                result.DisplayName = instrument.DisplayName;
-                                result.Name = instrument.Name;
-                                result.Type = instrument.Type;
+                                result.Instrument = instrument;
+                               
                                 result.NumberHaCandles = haDaily.Count - i;
                                 result.D_HA_Color = D_HA_Color;
                                 result.D_RealColor = D_RealColor;
@@ -167,9 +164,8 @@ namespace MyTrade.Core.Strategy
             {
 
                 result = new Result();
-                result.DisplayName = instrument.DisplayName;
-                result.Name = instrument.Name;
-                result.Type = instrument.Type;
+                result.Instrument = instrument;
+            
                 result.NumberHaCandles = 0;
                 result.D_HA_Color = D_HA_Color;
                 result.D_RealColor = D_RealColor;
@@ -226,9 +222,8 @@ namespace MyTrade.Core.Strategy
                             {
                                 result = new Result();
                                 D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
-                                result.DisplayName = instrument.DisplayName;
-                                result.Name = instrument.Name;
-                                result.Type = instrument.Type;
+                                result.Instrument = instrument;
+                             
                                 result.NumberHaCandles = haDaily.Count - i;
                                 result.D_HA_Color = D_HA_Color;
                                 result.D_RealColor = D_RealColor;
@@ -266,9 +261,8 @@ namespace MyTrade.Core.Strategy
                             D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
                             result = new Result();
 
-                            result.DisplayName = instrument.DisplayName;
-                            result.Name = instrument.Name;
-                            result.Type = instrument.Type;
+                            result.Instrument = instrument;
+                          
                             result.NumberHaCandles = haDaily.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
@@ -312,9 +306,8 @@ namespace MyTrade.Core.Strategy
             {
 
                 result = new Result();
-                result.DisplayName = instrument.DisplayName;
-                result.Name = instrument.Name;
-                result.Type = instrument.Type;
+                result.Instrument = instrument;
+               
                 result.NumberHaCandles = 0;
                 result.D_HA_Color = D_HA_Color;
                 result.D_RealColor = D_RealColor;
@@ -377,9 +370,8 @@ namespace MyTrade.Core.Strategy
                         {
                             result = new Result();
                             D_HA_Color = current.HaColor;
-                            result.DisplayName = instrument.DisplayName;
-                            result.Name = instrument.Name;
-                            result.Type = instrument.Type;
+                            result.Instrument = instrument;
+                           
                             result.NumberHaCandles = last_ha_candles.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
@@ -425,9 +417,8 @@ namespace MyTrade.Core.Strategy
                             D_HA_Color = current.HaColor;
                             result = new Result();
 
-                            result.DisplayName = instrument.DisplayName;
-                            result.Name = instrument.Name;
-                            result.Type = instrument.Type;
+                            result.Instrument = instrument;
+                         
                             result.NumberHaCandles = last_ha_candles.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
@@ -475,9 +466,8 @@ namespace MyTrade.Core.Strategy
             {
 
                 result = new Result();
-                result.DisplayName = instrument.DisplayName;
-                result.Name = instrument.Name;
-                result.Type = instrument.Type;
+                result.Instrument = instrument;
+              
                 result.NumberHaCandles = 0;
                 result.D_HA_Color = D_HA_Color;
                 result.D_RealColor = D_RealColor;
