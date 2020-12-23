@@ -10,6 +10,7 @@
         "dependencies": {
           "MyTrade.Alpaca": "1.0.0",
           "MyTrade.Core": "1.0.0",
+          "MyTrade.OANDA": "1.0.0",
           "Newtonsoft.Json": "12.0.3"
         },
         "runtime": {
@@ -251,6 +252,15 @@
         "runtime": {
           "MyTrade.Core.dll": {}
         }
+      },
+      "MyTrade.OANDA/1.0.0": {
+        "dependencies": {
+          "MyTrade.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "MyTrade.OANDA.dll": {}
+        }
       }
     }
   },
@@ -357,6 +367,11 @@
       "sha512": ""
     },
     "MyTrade.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyTrade.OANDA/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

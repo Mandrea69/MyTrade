@@ -110,7 +110,7 @@ namespace MyTrade.Core.Strategy
                                 result = new Result();
 
                                 result.Instrument = instrument;
-                               
+
                                 result.NumberHaCandles = haDaily.Count - i;
                                 result.D_HA_Color = D_HA_Color;
                                 result.D_RealColor = D_RealColor;
@@ -165,7 +165,7 @@ namespace MyTrade.Core.Strategy
 
                 result = new Result();
                 result.Instrument = instrument;
-            
+
                 result.NumberHaCandles = 0;
                 result.D_HA_Color = D_HA_Color;
                 result.D_RealColor = D_RealColor;
@@ -177,7 +177,7 @@ namespace MyTrade.Core.Strategy
             }
             return result;
         }
-        public static Result GetResult_HA_EMAs(Instrument instrument,CandleColor Daily_RealColor, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
+        public static Result GetResult_HA_EMAs(Instrument instrument, CandleColor Daily_RealColor, List<Candle> haDaily, CandleColor H4_HA_Color, CandleColor H1_HA_Color, CandleColor M15_HA_Color, MyTrade.Core.Model.InstrumentDetails instrumentDetails)
         {
             Result result = null;
             string ppPosition = "";
@@ -215,15 +215,16 @@ namespace MyTrade.Core.Strategy
                 {
                     if (haDaily.Count - i < 4)
                     {
-                        if (D_RealColor == CandleColor.GREEN)
+                        //if (D_RealColor == CandleColor.GREEN)
+                        //{
+                        if (haDaily[haDaily.Count() - 1].Close > ema50.FirstOrDefault().Value &&
+                        haDaily[haDaily.Count() - 1].Close > ema9.FirstOrDefault().Value)
                         {
-                            if (haDaily[haDaily.Count() - 1].Close > ema50.FirstOrDefault().Value &&
-                            haDaily[haDaily.Count() - 1].Close > ema9.FirstOrDefault().Value)
-                            {
-                                result = new Result();
+
+                            result = new Result();
                                 D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
                                 result.Instrument = instrument;
-                             
+
                                 result.NumberHaCandles = haDaily.Count - i;
                                 result.D_HA_Color = D_HA_Color;
                                 result.D_RealColor = D_RealColor;
@@ -232,13 +233,9 @@ namespace MyTrade.Core.Strategy
                                 result.M15_HA_Color = M15_HA_Color;
                                 result.InstrumentDetails = instrumentDetails;
                                 result.PivotPointsPosition = ppPosition;
-                                //if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
-                                //{
-                                //    result.Action = Core.Constants.Action.BUY;
-                                //}
-                                //else 
+
                                 if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
-                                {
+                               {
                                     result.Action = Core.Constants.Action.BUY;
                                 }
                                 else
@@ -247,22 +244,22 @@ namespace MyTrade.Core.Strategy
 
                                 }
                                 break;
-                            }
-
                         }
+
+                        //}
                     }
                 }
                 else if (haDaily[i].HaColor == CandleColor.RED && haDaily[i - 1].HaColor == CandleColor.GREEN)
                 {
-                    if (haDaily.Count - i < 4)
+                    if (haDaily.Count - i < 8)
                     {
-                        if (D_RealColor == CandleColor.RED)
-                        {
+                        //if (D_RealColor == CandleColor.RED)
+                        //{
                             D_HA_Color = haDaily[haDaily.Count() - 1].HaColor;
                             result = new Result();
 
                             result.Instrument = instrument;
-                          
+
                             result.NumberHaCandles = haDaily.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
@@ -273,16 +270,13 @@ namespace MyTrade.Core.Strategy
                             result.PivotPointsPosition = ppPosition;
 
 
-                            if (haDaily[haDaily.Count() - 1].Close < ema50.FirstOrDefault().Value &&
-                            haDaily[haDaily.Count() - 1].Close < ema9.FirstOrDefault().Value)
-                            {
+                        if (haDaily[haDaily.Count() - 1].Close < ema50.FirstOrDefault().Value &&
+                        haDaily[haDaily.Count() - 1].Close < ema9.FirstOrDefault().Value)
 
-                                //if (D_RealColor == D_HA_Color && H1_HA_Color == D_HA_Color && H4_HA_Color == D_HA_Color && M15_HA_Color == D_HA_Color)
-                                //{
-                                //    result.Action = Core.Constants.Action.SELL;
-                                //}
-                                //else 
-                                if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
+                        {
+
+
+                            if (D_RealColor == D_HA_Color && D_RealColor == M15_HA_Color)
                                 {
                                     result.Action = Core.Constants.Action.SELL;
                                 }
@@ -292,7 +286,7 @@ namespace MyTrade.Core.Strategy
 
                                 }
                                 break;
-                            }
+
 
 
                         }
@@ -307,7 +301,7 @@ namespace MyTrade.Core.Strategy
 
                 result = new Result();
                 result.Instrument = instrument;
-               
+
                 result.NumberHaCandles = 0;
                 result.D_HA_Color = D_HA_Color;
                 result.D_RealColor = D_RealColor;
@@ -371,7 +365,7 @@ namespace MyTrade.Core.Strategy
                             result = new Result();
                             D_HA_Color = current.HaColor;
                             result.Instrument = instrument;
-                           
+
                             result.NumberHaCandles = last_ha_candles.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
@@ -418,7 +412,7 @@ namespace MyTrade.Core.Strategy
                             result = new Result();
 
                             result.Instrument = instrument;
-                         
+
                             result.NumberHaCandles = last_ha_candles.Count - i;
                             result.D_HA_Color = D_HA_Color;
                             result.D_RealColor = D_RealColor;
@@ -467,7 +461,7 @@ namespace MyTrade.Core.Strategy
 
                 result = new Result();
                 result.Instrument = instrument;
-              
+
                 result.NumberHaCandles = 0;
                 result.D_HA_Color = D_HA_Color;
                 result.D_RealColor = D_RealColor;

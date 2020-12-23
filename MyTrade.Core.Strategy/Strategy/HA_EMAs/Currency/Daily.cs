@@ -29,7 +29,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs
 
             foreach (Instrument instrument in instruments)
             {
-                //if (instrument.Name == "CHF_JPY")
+                //if (instrument.Name == "DE30EUR")
                 //{
 
                     InstrumentDetails instrumentDetails = null;
@@ -37,7 +37,7 @@ namespace MyTrade.Core.Strategy.HA_EMAs
                     Candle ha_H4_LastCandle = HA_H4_Candles(instrument);
                     Candle ha_H1_LastCandle = HA_H1_Candles(instrument);
                     Candle ha_M15_LastCandle = HA_M15_Candles(instrument); ;
-                    Result result = Results.GetResult_HA_EMAs(instrument, ha_D_Candles[ha_D_Candles.Count-1].OriginalColor, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
+                    Result result = Results.GetResult_HA_EMAs(instrument, ha_D_Candles[ha_D_Candles.Count - 1].OriginalColor, ha_D_Candles, ha_H4_LastCandle.HaColor, ha_H1_LastCandle.HaColor, ha_M15_LastCandle.HaColor, instrumentDetails);
                     if (result != null)
                         GetResult(result, instruments.Count());
                 //}

@@ -84,3 +84,6 @@ C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\OANDA\bin\Debug\netcoreapp3.0\
 C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\OANDA\bin\Debug\netcoreapp3.0\MyTrade.Core.pdb
 C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\OANDA\bin\Debug\netcoreapp3.0\MyTrade.Alpaca.dll
 C:\Users\a.mercuri\Source\Repos\Mandrea69\MyTrade\OANDA\bin\Debug\netcoreapp3.0\MyTrade.Alpaca.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\OANDA\bin\Debug\netcoreapp3.0\MyTrade.OANDA.dll
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\OANDA\bin\Debug\netcoreapp3.0\MyTrade.OANDA.pdb
+C:\Users\a.mercuri\source\repos\Mandrea69\MyTrade\OANDA\bin\Debug\netcoreapp3.0\OANDA.dll.config

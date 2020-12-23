@@ -250,6 +250,20 @@
         "runtime": {
           "bin/placeholder/MyTrade.Core.dll": {}
         }
+      },
+      "MyTrade.OANDA/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "MyTrade.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/MyTrade.OANDA.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyTrade.OANDA.dll": {}
+        }
       }
     }
   },
@@ -723,12 +737,18 @@
       "type": "project",
       "path": "../MyTrade.Core/MyTrade.Core.csproj",
       "msbuildProject": "../MyTrade.Core/MyTrade.Core.csproj"
+    },
+    "MyTrade.OANDA/1.0.0": {
+      "type": "project",
+      "path": "../MyTrade.OANDA/MyTrade.OANDA.csproj",
+      "msbuildProject": "../MyTrade.OANDA/MyTrade.OANDA.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
       "MyTrade.Alpaca >= 1.0.0",
       "MyTrade.Core >= 1.0.0",
+      "MyTrade.OANDA >= 1.0.0",
       "Newtonsoft.Json >= 12.0.3"
     ]
   },
@@ -763,6 +783,9 @@
             },
             "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj": {
               "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.Core\\MyTrade.Core.csproj"
+            },
+            "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj": {
+              "projectPath": "C:\\Users\\a.mercuri\\source\\repos\\Mandrea69\\MyTrade\\MyTrade.OANDA\\MyTrade.OANDA.csproj"
             }
           }
         }

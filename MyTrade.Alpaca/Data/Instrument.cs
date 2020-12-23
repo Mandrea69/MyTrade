@@ -27,7 +27,7 @@ namespace MyTrade.Alpaca.Data
 
            
             var tradable = from x in jInstruments
-                           where x.tradable == true && x.easy_to_borrow==true && x.exchange== "NASDAQ"
+                           where x.tradable == true && x.easy_to_borrow==true  // && x.exchange== "NASDAQ"
                            orderby x.name
                            select x;
 
